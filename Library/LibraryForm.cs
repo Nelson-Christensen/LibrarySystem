@@ -45,6 +45,7 @@ namespace Library
 
         private void BTNChangeBook_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Hejsan");
             Book b = lbBooks.SelectedItem as Book;
             if (b != null)
             {

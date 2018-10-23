@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace Library.Services
 {
-    class BookService /*: IService*/
+    class BookService : IService
     {
+
+        public event EventHandler Updated;
+
         /// <summary>
         /// service doesn't need a context but it needs a repository.
         /// </summary>
@@ -42,6 +45,11 @@ namespace Library.Services
         {
             bookRepository.Edit(b);
             // TODO: Raise the Updated event.
+            //if (Updated == null)
+            //{
+            //    var args = new EventArgs()
+            //    Updated(this, args)
+            //}
         }
     }
 }
