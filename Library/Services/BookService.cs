@@ -44,12 +44,19 @@ namespace Library.Services
         public void Edit(Book b)
         {
             bookRepository.Edit(b);
+            var e = EventArgs.Empty;
             // TODO: Raise the Updated event.
+            OnUpdated(e);
             //if (Updated == null)
             //{
             //    var args = new EventArgs()
             //    Updated(this, args)
             //}
+        }
+
+        protected virtual void OnUpdated(EventArgs e)
+        {
+            Updated?.Invoke(this, e);
         }
     }
 }
