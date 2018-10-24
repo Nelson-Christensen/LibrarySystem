@@ -63,6 +63,35 @@ namespace Library
                 lbBooks.Items.Add(book);
             }
         }
-        
+
+        private void addBookBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void removeBookBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closeBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void booksNewLoanBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addCopyBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void removeCopyBTN_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
