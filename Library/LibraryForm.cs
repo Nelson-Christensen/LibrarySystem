@@ -76,7 +76,7 @@ namespace Library
 
         private void closeBTN_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
 
         private void booksNewLoanBTN_Click(object sender, EventArgs e)
@@ -92,6 +92,20 @@ namespace Library
         private void removeCopyBTN_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void findTitleTB_TextChanged(object sender, EventArgs e)
+        {
+            UpdateBookList(bookService.GetAllThatContainsInTitle(findTitleTB.Text).ToList());
+        }
+
+        private void UpdateBookList(List<Book> bookList)
+        {
+            lbBooks.Items.Clear();
+            foreach (Book book in bookList)
+            {
+                lbBooks.Items.Add(book);
+            }
         }
     }
 }

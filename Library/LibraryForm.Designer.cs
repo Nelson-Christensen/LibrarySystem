@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.booksTab = new System.Windows.Forms.TabPage();
             this.booksNewLoanBTN = new System.Windows.Forms.Button();
@@ -93,7 +92,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.closeBTN = new System.Windows.Forms.Button();
-            this.tooltipAddBTN = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.membersTab.SuspendLayout();
@@ -109,7 +107,7 @@
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabControl1.Font = new System.Drawing.Font("Georgia", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(30, 24);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(950, 583);
@@ -148,9 +146,9 @@
             this.booksTab.Controls.Add(this.lbBooks);
             this.booksTab.Controls.Add(this.BTNChangeBook);
             this.booksTab.Location = new System.Drawing.Point(4, 30);
-            this.booksTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.booksTab.Margin = new System.Windows.Forms.Padding(2);
             this.booksTab.Name = "booksTab";
-            this.booksTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.booksTab.Padding = new System.Windows.Forms.Padding(2);
             this.booksTab.Size = new System.Drawing.Size(942, 549);
             this.booksTab.TabIndex = 0;
             this.booksTab.Text = "Books";
@@ -159,7 +157,7 @@
             // 
             this.booksNewLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.booksNewLoanBTN.Location = new System.Drawing.Point(826, 19);
-            this.booksNewLoanBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.booksNewLoanBTN.Margin = new System.Windows.Forms.Padding(2);
             this.booksNewLoanBTN.Name = "booksNewLoanBTN";
             this.booksNewLoanBTN.Size = new System.Drawing.Size(86, 37);
             this.booksNewLoanBTN.TabIndex = 37;
@@ -203,7 +201,7 @@
             // 
             this.removeCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.removeCopyBTN.Location = new System.Drawing.Point(782, 364);
-            this.removeCopyBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.removeCopyBTN.Margin = new System.Windows.Forms.Padding(2);
             this.removeCopyBTN.Name = "removeCopyBTN";
             this.removeCopyBTN.Size = new System.Drawing.Size(106, 37);
             this.removeCopyBTN.TabIndex = 33;
@@ -226,7 +224,7 @@
             // 
             this.editBookIDTB.BackColor = System.Drawing.SystemColors.Info;
             this.editBookIDTB.Location = new System.Drawing.Point(404, 93);
-            this.editBookIDTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editBookIDTB.Margin = new System.Windows.Forms.Padding(2);
             this.editBookIDTB.Name = "editBookIDTB";
             this.editBookIDTB.Size = new System.Drawing.Size(99, 28);
             this.editBookIDTB.TabIndex = 31;
@@ -235,7 +233,7 @@
             // 
             this.saveChangesBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.saveChangesBTN.Location = new System.Drawing.Point(591, 454);
-            this.saveChangesBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.saveChangesBTN.Margin = new System.Windows.Forms.Padding(2);
             this.saveChangesBTN.Name = "saveChangesBTN";
             this.saveChangesBTN.Size = new System.Drawing.Size(88, 37);
             this.saveChangesBTN.TabIndex = 30;
@@ -246,7 +244,7 @@
             // 
             this.removeBookBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.removeBookBTN.Location = new System.Drawing.Point(126, 19);
-            this.removeBookBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.removeBookBTN.Margin = new System.Windows.Forms.Padding(2);
             this.removeBookBTN.Name = "removeBookBTN";
             this.removeBookBTN.Size = new System.Drawing.Size(96, 37);
             this.removeBookBTN.TabIndex = 29;
@@ -258,7 +256,7 @@
             // 
             this.addCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.addCopyBTN.Location = new System.Drawing.Point(697, 364);
-            this.addCopyBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addCopyBTN.Margin = new System.Windows.Forms.Padding(2);
             this.addCopyBTN.Name = "addCopyBTN";
             this.addCopyBTN.Size = new System.Drawing.Size(80, 37);
             this.addCopyBTN.TabIndex = 28;
@@ -314,7 +312,7 @@
             // 
             this.editDescriptionTB.BackColor = System.Drawing.SystemColors.Info;
             this.editDescriptionTB.Location = new System.Drawing.Point(404, 249);
-            this.editDescriptionTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editDescriptionTB.Margin = new System.Windows.Forms.Padding(2);
             this.editDescriptionTB.Name = "editDescriptionTB";
             this.editDescriptionTB.Size = new System.Drawing.Size(277, 195);
             this.editDescriptionTB.TabIndex = 23;
@@ -324,7 +322,7 @@
             // 
             this.editAuthorTB.BackColor = System.Drawing.SystemColors.Info;
             this.editAuthorTB.Location = new System.Drawing.Point(404, 197);
-            this.editAuthorTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editAuthorTB.Margin = new System.Windows.Forms.Padding(2);
             this.editAuthorTB.Name = "editAuthorTB";
             this.editAuthorTB.Size = new System.Drawing.Size(277, 28);
             this.editAuthorTB.TabIndex = 21;
@@ -333,7 +331,7 @@
             // 
             this.editTitleTB.BackColor = System.Drawing.SystemColors.Info;
             this.editTitleTB.Location = new System.Drawing.Point(404, 145);
-            this.editTitleTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editTitleTB.Margin = new System.Windows.Forms.Padding(2);
             this.editTitleTB.Name = "editTitleTB";
             this.editTitleTB.Size = new System.Drawing.Size(277, 28);
             this.editTitleTB.TabIndex = 20;
@@ -342,7 +340,7 @@
             // 
             this.editISBNTB.BackColor = System.Drawing.SystemColors.Info;
             this.editISBNTB.Location = new System.Drawing.Point(506, 93);
-            this.editISBNTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editISBNTB.Margin = new System.Windows.Forms.Padding(2);
             this.editISBNTB.Name = "editISBNTB";
             this.editISBNTB.Size = new System.Drawing.Size(174, 28);
             this.editISBNTB.TabIndex = 19;
@@ -351,7 +349,7 @@
             // 
             this.addBookBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.addBookBTN.Location = new System.Drawing.Point(26, 19);
-            this.addBookBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addBookBTN.Margin = new System.Windows.Forms.Padding(2);
             this.addBookBTN.Name = "addBookBTN";
             this.addBookBTN.Size = new System.Drawing.Size(96, 37);
             this.addBookBTN.TabIndex = 11;
@@ -395,7 +393,7 @@
             // findISBNTB
             // 
             this.findISBNTB.Location = new System.Drawing.Point(22, 222);
-            this.findISBNTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.findISBNTB.Margin = new System.Windows.Forms.Padding(2);
             this.findISBNTB.Name = "findISBNTB";
             this.findISBNTB.Size = new System.Drawing.Size(161, 28);
             this.findISBNTB.TabIndex = 15;
@@ -403,7 +401,7 @@
             // findAuthorTB
             // 
             this.findAuthorTB.Location = new System.Drawing.Point(22, 170);
-            this.findAuthorTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.findAuthorTB.Margin = new System.Windows.Forms.Padding(2);
             this.findAuthorTB.Name = "findAuthorTB";
             this.findAuthorTB.Size = new System.Drawing.Size(161, 28);
             this.findAuthorTB.TabIndex = 14;
@@ -411,10 +409,11 @@
             // findTitleTB
             // 
             this.findTitleTB.Location = new System.Drawing.Point(22, 118);
-            this.findTitleTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.findTitleTB.Margin = new System.Windows.Forms.Padding(2);
             this.findTitleTB.Name = "findTitleTB";
             this.findTitleTB.Size = new System.Drawing.Size(161, 28);
             this.findTitleTB.TabIndex = 13;
+            this.findTitleTB.TextChanged += new System.EventHandler(this.findTitleTB_TextChanged);
             // 
             // findBooksLabel
             // 
@@ -440,7 +439,7 @@
             // 
             this.BTNChangeBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNChangeBook.Location = new System.Drawing.Point(33, 378);
-            this.BTNChangeBook.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BTNChangeBook.Margin = new System.Windows.Forms.Padding(2);
             this.BTNChangeBook.Name = "BTNChangeBook";
             this.BTNChangeBook.Size = new System.Drawing.Size(81, 35);
             this.BTNChangeBook.TabIndex = 1;
@@ -472,9 +471,9 @@
             this.membersTab.Controls.Add(this.label8);
             this.membersTab.Controls.Add(this.findMemberSearchBox);
             this.membersTab.Location = new System.Drawing.Point(4, 30);
-            this.membersTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.membersTab.Margin = new System.Windows.Forms.Padding(2);
             this.membersTab.Name = "membersTab";
-            this.membersTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.membersTab.Padding = new System.Windows.Forms.Padding(2);
             this.membersTab.Size = new System.Drawing.Size(942, 549);
             this.membersTab.TabIndex = 1;
             this.membersTab.Text = "Members";
@@ -495,7 +494,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(524, 392);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(201, 27);
             this.checkBox1.TabIndex = 46;
@@ -529,9 +528,9 @@
             this.groupBox1.Controls.Add(this.textBox8);
             this.groupBox1.Controls.Add(this.textBox9);
             this.groupBox1.Location = new System.Drawing.Point(721, 99);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(203, 288);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
@@ -593,7 +592,7 @@
             // textBox10
             // 
             this.textBox10.Location = new System.Drawing.Point(13, 238);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(177, 28);
@@ -602,7 +601,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(13, 26);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(177, 28);
@@ -611,7 +610,7 @@
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(13, 82);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(177, 28);
@@ -631,7 +630,7 @@
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(13, 134);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(177, 28);
@@ -640,7 +639,7 @@
             // textBox9
             // 
             this.textBox9.Location = new System.Drawing.Point(13, 186);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(177, 28);
@@ -662,7 +661,7 @@
             this.lbMemberLoans.FormattingEnabled = true;
             this.lbMemberLoans.ItemHeight = 21;
             this.lbMemberLoans.Location = new System.Drawing.Point(524, 99);
-            this.lbMemberLoans.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbMemberLoans.Margin = new System.Windows.Forms.Padding(2);
             this.lbMemberLoans.Name = "lbMemberLoans";
             this.lbMemberLoans.Size = new System.Drawing.Size(185, 277);
             this.lbMemberLoans.TabIndex = 37;
@@ -671,7 +670,7 @@
             // 
             this.memberNameBox.BackColor = System.Drawing.SystemColors.Info;
             this.memberNameBox.Location = new System.Drawing.Point(247, 151);
-            this.memberNameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.memberNameBox.Margin = new System.Windows.Forms.Padding(2);
             this.memberNameBox.Name = "memberNameBox";
             this.memberNameBox.Size = new System.Drawing.Size(264, 28);
             this.memberNameBox.TabIndex = 34;
@@ -680,7 +679,7 @@
             // 
             this.memberPersonnummerBox.BackColor = System.Drawing.SystemColors.Info;
             this.memberPersonnummerBox.Location = new System.Drawing.Point(350, 99);
-            this.memberPersonnummerBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.memberPersonnummerBox.Margin = new System.Windows.Forms.Padding(2);
             this.memberPersonnummerBox.Name = "memberPersonnummerBox";
             this.memberPersonnummerBox.Size = new System.Drawing.Size(162, 28);
             this.memberPersonnummerBox.TabIndex = 33;
@@ -689,7 +688,7 @@
             // 
             this.memberIdBox.BackColor = System.Drawing.SystemColors.Info;
             this.memberIdBox.Location = new System.Drawing.Point(247, 99);
-            this.memberIdBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.memberIdBox.Margin = new System.Windows.Forms.Padding(2);
             this.memberIdBox.Name = "memberIdBox";
             this.memberIdBox.Size = new System.Drawing.Size(99, 28);
             this.memberIdBox.TabIndex = 32;
@@ -742,7 +741,7 @@
             // 
             this.button4.Font = new System.Drawing.Font("Georgia", 12F);
             this.button4.Location = new System.Drawing.Point(414, 184);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(96, 37);
             this.button4.TabIndex = 24;
@@ -753,7 +752,7 @@
             // 
             this.removeMemberBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.removeMemberBTN.Location = new System.Drawing.Point(136, 22);
-            this.removeMemberBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.removeMemberBTN.Margin = new System.Windows.Forms.Padding(2);
             this.removeMemberBTN.Name = "removeMemberBTN";
             this.removeMemberBTN.Size = new System.Drawing.Size(96, 37);
             this.removeMemberBTN.TabIndex = 23;
@@ -764,7 +763,7 @@
             // 
             this.memberLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.memberLoanBTN.Location = new System.Drawing.Point(814, 22);
-            this.memberLoanBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.memberLoanBTN.Margin = new System.Windows.Forms.Padding(2);
             this.memberLoanBTN.Name = "memberLoanBTN";
             this.memberLoanBTN.Size = new System.Drawing.Size(96, 37);
             this.memberLoanBTN.TabIndex = 22;
@@ -775,7 +774,7 @@
             // 
             this.newMemberBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.newMemberBTN.Location = new System.Drawing.Point(35, 22);
-            this.newMemberBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.newMemberBTN.Margin = new System.Windows.Forms.Padding(2);
             this.newMemberBTN.Name = "newMemberBTN";
             this.newMemberBTN.Size = new System.Drawing.Size(96, 37);
             this.newMemberBTN.TabIndex = 21;
@@ -787,7 +786,7 @@
             this.lbMemberResults.FormattingEnabled = true;
             this.lbMemberResults.ItemHeight = 21;
             this.lbMemberResults.Location = new System.Drawing.Point(36, 151);
-            this.lbMemberResults.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbMemberResults.Margin = new System.Windows.Forms.Padding(2);
             this.lbMemberResults.Name = "lbMemberResults";
             this.lbMemberResults.Size = new System.Drawing.Size(198, 277);
             this.lbMemberResults.TabIndex = 20;
@@ -806,7 +805,7 @@
             // findMemberSearchBox
             // 
             this.findMemberSearchBox.Location = new System.Drawing.Point(36, 99);
-            this.findMemberSearchBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.findMemberSearchBox.Margin = new System.Windows.Forms.Padding(2);
             this.findMemberSearchBox.Name = "findMemberSearchBox";
             this.findMemberSearchBox.Size = new System.Drawing.Size(198, 28);
             this.findMemberSearchBox.TabIndex = 14;
@@ -820,7 +819,7 @@
             this.loansTab.Controls.Add(this.radioButton1);
             this.loansTab.Controls.Add(this.textBox1);
             this.loansTab.Location = new System.Drawing.Point(4, 30);
-            this.loansTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loansTab.Margin = new System.Windows.Forms.Padding(2);
             this.loansTab.Name = "loansTab";
             this.loansTab.Size = new System.Drawing.Size(942, 549);
             this.loansTab.TabIndex = 2;
@@ -830,7 +829,7 @@
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(37, 211);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(148, 27);
             this.radioButton3.TabIndex = 31;
@@ -853,7 +852,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(37, 180);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(150, 27);
             this.radioButton2.TabIndex = 2;
@@ -865,7 +864,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(37, 148);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(143, 27);
             this.radioButton1.TabIndex = 1;
@@ -876,7 +875,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(37, 101);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(205, 28);
             this.textBox1.TabIndex = 0;
@@ -886,17 +885,13 @@
             this.closeBTN.BackColor = System.Drawing.Color.Red;
             this.closeBTN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.closeBTN.Location = new System.Drawing.Point(970, 1);
-            this.closeBTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeBTN.Margin = new System.Windows.Forms.Padding(2);
             this.closeBTN.Name = "closeBTN";
             this.closeBTN.Size = new System.Drawing.Size(33, 26);
             this.closeBTN.TabIndex = 3;
             this.closeBTN.Text = "X";
             this.closeBTN.UseVisualStyleBackColor = false;
             this.closeBTN.Click += new System.EventHandler(this.closeBTN_Click);
-            // 
-            // tooltipAddBTN
-            // 
-            this.tooltipAddBTN.ToolTipTitle = "Adds a new empty book item in the results in the results-window";
             // 
             // LibraryForm
             // 
@@ -910,6 +905,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LibraryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Library";
             this.tabControl1.ResumeLayout(false);
             this.booksTab.ResumeLayout(false);
@@ -995,7 +991,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.ToolTip tooltipAddBTN;
     }
 }
 
