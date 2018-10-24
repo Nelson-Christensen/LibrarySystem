@@ -30,6 +30,8 @@ namespace Library
 
             this.bookService = new BookService(repFactory);
 
+            //Adds event listener to bookservice.
+            this.bookService.Updated += UpdateBookListEvent;
             ShowAllBooks(bookService.All());
         }
         
@@ -45,12 +47,20 @@ namespace Library
 
         private void BTNChangeBook_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hejsan");
             Book b = lbBooks.SelectedItem as Book;
             if (b != null)
             {
                 b.Title = "Yoyoma";
                 bookService.Edit(b);
+            }
+        }
+
+        private void UpdateBookListEvent(object sender, EventArgs e)
+        {
+            lbBooks.Items.Clear();
+            foreach (Book book in bookService.All())
+            {
+                lbBooks.Items.Add(book);
             }
         }
         

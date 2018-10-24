@@ -18,24 +18,54 @@ namespace Library.Services
         /// </summary>
         BookRepository bookRepository;
 
+        /// <summary>
+        /// needs AuthorRepository to be able to crossmatch from the author table.
+        /// </summary>
+        AuthorRepository authorRepository;
+
         /// <param name="rFactory">A repository factory, so the service can create its own repository.</param>
         public BookService(RepositoryFactory rFactory)
         {
             this.bookRepository = rFactory.CreateBookRepository();
         }
 
+        /// <summary>
+        /// Retrieves all books from database
+        /// </summary>
+        /// <returns>All books in Database</returns>
         public IEnumerable<Book> All()
         {
             return bookRepository.All();
         }
 
-
-        public IEnumerable<Book> GetAllThatContainsInTitle(string a)
+        /// <summary>
+        /// Retrieves all books from database that contains part of the input string
+        /// </summary>
+        /// <param name="input">String to search by</param>
+        /// <returns>Returns all books that match search criteria</returns>
+        public IEnumerable<Book> GetAllThatContainsInTitle(string input)
         {
             return from b in bookRepository.All()
-            where b.Title.Contains(a)
+            where b.Title.Contains(input)
             select b;
         }
+
+        /// <summary>
+        /// Retrieves all books from the database that are written by a specific Author
+        /// </summary>
+        /// <param name="input">String to search for Author by</param>
+        /// <returns>Returns all books that are written by author</returns>
+        //public IEnumerable<Book> GetAllThatContainsAuthor(string input)
+        //{
+        //    var matchingAuthors = from a in authorRepository.All()
+        //                          where a.Name.Contains(input)
+        //                          select a;
+        //    return from b in bookRepository.All()
+        //           join a in matchingAuthors
+        //           on b.Id equals a.Books.ID
+        //           where a.Name.Contains(input)
+        //           select b;
+        //}
 
         /// <summary>
         /// The Edit method makes sure that the given Book object is saved to the database and raises the Updated() event.
@@ -45,17 +75,26 @@ namespace Library.Services
         {
             bookRepository.Edit(b);
             var e = EventArgs.Empty;
-            // TODO: Raise the Updated event.
             OnUpdated(e);
-            //if (Updated == null)
-            //{
-            //    var args = new EventArgs()
-            //    Updated(this, args)
-            //}
+        }
+
+        public void Add(Book b)
+        {
+            bookRepository.Add(b);
+            var e = EventArgs.Empty;
+            OnUpdated(e);
+        }
+
+        public void Remove(Book b)
+        {
+            bookRepository.Remove(b);
+            var e = EventArgs.Empty;
+            OnUpdated(e);
         }
 
         protected virtual void OnUpdated(EventArgs e)
         {
+            // Checks to see if there are any subscribers to Updated, if so, it invokes the event.
             Updated?.Invoke(this, e);
         }
     }
