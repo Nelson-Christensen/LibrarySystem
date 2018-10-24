@@ -53,6 +53,15 @@ namespace Library
                 bookService.Edit(b);
             }
         }
-        
+
+        private void LibraryForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
