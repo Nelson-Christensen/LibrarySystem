@@ -226,6 +226,7 @@
             this.editBookIDTB.Location = new System.Drawing.Point(404, 93);
             this.editBookIDTB.Margin = new System.Windows.Forms.Padding(2);
             this.editBookIDTB.Name = "editBookIDTB";
+            this.editBookIDTB.ReadOnly = true;
             this.editBookIDTB.Size = new System.Drawing.Size(99, 28);
             this.editBookIDTB.TabIndex = 31;
             // 
@@ -239,6 +240,7 @@
             this.saveChangesBTN.TabIndex = 30;
             this.saveChangesBTN.Text = "Save";
             this.saveChangesBTN.UseVisualStyleBackColor = true;
+            this.saveChangesBTN.Click += new System.EventHandler(this.saveChangesBTN_Click);
             // 
             // removeBookBTN
             // 
@@ -348,7 +350,7 @@
             // addBookBTN
             // 
             this.addBookBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.addBookBTN.Location = new System.Drawing.Point(26, 19);
+            this.addBookBTN.Location = new System.Drawing.Point(18, 19);
             this.addBookBTN.Margin = new System.Windows.Forms.Padding(2);
             this.addBookBTN.Name = "addBookBTN";
             this.addBookBTN.Size = new System.Drawing.Size(96, 37);

@@ -107,5 +107,41 @@ namespace Library
                 lbBooks.Items.Add(book);
             }
         }
+
+        private void saveChangesBTN_Click(object sender, EventArgs e)
+        {
+            Author auth = new Author()
+            {
+                Name = editAuthorTB.Text
+            };
+            List<Author> authorlist = new List<Author>();
+            authorlist.Add(auth);
+            // Create new book
+            if (lbBooks.SelectedItem == null)
+            {
+                Book newBook = new Book()
+                {
+                    Title = editTitleTB.Text,
+                    ISBN = editISBNTB.Text,
+                    Authors = authorlist,
+                    Description = editDescriptionTB.ToString()
+                };
+
+                bookService.Add(newBook);
+                UpdateBookList(bookService.All().ToList());
+            }
+            else //Update Book
+            {
+                Book b = lbBooks.SelectedItem as Book;
+                if (b != null)
+                {
+                    b.Title = editTitleTB.Text;
+                    b.ISBN = editISBNTB.Text;
+                    b.Authors = authorlist;
+                    b.Description = editDescriptionTB.ToString();
+                    bookService.Edit(b);
+                }
+            }
+        }
     }
 }
