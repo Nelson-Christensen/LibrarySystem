@@ -30,6 +30,8 @@ namespace Library
 
             this.bookService = new BookService(repFactory);
 
+            //Adds event listener to bookservice.
+            this.bookService.Updated += UpdateBookListEvent;
             ShowAllBooks(bookService.All());
         }
         
@@ -45,7 +47,6 @@ namespace Library
 
         private void BTNChangeBook_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hejsan");
             Book b = lbBooks.SelectedItem as Book;
             if (b != null)
             {
@@ -54,29 +55,14 @@ namespace Library
             }
         }
 
-        private void LibraryForm_Load(object sender, EventArgs e)
+        private void UpdateBookListEvent(object sender, EventArgs e)
         {
-
+            lbBooks.Items.Clear();
+            foreach (Book book in bookService.All())
+            {
+                lbBooks.Items.Add(book);
+            }
         }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void addCopyBTN_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void removeCopyBTN_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
