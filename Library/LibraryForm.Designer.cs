@@ -399,6 +399,7 @@
             this.findISBNTB.Name = "findISBNTB";
             this.findISBNTB.Size = new System.Drawing.Size(161, 28);
             this.findISBNTB.TabIndex = 15;
+            this.findISBNTB.TextChanged += new System.EventHandler(this.findISBNTB_TextChanged);
             // 
             // findAuthorTB
             // 
@@ -407,6 +408,7 @@
             this.findAuthorTB.Name = "findAuthorTB";
             this.findAuthorTB.Size = new System.Drawing.Size(161, 28);
             this.findAuthorTB.TabIndex = 14;
+            this.findAuthorTB.TextChanged += new System.EventHandler(this.findAuthorTB_TextChanged);
             // 
             // findTitleTB
             // 

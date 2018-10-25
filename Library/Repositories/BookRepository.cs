@@ -19,11 +19,15 @@ namespace Library.Repositories
         public void Add(Book b)
         {
             context.Books.Add(b);
+            context.SaveChanges();
+            Debug.WriteLine("Added: " + b);
         }
 
         public void Remove(Book b)
         {
             context.Books.Remove(b);
+            context.SaveChanges();
+            Debug.WriteLine("Removed: " + b);
         }
 
         public Book Find(int pk)
