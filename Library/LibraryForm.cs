@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Library
 {
@@ -101,6 +102,7 @@ namespace Library
 
         private void UpdateBookList(List<Book> bookList)
         {
+            Debug.WriteLine("Attempting to Update bookList");
             lbBooks.Items.Clear();
             foreach (Book book in bookList)
             {
@@ -147,6 +149,11 @@ namespace Library
         private void findAuthorTB_TextChanged(object sender, EventArgs e)
         {
             UpdateBookList(bookService.GetAllThatContainsAuthor(findAuthorTB.Text).ToList());
+        }
+
+        private void findISBNTB_TextChanged(object sender, EventArgs e)
+        {
+            UpdateBookList(bookService.GetAllThatContainsISBN(findISBNTB.Text).ToList());
         }
     }
 }
