@@ -65,9 +65,14 @@ namespace Library.Services
             //           on b.Id equals a.Books.ID
             //           where a.Name.Contains(input)
             //           select b;
-            return from b in bookRepository.All()
-                   where b.Authors.Any(a => a.Name == input)
-                   select b;
+            //return from b in bookRepository.All()
+            //       where b.Authors.Any(a => a.Name == input)
+            //       select b;
+            var bookList = bookRepository.All()
+                .Where(b => b.Authors
+                        .Any(a => a.Name.Contains(input)));
+
+            return bookList;
         }
 
         public IEnumerable<Book> GetAllThatContainsISBN(string input)
