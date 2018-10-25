@@ -438,6 +438,7 @@
             this.lbBooks.Name = "lbBooks";
             this.lbBooks.Size = new System.Drawing.Size(196, 382);
             this.lbBooks.TabIndex = 0;
+            this.lbBooks.SelectedIndexChanged += new System.EventHandler(this.lbBooks_SelectedIndexChanged);
             // 
             // BTNChangeBook
             // 

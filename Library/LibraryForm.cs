@@ -18,6 +18,7 @@ namespace Library
     {
 
         BookService bookService;
+        List<Book> currentBookDisplay;
 
         public LibraryForm()
         {
@@ -34,6 +35,7 @@ namespace Library
             //Adds event listener to bookservice.
             this.bookService.Updated += UpdateBookListEvent;
             ShowAllBooks(bookService.All());
+            currentBookDisplay = bookService.All().ToList();
         }
         
 
@@ -58,11 +60,12 @@ namespace Library
 
         private void UpdateBookListEvent(object sender, EventArgs e)
         {
-            lbBooks.Items.Clear();
-            foreach (Book book in bookService.All())
-            {
-                lbBooks.Items.Add(book);
-            }
+            UpdateBookList(bookService.All().ToList());
+            //lbBooks.Items.Clear();
+            //foreach (Book book in bookService.All())
+            //{
+            //    lbBooks.Items.Add(book);
+            //}
         }
 
         private void addBookBTN_Click(object sender, EventArgs e)
@@ -102,6 +105,7 @@ namespace Library
 
         private void UpdateBookList(List<Book> bookList)
         {
+            currentBookDisplay = bookList;
             Debug.WriteLine("Attempting to Update bookList");
             lbBooks.Items.Clear();
             foreach (Book book in bookList)
@@ -126,7 +130,7 @@ namespace Library
                     Title = editTitleTB.Text,
                     ISBN = editISBNTB.Text,
                     Authors = authorlist,
-                    Description = editDescriptionTB.ToString()
+                    Description = editDescriptionTB.Text
                 };
 
                 bookService.Add(newBook);
@@ -140,7 +144,7 @@ namespace Library
                     b.Title = editTitleTB.Text;
                     b.ISBN = editISBNTB.Text;
                     b.Authors = authorlist;
-                    b.Description = editDescriptionTB.ToString();
+                    b.Description = editDescriptionTB.Text;
                     bookService.Edit(b);
                 }
             }
@@ -154,6 +158,25 @@ namespace Library
         private void findISBNTB_TextChanged(object sender, EventArgs e)
         {
             UpdateBookList(bookService.GetAllThatContainsISBN(findISBNTB.Text).ToList());
+        }
+
+        private void lbBooks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Cleared selection
+            if (lbBooks.SelectedItem == null)
+            {
+                editISBNTB.ResetText();
+                editTitleTB.ResetText();
+                editAuthorTB.ResetText();
+                editDescriptionTB.ResetText();
+            }
+            else
+            {
+                Book selectedBook = currentBookDisplay[lbBooks.SelectedIndex];
+                editTitleTB.Text = selectedBook.Title;
+                editISBNTB.Text = selectedBook.ISBN;
+                editDescriptionTB.Text = selectedBook.Description;
+            }
         }
     }
 }

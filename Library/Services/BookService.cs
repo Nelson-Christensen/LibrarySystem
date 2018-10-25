@@ -42,35 +42,24 @@ namespace Library.Services
         /// Retrieves all books from database that contains part of the input string
         /// </summary>
         /// <param name="input">String to search by</param>
-        /// <returns>Returns all books that match search criteria</returns>
+        /// <returns>Returns Collection of books that match search criteria</returns>
         public IEnumerable<Book> GetAllThatContainsInTitle(string input)
         {
             return from b in bookRepository.All()
-            where b.Title.Contains(input)
+            where b.Title.ToLower().Contains(input.ToLower())
             select b;
         }
 
         /// <summary>
-        /// Retrieves all books from the database that are written by a specific Author
+        /// Retrieves all books from the database that has an author which name contains input string
         /// </summary>
         /// <param name="input">String to search for Author by</param>
-        /// <returns>Returns all books that are written by author</returns>
+        /// <returns>Returns Collection of books that are written by input author</returns>
         public IEnumerable<Book> GetAllThatContainsAuthor(string input)
         {
-            //    var matchingAuthors = from a in authorRepository.All()
-            //                          where a.Name.Contains(input)
-            //                          select a;
-            //    return from b in bookRepository.All()
-            //           join a in matchingAuthors
-            //           on b.Id equals a.Books.ID
-            //           where a.Name.Contains(input)
-            //           select b;
-            //return from b in bookRepository.All()
-            //       where b.Authors.Any(a => a.Name == input)
-            //       select b;
             var bookList = bookRepository.All()
                 .Where(b => b.Authors
-                        .Any(a => a.Name.Contains(input)));
+                        .Any(a => a.Name.ToLower().Contains(input.ToLower())));
 
             return bookList;
         }
@@ -78,7 +67,7 @@ namespace Library.Services
         public IEnumerable<Book> GetAllThatContainsISBN(string input)
         {
             return from b in bookRepository.All()
-                   where b.ISBN != null && b.ISBN.Contains(input)
+                   where b.ISBN != null && b.ISBN.ToLower().Contains(input.ToLower())
                    select b;
         }
 
