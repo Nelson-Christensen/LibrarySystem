@@ -407,6 +407,7 @@
             this.findAuthorTB.Name = "findAuthorTB";
             this.findAuthorTB.Size = new System.Drawing.Size(161, 28);
             this.findAuthorTB.TabIndex = 14;
+            this.findAuthorTB.TextChanged += new System.EventHandler(this.findAuthorTB_TextChanged);
             // 
             // findTitleTB
             // 

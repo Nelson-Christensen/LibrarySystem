@@ -55,17 +55,26 @@ namespace Library.Services
         /// </summary>
         /// <param name="input">String to search for Author by</param>
         /// <returns>Returns all books that are written by author</returns>
-        //public IEnumerable<Book> GetAllThatContainsAuthor(string input)
-        //{
-        //    var matchingAuthors = from a in authorRepository.All()
-        //                          where a.Name.Contains(input)
-        //                          select a;
-        //    return from b in bookRepository.All()
-        //           join a in matchingAuthors
-        //           on b.Id equals a.Books.ID
-        //           where a.Name.Contains(input)
-        //           select b;
-        //}
+        public IEnumerable<Book> GetAllThatContainsAuthor(string input)
+        {
+            //var matchingAuthors = from a in authorRepository.All()
+            //                      where a.Name.Contains(input)
+            //                      select a;
+            //var matchingBooks = bookRepository.All()
+            //    .Where(b => b.Authors.Where(a => a.Name == input))
+            //    .SelectMany(b => b.Title);
+            //return matchingBooks.ToList();
+            //return from b in bookRepository.All()
+            //       join a in authorRepository.All()
+            //       on b.Authors equals a.Books.Where(bk => bk.Id = b.Id)
+            //       where a.Name.Contains(input)
+            //       select b;
+
+            // Selects all books from bookRepo, then checks to see if any of their authors matches the input and selects it for return.
+            return from b in bookRepository.All()
+                   where b.Authors.Any( a => a.Name == input)
+                   select b;
+        }
 
         /// <summary>
         /// The Edit method makes sure that the given Book object is saved to the database and raises the Updated() event.

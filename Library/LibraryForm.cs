@@ -143,5 +143,10 @@ namespace Library
                 }
             }
         }
+
+        private void findAuthorTB_TextChanged(object sender, EventArgs e)
+        {
+            UpdateBookList(bookService.GetAllThatContainsAuthor(findAuthorTB.Text).ToList());
+        }
     }
 }
