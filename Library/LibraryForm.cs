@@ -18,7 +18,9 @@ namespace Library
     {
 
         BookService bookService;
+        BookCopyService bookCopyService;
         List<Book> currentBookDisplay;
+        List<BookCopy> currentBookCopyDisplay;
 
         public LibraryForm()
         {
@@ -31,11 +33,14 @@ namespace Library
             RepositoryFactory repFactory = new RepositoryFactory(context);
 
             this.bookService = new BookService(repFactory);
+            this.bookCopyService = new BookCopyService(repFactory);
 
             //Adds event listener to bookservice.
             this.bookService.Updated += UpdateBookListEvent;
+            this.bookCopyService.Updated += UpdateBookCopyListEvent;
             ShowAllBooks(bookService.All());
             currentBookDisplay = bookService.All().ToList();
+            currentBookCopyDisplay = new List<BookCopy>();
         }
         
 
@@ -68,6 +73,11 @@ namespace Library
             //}
         }
 
+        private void UpdateBookCopyListEvent(object sender, EventArgs e)
+        {
+            //UpdateBookList(bookService.All().ToList());
+        }
+
         private void addBookBTN_Click(object sender, EventArgs e)
         {
 
@@ -90,7 +100,26 @@ namespace Library
 
         private void addCopyBTN_Click(object sender, EventArgs e)
         {
+            // Can only add new copy if a book has been selected
+            if (lbBooks.SelectedItem != null)
+            {
+                Book selectedBook = currentBookDisplay[lbBooks.SelectedIndex];
+                BookCopy newBookCopy = new BookCopy()
+                {
+                    Book = selectedBook
+                };
+                // Adds the new copy to the database
+                bookCopyService.Add(newBookCopy);
 
+                // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
+                UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
+                //UpdateBookCopyList(bookCopyService.All().ToList());
+
+                // Makes the newly created copy the selected item in the listbox
+                lbCopies.SelectedIndex = currentBookCopyDisplay.IndexOf(newBookCopy);
+
+            }
+            
         }
 
         private void removeCopyBTN_Click(object sender, EventArgs e)
@@ -111,6 +140,17 @@ namespace Library
             foreach (Book book in bookList)
             {
                 lbBooks.Items.Add(book);
+            }
+        }
+
+        private void UpdateBookCopyList(List<BookCopy> bookCopyList)
+        {
+            currentBookCopyDisplay = bookCopyList;
+            Debug.WriteLine("Attempting to Update bookCopyList");
+            lbCopies.Items.Clear();
+            foreach (BookCopy bc in bookCopyList)
+            {
+                lbCopies.Items.Add(bc);
             }
         }
 

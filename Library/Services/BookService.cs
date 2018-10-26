@@ -26,6 +26,10 @@ namespace Library.Services
         /// </summary>
         AuthorRepository authorRepository;
 
+        BookCopyRepository bookCopyRepository;
+
+        LoanRepository loanRepository;
+
         /// <param name="rFactory">A repository factory, so the service can create its own repository.</param>
         public BookService(RepositoryFactory rFactory)
         {
@@ -62,7 +66,7 @@ namespace Library.Services
         {
             var bookList = bookRepository.All()
                 .Where(b => b.Authors
-                        .Any(a => a.Name.ToLower().Contains(input.ToLower())));
+                .Any(a => a.Name.ToLower().Contains(input.ToLower())));
 
             return bookList;
         }
@@ -72,6 +76,29 @@ namespace Library.Services
             return from b in bookRepository.All()
                    where b.ISBN != null && b.ISBN.ToLower().Contains(input.ToLower())
                    select b;
+        }
+
+        /// <summary>
+        /// Checks all books to see if they have book copies without active loans and returns those books.
+        /// </summary>
+        /// <returns>Returns a collection of all books that has copies not currently out on loan.</returns>
+        public IEnumerable<Book> GetAllAvailableBooks()
+        {
+            // List of all bookCopies currently out on loan.
+            var loanedOutCopies = bookCopyRepository.All()
+                .Where(bc => bc.Loans
+                .Any(l => !l.IsReturned()));
+
+            // List of all bookCopies that are not out on loan, and therefore available.
+            var availableCopies = bookCopyRepository.All()
+                .Where(bc => !loanedOutCopies.Contains(bc));
+
+            // List of all books that has bookCopies that are currently available.
+            var availableBooks = bookRepository.All()
+                .Where(b => b.BookCopies
+                .Any(bc => availableCopies.Contains(bc)));
+
+            return availableBooks;
         }
 
 

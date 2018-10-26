@@ -26,6 +26,11 @@ namespace Library.Services
             this.bookCopyRepository = rFactory.CreateBookCopyRepository();
         }
 
+        public IEnumerable<BookCopy> All()
+        {
+            return bookCopyRepository.All();
+        }
+
         /// <summary>
         /// Adds input book copy to database and notifies subscribers of the update.
         /// </summary>

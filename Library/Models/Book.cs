@@ -12,6 +12,7 @@ namespace Library.Models {
         public virtual List<Author> Authors { get; set; }
         public string ISBN { get; set; }
         public string Description { get; set; }
+        public virtual List<BookCopy> BookCopies { get; set; }
 
         /// <summary>
         /// Useful for adding the book objects directly to a ListBox.

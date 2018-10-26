@@ -19,11 +19,13 @@ namespace Library.Repositories
         public void Add(BookCopy bc)
         {
             context.BookCopies.Add(bc);
+            context.SaveChanges();
         }
 
         public void Remove(BookCopy bc)
         {
             context.BookCopies.Remove(bc);
+            context.SaveChanges();
         }
 
         public BookCopy Find(int pk)
