@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Library.Services
 {
+    /// <summary>
+    /// Handles interaction between GUI and the bookRepository and authorRepository (Database)
+    /// </summary>
     class BookService : IService
     {
 
