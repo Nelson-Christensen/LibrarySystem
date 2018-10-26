@@ -113,7 +113,6 @@ namespace Library
 
                 // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
                 UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
-                //UpdateBookCopyList(bookCopyService.All().ToList());
 
                 // Makes the newly created copy the selected item in the listbox
                 lbCopies.SelectedIndex = currentBookCopyDisplay.IndexOf(newBookCopy);
@@ -209,13 +208,23 @@ namespace Library
                 editTitleTB.ResetText();
                 editAuthorTB.ResetText();
                 editDescriptionTB.ResetText();
+
+                // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
+                UpdateBookCopyList(new List<BookCopy>());
             }
             else
             {
                 Book selectedBook = currentBookDisplay[lbBooks.SelectedIndex];
                 editTitleTB.Text = selectedBook.Title;
                 editISBNTB.Text = selectedBook.ISBN;
+                if (selectedBook.Authors.Any()) // If Author has been set for the book -> display the first authors name.
+                    editAuthorTB.Text = selectedBook.Authors[0].ToString();
+                else // If the book has no registered Author then display empty string
+                    editAuthorTB.Text = "";
                 editDescriptionTB.Text = selectedBook.Description;
+
+                // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
+                UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
             }
         }
     }
