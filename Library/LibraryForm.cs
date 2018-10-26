@@ -140,7 +140,16 @@ namespace Library
             {
                 lbBooks.Items.Add(book);
             }
+
+            // Clears book info panel when you lose book selection.
+            editISBNTB.ResetText();
+            editTitleTB.ResetText();
+            editAuthorTB.ResetText();
+            editDescriptionTB.ResetText();
+            // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
+            UpdateBookCopyList(new List<BookCopy>());
         }
+
 
         private void UpdateBookCopyList(List<BookCopy> bookCopyList)
         {

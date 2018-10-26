@@ -145,6 +145,7 @@
             this.booksTab.Controls.Add(this.findBooksLabel);
             this.booksTab.Controls.Add(this.lbBooks);
             this.booksTab.Controls.Add(this.BTNChangeBook);
+            this.booksTab.Cursor = System.Windows.Forms.Cursors.Default;
             this.booksTab.Location = new System.Drawing.Point(4, 30);
             this.booksTab.Margin = new System.Windows.Forms.Padding(2);
             this.booksTab.Name = "booksTab";
