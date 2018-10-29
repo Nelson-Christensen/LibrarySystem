@@ -43,9 +43,14 @@ namespace Library
             //Adds event listener to bookservice.
             this.bookService.Updated += UpdateBookListEvent;
             this.bookCopyService.Updated += UpdateBookCopyListEvent;
+            this.authorService.Updated += UpdatedAuthorEvent;
             UpdateBookList(bookService.All().ToList());
             currentBookDisplay = bookService.All().ToList();
             currentBookCopyDisplay = new List<BookCopy>();
+
+            editAuthorTB.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
         }
+
+
     }
 }

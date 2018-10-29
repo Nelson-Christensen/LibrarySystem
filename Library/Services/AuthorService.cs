@@ -62,6 +62,10 @@ namespace Library.Services
                    select a).FirstOrDefault();
         }
 
+        public IEnumerable<string> GetAllAuthorNames()
+        {
+            return authorRepository.All().Select(a => a.Name).ToList();
+        }
         public bool AuthorExist(string input)
         {
             if (GetAuthorByName(input) == null)

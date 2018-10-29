@@ -19,7 +19,8 @@ namespace Library
     /// </summary>
     public partial class LibraryForm : Form
     {
-
+        int authorFields = 1;
+        int maxAuthors = 4;
         private void UpdateBookListEvent(object sender, EventArgs e)
         {
             UpdateBookList(bookService.All().ToList());
@@ -143,6 +144,13 @@ namespace Library
             editTitleTB.ResetText();
             editAuthorTB.ResetText();
             editDescriptionTB.ResetText();
+            int authorTBIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB);
+            for (int i = authorTBIndex + authorFields; i > authorTBIndex + 1; i--)
+            {
+                //TextBox currentTB = (TextBox)BookInfoFLP.Controls[authorTBIndex + i];
+                BookInfoFLP.Controls.RemoveAt(i-1);
+            }
+
             // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
             UpdateBookCopyList(new List<BookCopy>());
         }
@@ -162,8 +170,18 @@ namespace Library
         {
             if (ValidBookInfo()) // Confirms that all input fields are valid before continuing.
             {
-                string[] authorNames = editAuthorTB.Text.Split(',');
+
+                // Reads all author input fields that are open and saves the author names in a string list
+                List<string> authorNames = new List<string>(); 
+                int authorTBIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB);
+                for (int i = 0; i < authorFields; i++)
+                {
+                    TextBox currentTB = (TextBox)BookInfoFLP.Controls[authorTBIndex + i];
+                    authorNames.Add(currentTB.Text);
+                }
                 bool createNewAuthor = false;
+
+
                 List<Author> authorlist = new List<Author>();
                 foreach (string an in authorNames)
                 {
@@ -291,6 +309,53 @@ namespace Library
                 UpdateBookList(bookService.GetAllAvailableBooks().ToList());
             else
                 UpdateBookList(bookService.All().ToList());
+        }
+
+        private void lbCopies_DoubleClick(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(2);
+        }
+
+        private void AddAuthor1BTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (authorFields < maxAuthors)
+            {
+                TextBox newAuthorField = new System.Windows.Forms.TextBox();
+                int placementIndex = BookInfoFLP.Controls.IndexOf((Control)sender) + 1 + authorFields; //Place after last authorField
+                newAuthorField.BackColor = System.Drawing.SystemColors.Info;
+                newAuthorField.Location = new System.Drawing.Point(47, 152);
+                newAuthorField.Margin = new System.Windows.Forms.Padding(2);
+                newAuthorField.Size = new System.Drawing.Size(226, 28);
+                newAuthorField.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
+                newAuthorField.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+                newAuthorField.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+                BookInfoFLP.Controls.Add(newAuthorField);
+                BookInfoFLP.Controls.SetChildIndex(newAuthorField, placementIndex);
+
+                authorFields++;
+            }
+        }
+
+        private void RemoveAuthorBTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (authorFields > 1) // Checks to make sure you dont delete last authorField
+            {
+                int lastAuthorFieldIndex = BookInfoFLP.Controls.IndexOf((Control)sender) + 1 + authorFields; //Place after last authorField
+                BookInfoFLP.Controls.RemoveAt(lastAuthorFieldIndex);
+
+                authorFields--;
+            }
+        }
+
+        private void UpdatedAuthorEvent(object sender, EventArgs e)
+        {
+            foreach (TextBox authorField in BookInfoFLP.Controls) // Checks for all author textboxes in BookInfo panel.
+            {
+                if (authorField.AutoCompleteMode == AutoCompleteMode.SuggestAppend) 
+                {
+                    authorField.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
+                }
+            }
         }
     }
 }
