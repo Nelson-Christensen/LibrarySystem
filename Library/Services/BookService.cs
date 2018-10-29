@@ -109,6 +109,7 @@ namespace Library.Services
 
             // List of all books that has bookCopies that are currently available.
             var availableBooks = bookRepository.All()
+                .Where(b => b.BookCopies != null)
                 .Where(b => b.BookCopies
                 .Any(bc => availableCopies.Contains(bc)));
 

@@ -91,6 +91,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.closeBTN = new System.Windows.Forms.Button();
+            this.AvailableCHK = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.membersTab.SuspendLayout();
@@ -116,6 +117,7 @@
             // 
             this.booksTab.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.booksTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.booksTab.Controls.Add(this.AvailableCHK);
             this.booksTab.Controls.Add(this.booksNewLoanBTN);
             this.booksTab.Controls.Add(this.lbCopies);
             this.booksTab.Controls.Add(this.label15);
@@ -362,7 +364,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label3.Location = new System.Drawing.Point(19, 96);
+            this.label3.Location = new System.Drawing.Point(18, 96);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 18);
@@ -373,7 +375,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label2.Location = new System.Drawing.Point(19, 200);
+            this.label2.Location = new System.Drawing.Point(18, 200);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 18);
@@ -384,7 +386,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label1.Location = new System.Drawing.Point(19, 148);
+            this.label1.Location = new System.Drawing.Point(18, 148);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 18);
@@ -393,7 +395,7 @@
             // 
             // findISBNTB
             // 
-            this.findISBNTB.Location = new System.Drawing.Point(22, 222);
+            this.findISBNTB.Location = new System.Drawing.Point(18, 221);
             this.findISBNTB.Margin = new System.Windows.Forms.Padding(2);
             this.findISBNTB.Name = "findISBNTB";
             this.findISBNTB.Size = new System.Drawing.Size(161, 28);
@@ -402,7 +404,7 @@
             // 
             // findAuthorTB
             // 
-            this.findAuthorTB.Location = new System.Drawing.Point(22, 170);
+            this.findAuthorTB.Location = new System.Drawing.Point(18, 169);
             this.findAuthorTB.Margin = new System.Windows.Forms.Padding(2);
             this.findAuthorTB.Name = "findAuthorTB";
             this.findAuthorTB.Size = new System.Drawing.Size(161, 28);
@@ -411,7 +413,7 @@
             // 
             // findTitleTB
             // 
-            this.findTitleTB.Location = new System.Drawing.Point(22, 118);
+            this.findTitleTB.Location = new System.Drawing.Point(18, 117);
             this.findTitleTB.Margin = new System.Windows.Forms.Padding(2);
             this.findTitleTB.Name = "findTitleTB";
             this.findTitleTB.Size = new System.Drawing.Size(161, 28);
@@ -885,6 +887,18 @@
             this.closeBTN.UseVisualStyleBackColor = false;
             this.closeBTN.Click += new System.EventHandler(this.closeBTN_Click);
             // 
+            // AvailableCHK
+            // 
+            this.AvailableCHK.AutoSize = true;
+            this.AvailableCHK.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AvailableCHK.Location = new System.Drawing.Point(18, 252);
+            this.AvailableCHK.Name = "AvailableCHK";
+            this.AvailableCHK.Size = new System.Drawing.Size(176, 22);
+            this.AvailableCHK.TabIndex = 38;
+            this.AvailableCHK.Text = "Only Available Books";
+            this.AvailableCHK.UseVisualStyleBackColor = true;
+            this.AvailableCHK.CheckedChanged += new System.EventHandler(this.AvailableCHK_CheckedChanged);
+            // 
             // LibraryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -982,6 +996,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.CheckBox AvailableCHK;
     }
 }
 

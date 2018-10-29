@@ -160,60 +160,83 @@ namespace Library
 
         private void saveChangesBTN_Click(object sender, EventArgs e)
         {
-            string[] authorNames = editAuthorTB.Text.Split(',');
-            bool createNewAuthor = false;
-            List<Author> authorlist = new List<Author>();
-            foreach (string an in authorNames)
+            if (ValidBookInfo()) // Confirms that all input fields are valid before continuing.
             {
-                Author auth = authorService.GetAuthorByName(an); // Checks to see if author with same name exists, if so, uses that author instead of creating a duplicate.
-                if (auth == null) // If no author with the name was found
+                string[] authorNames = editAuthorTB.Text.Split(',');
+                bool createNewAuthor = false;
+                List<Author> authorlist = new List<Author>();
+                foreach (string an in authorNames)
                 {
-                    createNewAuthor = true;
-                    auth = new Author()
+                    Author auth = authorService.GetAuthorByName(an); // Checks to see if author with same name exists, if so, uses that author instead of creating a duplicate.
+                    if (auth == null) // If no author with the name was found
                     {
-                        Name = an.Trim(' ') // Trim value to remove potential space before and after name
-                    };
+                        createNewAuthor = true;
+                        auth = new Author()
+                        {
+                            Name = an.Trim(' ') // Trim value to remove potential space before and after name
+                        };
+                    }
+                    authorlist.Add(auth);
                 }
-                authorlist.Add(auth);
-            }
-            // Create new book
-            if (lbBooks.SelectedItem == null)
-            {
-                string confirmBoxText = createNewAuthor ? "No author that matches your input was found, by continiuing you will create a new Author entry as well as a new book entry." :
-                "Continuing will add a new book to the database. Please verify that all book information is correct before confirmation.";
-                string confirmBoxTitle = "Confirm addition of new book";
-                if (ConfirmedPopup(confirmBoxText, confirmBoxTitle))
+                // Create new book
+                if (lbBooks.SelectedItem == null)
                 {
-                    Book newBook = new Book()
+                    string confirmBoxText = createNewAuthor ? "No author that matches your input was found, by continiuing you will create a new Author entry as well as a new book entry." :
+                    "Continuing will add a new book to the database. Please verify that all book information is correct before confirmation.";
+                    string confirmBoxTitle = "Confirm addition of new book";
+                    if (ConfirmedPopup(confirmBoxText, confirmBoxTitle))
                     {
-                        Title = editTitleTB.Text,
-                        ISBN = editISBNTB.Text,
-                        Authors = authorlist,
-                        Description = editDescriptionTB.Text
-                    };
+                        Book newBook = new Book()
+                        {
+                            Title = editTitleTB.Text,
+                            ISBN = editISBNTB.Text,
+                            Authors = authorlist,
+                            Description = editDescriptionTB.Text
+                        };
 
-                    bookService.Add(newBook);
-                    UpdateBookList(bookService.All().ToList());
+                        bookService.Add(newBook);
+                        UpdateBookList(bookService.All().ToList());
+                    }
                 }
-            }
-            else //Update Book
-            {
-                string confirmBoxText = "You are about to edit: '" + currentBookDisplay[lbBooks.SelectedIndex].ToString() + "'.\r\n" +
-                    "Please verify that all book information is correct before confirmation.";
-                string confirmBoxTitle = "Confirm Book Info Update";
-                if (ConfirmedPopup(confirmBoxText, confirmBoxTitle))
+                else //Update Book
                 {
-                    Book b = lbBooks.SelectedItem as Book;
-                    if (b != null)
+                    string confirmBoxText = "You are about to edit: '" + currentBookDisplay[lbBooks.SelectedIndex].ToString() + "'.\r\n" +
+                        "Please verify that all book information is correct before confirmation.";
+                    string confirmBoxTitle = "Confirm Book Info Update";
+                    if (ConfirmedPopup(confirmBoxText, confirmBoxTitle))
                     {
-                        b.Title = editTitleTB.Text;
-                        b.ISBN = editISBNTB.Text;
-                        b.Authors = authorlist;
-                        b.Description = editDescriptionTB.Text;
-                        bookService.Edit(b);
+                        Book b = lbBooks.SelectedItem as Book;
+                        if (b != null)
+                        {
+                            b.Title = editTitleTB.Text;
+                            b.ISBN = editISBNTB.Text;
+                            b.Authors = authorlist;
+                            b.Description = editDescriptionTB.Text;
+                            bookService.Edit(b);
+                        }
                     }
                 }
             }
+            else // If not all input fields were valid entries.
+            {
+                string confirmBoxText = "All fields did not contain valid data. Make sure your Author and Title fields are filled out.";
+                string confirmBoxTitle = "Invalid book entry";
+                InfoPopup(confirmBoxText, confirmBoxTitle);
+            }
+        }
+
+        /// <summary>
+        /// Runs through checks to see if any of the bookinfo textboxes contains invalid input, if so it returns false. If all checks are passed, returns true.
+        /// </summary>
+        /// <returns>Returns true if all bookinfo textboxes contains valid input, otherwise returns false.</returns>
+        private bool ValidBookInfo()
+        {
+            if (editTitleTB.Text.Trim().Length == 0)
+                return false;
+            if (editAuthorTB.Text.Trim().Length <= 2)
+                return false;
+
+            return true;
         }
 
         private void findAuthorTB_TextChanged(object sender, EventArgs e)
@@ -260,6 +283,14 @@ namespace Library
 
             // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
             UpdateBookCopyList(new List<BookCopy>());
+        }
+
+        private void AvailableCHK_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AvailableCHK.Checked)
+                UpdateBookList(bookService.GetAllAvailableBooks().ToList());
+            else
+                UpdateBookList(bookService.All().ToList());
         }
     }
 }
