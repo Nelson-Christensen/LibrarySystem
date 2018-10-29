@@ -34,6 +34,8 @@ namespace Library.Services
         public BookService(RepositoryFactory rFactory)
         {
             this.bookRepository = rFactory.CreateBookRepository();
+            this.authorRepository = rFactory.CreateAuthorRepository();
+            this.bookCopyRepository = rFactory.CreateBookCopyRepository();
         }
 
         /// <summary>
@@ -78,6 +80,18 @@ namespace Library.Services
                    select b;
         }
 
+
+        /// <summary>
+        /// SLOW TO USE. Combines the result of two collections and returns a collection of all objects that exist in both. Used to combine filters.
+        /// </summary>
+        /// <param name="list1"></param>
+        /// <param name="list2"></param>
+        /// <returns>Returns a collection of objects that exist in both lists</returns>
+        public IEnumerable<Book> CombineFilteredLists(IEnumerable<Book> list1, IEnumerable<Book> list2)
+        {
+            return list1.Intersect(list2);
+        }
+
         /// <summary>
         /// Checks all books to see if they have book copies without active loans and returns those books.
         /// </summary>
@@ -120,8 +134,32 @@ namespace Library.Services
             OnUpdated(e);
         }
 
+        /// <summary>
+        /// Removes book from database and removes the books authors if no other books are connected to the author.
+        /// </summary>
+        /// <param name="b">Book to be removed from Database.</param>
         public void Remove(Book b)
         {
+            // Searches all authors the book is connected to, to see if they are connected to another book, otherwise, remove the author from DB.
+            for (int i = b.Authors.Count() - 1; i >= 0; i--)
+            {
+                bool keepAuthor = false;
+                foreach (Book ab in All()) // Search all books for the specific author.
+                {
+                    if (ab != b) // Dont match if the currently searching book is the same as the book about to be removed.
+                    {
+                        if (ab.Authors.Contains(b.Authors[i]))
+                        {
+                            keepAuthor = true;
+                        }
+                    }
+                }
+                if (keepAuthor == false)
+                {
+                    authorRepository.Remove(b.Authors[i]);
+                }
+            }
+
             bookRepository.Remove(b);
             var e = EventArgs.Empty;
             OnUpdated(e);
