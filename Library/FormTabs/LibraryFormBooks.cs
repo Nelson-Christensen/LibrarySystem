@@ -21,6 +21,7 @@ namespace Library
     {
         int authorFields = 1;
         int maxAuthors = 4;
+        TextBox filterByField;
         private void UpdateBookListEvent(object sender, EventArgs e)
         {
             UpdateBookList(bookService.All().ToList());
@@ -127,7 +128,8 @@ namespace Library
 
         private void findTitleTB_TextChanged(object sender, EventArgs e)
         {
-            UpdateBookList(bookService.GetAllThatContainsInTitle(findTitleTB.Text).ToList());
+            filterByField = findTitleTB;
+            UpdateBookList(SearchResult().ToList());
         }
 
         private void UpdateBookList(List<Book> bookList)
@@ -249,12 +251,14 @@ namespace Library
 
         private void findAuthorTB_TextChanged(object sender, EventArgs e)
         {
-            UpdateBookList(bookService.GetAllThatContainsAuthor(findAuthorTB.Text).ToList());
+            filterByField = findAuthorTB;
+            UpdateBookList(SearchResult().ToList());
         }
 
         private void findISBNTB_TextChanged(object sender, EventArgs e)
         {
-            UpdateBookList(bookService.GetAllThatContainsISBN(findISBNTB.Text).ToList());
+            filterByField = findISBNTB;
+            UpdateBookList(SearchResult().ToList());
         }
 
         private void lbBooks_SelectedIndexChanged(object sender, EventArgs e)
@@ -295,14 +299,6 @@ namespace Library
             if (deleteAuthorFieldCount > 0)
                 RemoveAuthorFields(authorFields - selectedBook.Authors.Count); // Remove Leftover Fields.
 
-            // OLD
-            //RemoveAuthorFields();
-            //for (int i = 1; i < selectedBook.Authors.Count; i++)
-            //{
-            //    string authorName = selectedBook.Authors[i].ToString();
-            //    CreateAuthorField(authorName);
-            //}
-
             // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
             UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
         }
@@ -322,10 +318,7 @@ namespace Library
 
         private void AvailableCHK_CheckedChanged(object sender, EventArgs e)
         {
-            if (AvailableCHK.Checked)
-                UpdateBookList(bookService.GetAllAvailableBooks().ToList());
-            else
-                UpdateBookList(bookService.All().ToList());
+            UpdateBookList(SearchResult().ToList());
         }
 
         private void lbCopies_DoubleClick(object sender, EventArgs e)
@@ -402,6 +395,35 @@ namespace Library
                     authorField.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
                 }
             }
+        }
+
+        private IEnumerable<Book> SearchResult()
+        {
+            IEnumerable<Book> activeFilter;
+            switch (filterByField.Name)
+            {
+                case "findAuthorTB":
+                    activeFilter = bookService.GetAllThatContainsAuthor(findAuthorTB.Text);
+                    break;
+
+                case "findTitleTB":
+                    activeFilter = bookService.GetAllThatContainsInTitle(findTitleTB.Text);
+                    break;
+
+                case "findISBNTB":
+                    activeFilter = bookService.GetAllThatContainsISBN(findISBNTB.Text);
+                    break;
+
+                default:
+                    activeFilter = bookService.All();
+                    break;
+            }
+            if (AvailableCHK.Checked)
+            {
+                IEnumerable<Book> availableFiltered = bookService.GetAllAvailableBooks().ToList();
+                activeFilter = bookService.CombineFilteredLists(activeFilter, availableFiltered);
+            }
+            return activeFilter;
         }
     }
 }
