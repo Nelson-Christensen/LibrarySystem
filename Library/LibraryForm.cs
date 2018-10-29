@@ -58,16 +58,14 @@ namespace Library
         private void UpdateBookListEvent(object sender, EventArgs e)
         {
             UpdateBookList(bookService.All().ToList());
-            //lbBooks.Items.Clear();
-            //foreach (Book book in bookService.All())
-            //{
-            //    lbBooks.Items.Add(book);
-            //}
         }
 
         private void UpdateBookCopyListEvent(object sender, EventArgs e)
         {
-            //UpdateBookList(bookService.All().ToList());
+            Book selectedBook = currentBookDisplay[lbBooks.SelectedIndex];
+
+            // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
+            UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
         }
 
         private void addBookBTN_Click(object sender, EventArgs e)
@@ -79,15 +77,13 @@ namespace Library
 
         private void removeBookBTN_Click(object sender, EventArgs e)
         {
-            string confirmBoxText = "By proceeding you will remove: '" + currentBookDisplay[lbBooks.SelectedIndex].ToString() + "' from the database.\r\n" +
-                "This process can not be reverted and may lead to problems with broken database references.";
-            string confirmBoxTitle = "Confirm book removal";
-
-
-            if (ConfirmedBox(confirmBoxText, confirmBoxTitle))
+            // Can only remove book if a book is selected.
+            if (lbBooks.SelectedItem != null)
             {
-                // Can only remove book if a book is selected.
-                if (lbBooks.SelectedItem != null)
+                string confirmBoxText = "By proceeding you will remove: '" + currentBookDisplay[lbBooks.SelectedIndex].ToString() + "' from the database.\r\n" +
+                "This process can not be reverted and may lead to problems with broken database references.";
+                string confirmBoxTitle = "Confirm book removal";
+                if (ConfirmedPopup(confirmBoxText, confirmBoxTitle))
                 {
                     Book selectedBook = currentBookDisplay[lbBooks.SelectedIndex];
 
@@ -97,13 +93,18 @@ namespace Library
             }
         }
 
-        private bool ConfirmedBox(string boxText, string boxTitle)
+        private bool ConfirmedPopup(string boxText, string boxTitle)
         {
             DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (dialog == DialogResult.OK)
                 return true;
             else
                 return false;
+        }
+
+        private void InfoPopup(string boxText, string boxTitle)
+        {
+            DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void closeBTN_Click(object sender, EventArgs e)
@@ -118,12 +119,12 @@ namespace Library
 
         private void addCopyBTN_Click(object sender, EventArgs e)
         {
-            string confirmBoxText = "Do you want to add a new copy of the book: '" + currentBookDisplay[lbBooks.SelectedIndex].ToString() + "'?";
-            string confirmBoxTitle = "Add new book copy";
-            if (ConfirmedBox(confirmBoxText, confirmBoxTitle))
+            // Can only add new copy if a book has been selected
+            if (lbBooks.SelectedItem != null)
             {
-                // Can only add new copy if a book has been selected
-                if (lbBooks.SelectedItem != null)
+                string confirmBoxText = "Do you want to add a new copy of the book: '" + currentBookDisplay[lbBooks.SelectedIndex].ToString() + "'?";
+                string confirmBoxTitle = "Add new book copy";
+                if (ConfirmedPopup(confirmBoxText, confirmBoxTitle))
                 {
                     Book selectedBook = currentBookDisplay[lbBooks.SelectedIndex];
                     BookCopy newBookCopy = new BookCopy()
@@ -133,31 +134,29 @@ namespace Library
                     // Adds the new copy to the database
                     bookCopyService.Add(newBookCopy);
 
-                    // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
-                    UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
-
                     // Makes the newly created copy the selected item in the listbox
                     lbCopies.SelectedIndex = currentBookCopyDisplay.IndexOf(newBookCopy);
 
                 }
             }
+            else
+                InfoPopup("You need to select a book to add a copy of.", "Can't create book Copy");
         }
 
         private void removeCopyBTN_Click(object sender, EventArgs e)
         {
-            string confirmBoxText = "By proceeding you will remove the selected book copy from the database.\r\n" +
-                "This process can not be reverted and may lead to problems with broken database references.";
-            string confirmBoxTitle = "Confirm book copy removal";
-            if (ConfirmedBox(confirmBoxText, confirmBoxTitle))
+            if (lbCopies.SelectedItem != null)
             {
-                if (lbCopies.SelectedItem != null)
+                string confirmBoxText = "By proceeding you will remove the selected book copy from the database.\r\n" +
+                "This process can not be reverted and may lead to problems with broken database references.";
+                string confirmBoxTitle = "Confirm book copy removal";
+                if (ConfirmedPopup(confirmBoxText, confirmBoxTitle))
                 {
                     bookCopyService.Remove(currentBookCopyDisplay[lbCopies.SelectedIndex]);
                 }
-                Book selectedBook = currentBookDisplay[lbBooks.SelectedIndex];
-
-                UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
             }
+            else
+                InfoPopup("You need to select a book copy to remove.", "Can't remove book Copy");
         }
 
         private void findTitleTB_TextChanged(object sender, EventArgs e)
@@ -218,7 +217,7 @@ namespace Library
                 string confirmBoxText = createNewAuthor ? "No author that matches your input was found, by continiuing you will create a new Author entry as well as a new book entry." :
                 "Continuing will add a new book to the database. Please verify that all book information is correct before confirmation.";
                 string confirmBoxTitle = "Confirm addition of new book";
-                if (ConfirmedBox(confirmBoxText, confirmBoxTitle))
+                if (ConfirmedPopup(confirmBoxText, confirmBoxTitle))
                 {
                     Book newBook = new Book()
                     {
@@ -237,7 +236,7 @@ namespace Library
                 string confirmBoxText = "You are about to edit: '" + currentBookDisplay[lbBooks.SelectedIndex].ToString() + "'.\r\n" +
                     "Please verify that all book information is correct before confirmation.";
                 string confirmBoxTitle = "Confirm Book Info Update";
-                if (ConfirmedBox(confirmBoxText, confirmBoxTitle))
+                if (ConfirmedPopup(confirmBoxText, confirmBoxTitle))
                 {
                     Book b = lbBooks.SelectedItem as Book;
                     if (b != null)
