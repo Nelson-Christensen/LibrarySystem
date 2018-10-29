@@ -40,19 +40,9 @@ namespace Library
             //Adds event listener to bookservice.
             this.bookService.Updated += UpdateBookListEvent;
             this.bookCopyService.Updated += UpdateBookCopyListEvent;
-            ShowAllBooks(bookService.All());
+            UpdateBookList(bookService.All().ToList());
             currentBookDisplay = bookService.All().ToList();
             currentBookCopyDisplay = new List<BookCopy>();
-        }
-        
-
-        private void ShowAllBooks(IEnumerable<Book> books)
-        {
-            lbBooks.Items.Clear();
-            foreach (Book book in books)
-            {
-                lbBooks.Items.Add(book);
-            }
         }
 
         private void BTNChangeBook_Click(object sender, EventArgs e)
