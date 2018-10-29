@@ -19,16 +19,6 @@ namespace Library
     /// </summary>
     public partial class LibraryForm : Form
     {
-        
-        private void BTNChangeBook_Click(object sender, EventArgs e)
-        {
-            Book b = lbBooks.SelectedItem as Book;
-            if (b != null)
-            {
-                b.Title = "Yoyoma";
-                bookService.Edit(b);
-            }
-        }
 
         private void UpdateBookListEvent(object sender, EventArgs e)
         {

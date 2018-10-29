@@ -52,7 +52,6 @@
             this.findTitleTB = new System.Windows.Forms.TextBox();
             this.findBooksLabel = new System.Windows.Forms.Label();
             this.lbBooks = new System.Windows.Forms.ListBox();
-            this.BTNChangeBook = new System.Windows.Forms.Button();
             this.membersTab = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -144,7 +143,6 @@
             this.booksTab.Controls.Add(this.findTitleTB);
             this.booksTab.Controls.Add(this.findBooksLabel);
             this.booksTab.Controls.Add(this.lbBooks);
-            this.booksTab.Controls.Add(this.BTNChangeBook);
             this.booksTab.Cursor = System.Windows.Forms.Cursors.Default;
             this.booksTab.Location = new System.Drawing.Point(4, 30);
             this.booksTab.Margin = new System.Windows.Forms.Padding(2);
@@ -440,18 +438,6 @@
             this.lbBooks.Size = new System.Drawing.Size(196, 382);
             this.lbBooks.TabIndex = 0;
             this.lbBooks.SelectedIndexChanged += new System.EventHandler(this.lbBooks_SelectedIndexChanged);
-            // 
-            // BTNChangeBook
-            // 
-            this.BTNChangeBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTNChangeBook.Location = new System.Drawing.Point(33, 378);
-            this.BTNChangeBook.Margin = new System.Windows.Forms.Padding(2);
-            this.BTNChangeBook.Name = "BTNChangeBook";
-            this.BTNChangeBook.Size = new System.Drawing.Size(81, 35);
-            this.BTNChangeBook.TabIndex = 1;
-            this.BTNChangeBook.Text = "TEST: Change the book title";
-            this.BTNChangeBook.UseVisualStyleBackColor = true;
-            this.BTNChangeBook.Click += new System.EventHandler(this.BTNChangeBook_Click);
             // 
             // membersTab
             // 
@@ -929,7 +915,6 @@
         #endregion
 
         private System.Windows.Forms.ListBox lbBooks;
-        private System.Windows.Forms.Button BTNChangeBook;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage booksTab;
         private System.Windows.Forms.TabPage membersTab;
