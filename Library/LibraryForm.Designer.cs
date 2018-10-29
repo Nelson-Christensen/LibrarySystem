@@ -295,12 +295,14 @@
             // lbCopies
             // 
             this.lbCopies.BackColor = System.Drawing.SystemColors.Window;
+            this.lbCopies.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lbCopies.FormattingEnabled = true;
             this.lbCopies.ItemHeight = 21;
             this.lbCopies.Location = new System.Drawing.Point(697, 92);
             this.lbCopies.Name = "lbCopies";
             this.lbCopies.Size = new System.Drawing.Size(216, 382);
             this.lbCopies.TabIndex = 36;
+            this.lbCopies.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbCopies_DrawItem);
             this.lbCopies.DoubleClick += new System.EventHandler(this.lbCopies_DoubleClick);
             // 
             // label15

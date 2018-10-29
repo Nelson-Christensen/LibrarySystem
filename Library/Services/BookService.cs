@@ -28,7 +28,6 @@ namespace Library.Services
 
         BookCopyRepository bookCopyRepository;
 
-        LoanRepository loanRepository;
 
         /// <param name="rFactory">A repository factory, so the service can create its own repository.</param>
         public BookService(RepositoryFactory rFactory)
@@ -82,7 +81,7 @@ namespace Library.Services
 
 
         /// <summary>
-        /// SLOW TO USE. Combines the result of two collections and returns a collection of all objects that exist in both. Used to combine filters.
+        /// Combines the result of two collections and returns a collection of all objects that exist in both. Used to combine filters.
         /// </summary>
         /// <param name="list1"></param>
         /// <param name="list2"></param>
@@ -101,25 +100,6 @@ namespace Library.Services
             return from b in bookRepository.All()
                    where b.IsAvailable()
                    select b;
-
-
-                   // Old Code
-            //// List of all bookCopies currently out on loan.
-            //var loanedOutCopies = bookCopyRepository.All()
-            //    .Where(bc => bc.Loans
-            //    .Any(l => !l.IsReturned()));
-
-            //// List of all bookCopies that are not out on loan, and therefore available.
-            //var availableCopies = bookCopyRepository.All()
-            //    .Where(bc => !loanedOutCopies.Contains(bc));
-
-            //// List of all books that has bookCopies that are currently available.
-            //var availableBooks = bookRepository.All()
-            //    .Where(b => b.BookCopies != null)
-            //    .Where(b => b.BookCopies
-            //    .Any(bc => availableCopies.Contains(bc)));
-
-            //return availableBooks;
         }
 
 

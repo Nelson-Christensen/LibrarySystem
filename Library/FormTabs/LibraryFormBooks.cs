@@ -152,9 +152,9 @@ namespace Library
         {
             currentBookCopyDisplay = bookCopyList;
             lbCopies.Items.Clear();
-            foreach (BookCopy bc in bookCopyList)
+            for (int i = 0; i < bookCopyList.Count; i++)
             {
-                lbCopies.Items.Add(bc);
+                lbCopies.Items.Add(bookCopyList[i]);
             }
         }
 
@@ -424,6 +424,39 @@ namespace Library
                 activeFilter = bookService.CombineFilteredLists(activeFilter, availableFiltered);
             }
             return activeFilter;
+        }
+
+        /// <summary>
+        /// Custom draw mode to enable text coloring based on bookCopy availability.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lbCopies_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            BookCopy item = lbCopies.Items[e.Index] as BookCopy; // Get the current item and cast it to MyListBoxItem
+            if (item != null)
+            {
+                Color color = Color.Red;
+                if (item.OnActiveLoan())
+                    color = Color.Black;
+                e.Graphics.DrawString( // Draw the appropriate text in the ListBox
+                    item.ToString(), // The message linked to the item
+                    lbCopies.Font, // Take the font from the listbox
+                    new SolidBrush(color), // Set the color 
+                    0, // X pixel coordinate
+                    e.Index * lbCopies.ItemHeight // Y pixel coordinate.  Multiply the index by the ItemHeight defined in the listbox.
+                );
+            }
+            else
+            {
+                e.Graphics.DrawString( // Draw the appropriate text in the ListBox
+                    lbCopies.Items[e.Index].ToString(), // The message linked to the item
+                    lbCopies.Font, // Take the font from the listbox
+                    new SolidBrush(Color.Black), // Set the color 
+                    0, // X pixel coordinate
+                    e.Index * lbCopies.ItemHeight // Y pixel coordinate.  Multiply the index by the ItemHeight defined in the listbox.
+                );
+            }
         }
     }
 }
