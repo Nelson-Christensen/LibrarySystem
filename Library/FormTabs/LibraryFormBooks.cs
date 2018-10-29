@@ -278,12 +278,30 @@ namespace Library
             editAuthorTB.Text = selectedBook.Authors[0].ToString();
             editDescriptionTB.Text = selectedBook.Description;
 
-            ClearAdditionalAuthorFields();
             for (int i = 1; i < selectedBook.Authors.Count; i++)
             {
                 string authorName = selectedBook.Authors[i].ToString();
-                CreateAuthorField(authorName);
+                if (i < authorFields)
+                {
+                    int currentFieldIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB) + i;
+                    BookInfoFLP.Controls[currentFieldIndex].Text = authorName;
+                }
+                else
+                {
+                    CreateAuthorField(authorName);
+                }
             }
+            int deleteAuthorFieldCount = authorFields - selectedBook.Authors.Count;
+            if (deleteAuthorFieldCount > 0)
+                RemoveAuthorFields(authorFields - selectedBook.Authors.Count); // Remove Leftover Fields.
+
+            // OLD
+            //RemoveAuthorFields();
+            //for (int i = 1; i < selectedBook.Authors.Count; i++)
+            //{
+            //    string authorName = selectedBook.Authors[i].ToString();
+            //    CreateAuthorField(authorName);
+            //}
 
             // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
             UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
@@ -296,7 +314,7 @@ namespace Library
             editAuthorTB.ResetText();
             editDescriptionTB.ResetText();
 
-            ClearAdditionalAuthorFields();
+            RemoveAuthorFields();
 
             // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
             UpdateBookCopyList(new List<BookCopy>());
@@ -347,15 +365,21 @@ namespace Library
             CreateAuthorField("");
         }
 
-        private void ClearAdditionalAuthorFields()
+        private void RemoveAuthorFields(int count)
         {
             // Removes additional author textboxes.
             int authorTBIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB);
-            for (int i = authorTBIndex + authorFields; i > authorTBIndex + 1; i--)
+            for (int i = authorTBIndex + authorFields; i > authorTBIndex + authorFields - count; i--)
             {
                 BookInfoFLP.Controls.RemoveAt(i - 1);
             }
-            authorFields = 1;
+            authorFields -= count;
+        }
+
+        private void RemoveAuthorFields()
+        {
+            if (authorFields - 1 > 0)
+                RemoveAuthorFields(authorFields - 1);
         }
 
         private void RemoveAuthorBTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
