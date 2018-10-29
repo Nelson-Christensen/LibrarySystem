@@ -14,6 +14,17 @@ namespace Library.Models {
         public string Description { get; set; }
         public virtual List<BookCopy> BookCopies { get; set; }
 
+        public bool IsAvailable()
+        {
+            bool available = false;
+            foreach (BookCopy bc in BookCopies)
+            {
+                if (bc.OnActiveLoan() == false)
+                    available = true;
+            }
+            return available;
+        }
+
         /// <summary>
         /// Retrieves the names of all of the books authors in a string and seperates them by a comma.
         /// </summary>

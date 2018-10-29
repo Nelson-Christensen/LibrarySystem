@@ -139,17 +139,7 @@ namespace Library
                 lbBooks.Items.Add(book);
             }
 
-            // Clears book info panel when you lose book selection.
-            editISBNTB.ResetText();
-            editTitleTB.ResetText();
-            editAuthorTB.ResetText();
-            editDescriptionTB.ResetText();
-            int authorTBIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB);
-            for (int i = authorTBIndex + authorFields; i > authorTBIndex + 1; i--)
-            {
-                //TextBox currentTB = (TextBox)BookInfoFLP.Controls[authorTBIndex + i];
-                BookInfoFLP.Controls.RemoveAt(i-1);
-            }
+            ClearBookInfoPanel();
 
             // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
             UpdateBookCopyList(new List<BookCopy>());
@@ -285,8 +275,15 @@ namespace Library
         {
             editTitleTB.Text = selectedBook.Title;
             editISBNTB.Text = selectedBook.ISBN;
-            editAuthorTB.Text = selectedBook.AllAuthorsToString();
+            editAuthorTB.Text = selectedBook.Authors[0].ToString();
             editDescriptionTB.Text = selectedBook.Description;
+
+            ClearAdditionalAuthorFields();
+            for (int i = 1; i < selectedBook.Authors.Count; i++)
+            {
+                string authorName = selectedBook.Authors[i].ToString();
+                CreateAuthorField(authorName);
+            }
 
             // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
             UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
@@ -298,6 +295,8 @@ namespace Library
             editTitleTB.ResetText();
             editAuthorTB.ResetText();
             editDescriptionTB.ResetText();
+
+            ClearAdditionalAuthorFields();
 
             // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
             UpdateBookCopyList(new List<BookCopy>());
@@ -320,20 +319,43 @@ namespace Library
         {
             if (authorFields < maxAuthors)
             {
-                TextBox newAuthorField = new System.Windows.Forms.TextBox();
-                int placementIndex = BookInfoFLP.Controls.IndexOf((Control)sender) + 1 + authorFields; //Place after last authorField
-                newAuthorField.BackColor = System.Drawing.SystemColors.Info;
-                newAuthorField.Location = new System.Drawing.Point(47, 152);
-                newAuthorField.Margin = new System.Windows.Forms.Padding(2);
-                newAuthorField.Size = new System.Drawing.Size(226, 28);
-                newAuthorField.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
-                newAuthorField.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-                newAuthorField.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-                BookInfoFLP.Controls.Add(newAuthorField);
-                BookInfoFLP.Controls.SetChildIndex(newAuthorField, placementIndex);
-
-                authorFields++;
+                CreateAuthorField();
             }
+        }
+
+        private void CreateAuthorField(string text)
+        {
+            TextBox newAuthorField = new System.Windows.Forms.TextBox();
+            int authorTBIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB);
+            newAuthorField.BackColor = System.Drawing.SystemColors.Info;
+            newAuthorField.Location = new System.Drawing.Point(47, 152);
+            newAuthorField.Margin = new System.Windows.Forms.Padding(2);
+            newAuthorField.Size = new System.Drawing.Size(226, 28);
+            newAuthorField.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
+            newAuthorField.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            newAuthorField.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            newAuthorField.Text = text;
+
+            BookInfoFLP.Controls.Add(newAuthorField);
+            BookInfoFLP.Controls.SetChildIndex(newAuthorField, authorTBIndex + authorFields);
+
+            authorFields++;
+        }
+
+        private void CreateAuthorField()
+        {
+            CreateAuthorField("");
+        }
+
+        private void ClearAdditionalAuthorFields()
+        {
+            // Removes additional author textboxes.
+            int authorTBIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB);
+            for (int i = authorTBIndex + authorFields; i > authorTBIndex + 1; i--)
+            {
+                BookInfoFLP.Controls.RemoveAt(i - 1);
+            }
+            authorFields = 1;
         }
 
         private void RemoveAuthorBTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

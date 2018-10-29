@@ -12,6 +12,17 @@ namespace Library.Models
         public Book Book { get; set; }
         public virtual List<Loan> Loans { get; set; }
 
+        public bool OnActiveLoan()
+        {
+            bool onLoan = false;
+            foreach (Loan l in Loans)
+            {
+                if (l.IsReturned() == false)
+                    onLoan = true;
+            }
+            return onLoan;
+        }
+
         /// <summary>
         /// Display book name and copy id to distinguish between copies.
         /// </summary>

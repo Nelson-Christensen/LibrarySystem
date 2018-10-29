@@ -98,22 +98,28 @@ namespace Library.Services
         /// <returns>Returns a collection of all books that has copies not currently out on loan.</returns>
         public IEnumerable<Book> GetAllAvailableBooks()
         {
-            // List of all bookCopies currently out on loan.
-            var loanedOutCopies = bookCopyRepository.All()
-                .Where(bc => bc.Loans
-                .Any(l => !l.IsReturned()));
+            return from b in bookRepository.All()
+                   where b.IsAvailable()
+                   select b;
 
-            // List of all bookCopies that are not out on loan, and therefore available.
-            var availableCopies = bookCopyRepository.All()
-                .Where(bc => !loanedOutCopies.Contains(bc));
 
-            // List of all books that has bookCopies that are currently available.
-            var availableBooks = bookRepository.All()
-                .Where(b => b.BookCopies != null)
-                .Where(b => b.BookCopies
-                .Any(bc => availableCopies.Contains(bc)));
+                   // Old Code
+            //// List of all bookCopies currently out on loan.
+            //var loanedOutCopies = bookCopyRepository.All()
+            //    .Where(bc => bc.Loans
+            //    .Any(l => !l.IsReturned()));
 
-            return availableBooks;
+            //// List of all bookCopies that are not out on loan, and therefore available.
+            //var availableCopies = bookCopyRepository.All()
+            //    .Where(bc => !loanedOutCopies.Contains(bc));
+
+            //// List of all books that has bookCopies that are currently available.
+            //var availableBooks = bookRepository.All()
+            //    .Where(b => b.BookCopies != null)
+            //    .Where(b => b.BookCopies
+            //    .Any(bc => availableCopies.Contains(bc)));
+
+            //return availableBooks;
         }
 
 
