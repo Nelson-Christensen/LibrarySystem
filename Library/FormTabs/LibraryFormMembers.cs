@@ -50,7 +50,7 @@ namespace Library
         {
             ClearMemberResultsPanel();
             lbMemberResults.ClearSelected();
-            memberNameBox.Select();
+            memberIdBox.Select();
         }
 
         private void removeMemberBTN_Click(object sender, EventArgs e)
@@ -60,7 +60,17 @@ namespace Library
 
         private void saveMemberBTN_Click(object sender, EventArgs e)
         {
+            if (lbMemberResults.SelectedItem == null)
+            {
+                Member newMember = new Member()
+                {
+                    personalID = memberPersonnummerBox.Text,
+                    Name = memberNameBox.Text
+                };
 
+                memberService.Add(newMember);
+                UpdateMemberList(memberService.All().ToList());
+            }
         }
 
         //Searchbox
@@ -100,6 +110,30 @@ namespace Library
         }
 
         private void showPreviousLoans_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void loanIdTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timeOfLoanTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timeOfReturnTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dueDateTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void feesDueTB_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -23,6 +23,18 @@ namespace Library.Services
         {
             this.memberRepository = rFactory.CreateMemberRepository();
         }
+        public void Add(Member m)
+        {
+            memberRepository.Add(m);
+            var e = EventArgs.Empty;
+            OnUpdated(e);
+        }
+
+        protected virtual void OnUpdated(EventArgs e)
+        {
+            // Checks to see if there are any subscribers to Updated, if so, it invokes the event.
+            Updated?.Invoke(this, e);
+        }
     }
 
 
