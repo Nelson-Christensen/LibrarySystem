@@ -15,10 +15,13 @@ namespace Library.Models
         public bool OnActiveLoan()
         {
             bool onLoan = false;
-            foreach (Loan l in Loans)
+            if (Loans != null)
             {
-                if (l.IsReturned() == false)
-                    onLoan = true;
+                foreach (Loan l in Loans)
+                {
+                    if (l.IsReturned() == false)
+                        onLoan = true;
+                }
             }
             return onLoan;
         }
