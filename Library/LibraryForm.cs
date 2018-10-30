@@ -20,11 +20,14 @@ namespace Library
     public partial class LibraryForm : Form
     {
 
+        MemberService memberService;
         BookService bookService;
         BookCopyService bookCopyService;
         AuthorService authorService;
         List<Book> currentBookDisplay;
         List<BookCopy> currentBookCopyDisplay;
+        List<Member> currentMemberDisplay;
+
 
         public LibraryForm()
         {
@@ -39,14 +42,18 @@ namespace Library
             this.bookService = new BookService(repFactory);
             this.bookCopyService = new BookCopyService(repFactory);
             this.authorService = new AuthorService(repFactory);
+            this.memberService = new MemberService(repFactory);
 
-            //Adds event listener to bookservice.
+            //Adds event listener to bookService.
             this.bookService.Updated += UpdateBookListEvent;
             this.bookCopyService.Updated += UpdateBookCopyListEvent;
             this.authorService.Updated += UpdatedAuthorEvent;
+            this.memberService.Updated += UpdateMemberListEvent;
+
             UpdateBookList(bookService.All().ToList());
             currentBookDisplay = bookService.All().ToList();
             currentBookCopyDisplay = new List<BookCopy>();
+            currentMemberDisplay = memberService.All().ToList();
 
             editAuthorTB.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
         }
