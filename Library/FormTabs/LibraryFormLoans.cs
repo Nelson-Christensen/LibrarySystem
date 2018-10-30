@@ -63,6 +63,22 @@ namespace Library
                 int loanID = Int32.Parse(item.SubItems[0].Text);
                 Loan loan = loanService.Find(loanID);
                 loanService.ReturnLoan(loan);
+                DateTime returnDate = (DateTime)loan.ReturnDate; // Has to cast it to DateTime to allow operations and comparisons
+                if (returnDate.Date > loan.DueDate.Date)
+                {
+                    int daysLate = (returnDate - loan.DueDate).Days;
+                    string confirmBoxText = string.Format("The Book was returned {0} days late. Fine for a {0} day late return is {1}.", daysLate, daysLate*15);
+                    string confirmBoxTitle = "Fine for late return";
+                    InfoPopup(confirmBoxText, confirmBoxTitle);
+                }
+                else
+                {
+                    string confirmBoxText = "Loan return has successfully been registered.";
+                    string confirmBoxTitle = "Loan has been returned";
+                    InfoPopup(confirmBoxText, confirmBoxTitle);
+                }
+
+                UpdateLoanInfoPanel(loan); // Update info panel to reflect the loan return.
             }
         }
 
