@@ -22,6 +22,9 @@ namespace Library
         int authorFields = 1;
         int maxAuthors = 4;
         TextBox filterByField;
+        Color bookCopyAvailableColor = Color.Black;
+        Color bookCopyUnavailableColor = Color.IndianRed;
+
         private void UpdateBookListEvent(object sender, EventArgs e)
         {
             UpdateBookList(bookService.All().ToList());
@@ -434,11 +437,13 @@ namespace Library
         private void lbCopies_DrawItem(object sender, DrawItemEventArgs e)
         {
             BookCopy item = lbCopies.Items[e.Index] as BookCopy; // Get the current item and cast it to MyListBoxItem
+            e.DrawBackground();
+            e.DrawFocusRectangle();
             if (item != null)
             {
-                Color color = Color.Red;
+                Color color = bookCopyAvailableColor;
                 if (item.OnActiveLoan())
-                    color = Color.Black;
+                    color = bookCopyUnavailableColor;
                 e.Graphics.DrawString( // Draw the appropriate text in the ListBox
                     item.ToString(), // The message linked to the item
                     lbCopies.Font, // Take the font from the listbox
@@ -457,6 +462,7 @@ namespace Library
                     e.Index * lbCopies.ItemHeight // Y pixel coordinate.  Multiply the index by the ItemHeight defined in the listbox.
                 );
             }
+
         }
     }
 }
