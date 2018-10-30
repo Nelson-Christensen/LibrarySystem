@@ -62,7 +62,5 @@ namespace Library
 
             editAuthorTB.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
         }
-
-
     }
 }

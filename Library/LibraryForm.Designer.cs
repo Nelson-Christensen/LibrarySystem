@@ -87,8 +87,9 @@
             this.findMemberSearchBox = new System.Windows.Forms.TextBox();
             this.loansTab = new System.Windows.Forms.TabPage();
             this.LoansLV = new System.Windows.Forms.ListView();
-            this.BookName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LoanID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CopyID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BookName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Member = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TimeOfLoan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.returnCreateLoanBTN = new System.Windows.Forms.Button();
@@ -110,8 +111,8 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.findLoanMemberTB = new System.Windows.Forms.TextBox();
-            this.findLoanTitleTB = new System.Windows.Forms.TextBox();
+            this.findMemberLoanTB = new System.Windows.Forms.TextBox();
+            this.findTitleLoanTB = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.closeBTN = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
@@ -873,8 +874,8 @@
             this.loansTab.Controls.Add(this.label29);
             this.loansTab.Controls.Add(this.label30);
             this.loansTab.Controls.Add(this.label32);
-            this.loansTab.Controls.Add(this.findLoanMemberTB);
-            this.loansTab.Controls.Add(this.findLoanTitleTB);
+            this.loansTab.Controls.Add(this.findMemberLoanTB);
+            this.loansTab.Controls.Add(this.findTitleLoanTB);
             this.loansTab.Controls.Add(this.label33);
             this.loansTab.Cursor = System.Windows.Forms.Cursors.Default;
             this.loansTab.Location = new System.Drawing.Point(4, 30);
@@ -887,6 +888,7 @@
             // LoansLV
             // 
             this.LoansLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.LoanID,
             this.CopyID,
             this.BookName,
             this.Member,
@@ -899,16 +901,22 @@
             this.LoansLV.TabIndex = 55;
             this.LoansLV.UseCompatibleStateImageBehavior = false;
             this.LoansLV.View = System.Windows.Forms.View.Details;
+            this.LoansLV.SelectedIndexChanged += new System.EventHandler(this.LoansLV_SelectedIndexChanged);
             // 
-            // BookName
+            // LoanID
             // 
-            this.BookName.Text = "BookName";
-            this.BookName.Width = 161;
+            this.LoanID.Text = "LoanID";
+            this.LoanID.Width = 0;
             // 
             // CopyID
             // 
             this.CopyID.Text = "CopyID";
             this.CopyID.Width = 66;
+            // 
+            // BookName
+            // 
+            this.BookName.Text = "BookName";
+            this.BookName.Width = 161;
             // 
             // Member
             // 
@@ -967,6 +975,7 @@
             this.overdueLoansCHK.TabIndex = 51;
             this.overdueLoansCHK.Text = "Only Overdue Loans";
             this.overdueLoansCHK.UseVisualStyleBackColor = true;
+            this.overdueLoansCHK.CheckedChanged += new System.EventHandler(this.overdueLoansCHK_CheckedChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -1085,6 +1094,7 @@
             this.activeLoansCHK.TabIndex = 49;
             this.activeLoansCHK.Text = "Only Active Loans";
             this.activeLoansCHK.UseVisualStyleBackColor = true;
+            this.activeLoansCHK.CheckedChanged += new System.EventHandler(this.activeLoansCHK_CheckedChanged);
             // 
             // label29
             // 
@@ -1119,21 +1129,23 @@
             this.label32.TabIndex = 45;
             this.label32.Text = "By member";
             // 
-            // findLoanMemberTB
+            // findMemberLoanTB
             // 
-            this.findLoanMemberTB.Location = new System.Drawing.Point(18, 169);
-            this.findLoanMemberTB.Margin = new System.Windows.Forms.Padding(2);
-            this.findLoanMemberTB.Name = "findLoanMemberTB";
-            this.findLoanMemberTB.Size = new System.Drawing.Size(161, 28);
-            this.findLoanMemberTB.TabIndex = 43;
+            this.findMemberLoanTB.Location = new System.Drawing.Point(18, 169);
+            this.findMemberLoanTB.Margin = new System.Windows.Forms.Padding(2);
+            this.findMemberLoanTB.Name = "findMemberLoanTB";
+            this.findMemberLoanTB.Size = new System.Drawing.Size(161, 28);
+            this.findMemberLoanTB.TabIndex = 43;
+            this.findMemberLoanTB.TextChanged += new System.EventHandler(this.findMemberLoanTB_TextChanged);
             // 
-            // findLoanTitleTB
+            // findTitleLoanTB
             // 
-            this.findLoanTitleTB.Location = new System.Drawing.Point(18, 117);
-            this.findLoanTitleTB.Margin = new System.Windows.Forms.Padding(2);
-            this.findLoanTitleTB.Name = "findLoanTitleTB";
-            this.findLoanTitleTB.Size = new System.Drawing.Size(161, 28);
-            this.findLoanTitleTB.TabIndex = 42;
+            this.findTitleLoanTB.Location = new System.Drawing.Point(18, 117);
+            this.findTitleLoanTB.Margin = new System.Windows.Forms.Padding(2);
+            this.findTitleLoanTB.Name = "findTitleLoanTB";
+            this.findTitleLoanTB.Size = new System.Drawing.Size(161, 28);
+            this.findTitleLoanTB.TabIndex = 42;
+            this.findTitleLoanTB.TextChanged += new System.EventHandler(this.findTitleLoanTB_TextChanged);
             // 
             // label33
             // 
@@ -1265,8 +1277,8 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox findLoanMemberTB;
-        private System.Windows.Forms.TextBox findLoanTitleTB;
+        private System.Windows.Forms.TextBox findMemberLoanTB;
+        private System.Windows.Forms.TextBox findTitleLoanTB;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.DateTimePicker timeOfLoanDTP;
         private System.Windows.Forms.Label label25;
@@ -1282,6 +1294,7 @@
         private System.Windows.Forms.ColumnHeader CopyID;
         private System.Windows.Forms.ColumnHeader Member;
         private System.Windows.Forms.ColumnHeader TimeOfLoan;
+        private System.Windows.Forms.ColumnHeader LoanID;
     }
 }
 

@@ -55,6 +55,65 @@ namespace Library.Services
         }
 
         /// <summary>
+        /// Retrieves all loans from books that contain the input string in their title
+        /// </summary>
+        /// <param name="input">String to search by</param>
+        /// <returns>Returns Collection of Loans that match search criteria</returns>
+        public IEnumerable<Loan> GetAllThatContainsTitle(string input)
+        {
+            return from l in loanRepository.All()
+                   where l.BookCopy.Book.Title.ToLower().Contains(input.ToLower())
+                   select l;
+        }
+
+        /// <summary>
+        /// Retrieves all loans from all members that have names that include the input string.
+        /// </summary>
+        /// <param name="input">String to search by</param>
+        /// <returns>Returns Collection of Loans that match search criteria</returns>
+        public IEnumerable<Loan> GetAllThatContainsMember(string input)
+        {
+            return from l in loanRepository.All()
+                   where l.Member.Name.ToLower().Contains(input.ToLower())
+                   select l;
+        }
+
+
+        /// <summary>
+        /// Checks all loans to see if they have been returned or not, and retrieves the loans that currently hasnt been returned.
+        /// </summary>
+        /// <returns>Returns a collection of all loans that are currently active(not returned)</returns>
+        public IEnumerable<Loan> GetAllActiveLoans()
+        {
+            return from l in loanRepository.All()
+                   where l.IsReturned() == false
+                   select l;
+        }
+
+        /// <summary>
+        /// Retrieves a collection of loans that have not been returned and their dueDates have passed.
+        /// </summary>
+        /// <returns>Returns a collection of all loans that are currently overdue(dueDate passed and not returned)</returns>
+        public IEnumerable<Loan> GetAllOverdueLoans()
+        {
+            return from l in loanRepository.All()
+                   where l.IsReturned() == false && l.DueDate < DateTime.Now
+                   select l;
+        }
+
+
+        /// <summary>
+        /// Combines the result of two collections and returns a collection of all objects that exist in both. Used to combine filters.
+        /// </summary>
+        /// <param name="list1"></param>
+        /// <param name="list2"></param>
+        /// <returns>Returns a collection of objects that exist in both lists</returns>
+        public IEnumerable<Loan> CombineFilteredLists(IEnumerable<Loan> list1, IEnumerable<Loan> list2)
+        {
+            return list1.Intersect(list2);
+        }
+
+        /// <summary>
         /// Notifies subscribers that loanRepository has been updated.
         /// </summary>
         /// <param name="e">EventArgs to send to event subscribers</param>

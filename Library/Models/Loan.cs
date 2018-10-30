@@ -27,7 +27,10 @@ namespace Library.Models
             return ReturnDate != null;
         }
 
-        public Loan()
+        /// <summary>
+        /// Must include parameterless constructor for Entity Framework to function. It cannot be initialized from outside though.
+        /// </summary>
+        private Loan()
         {
 
         }

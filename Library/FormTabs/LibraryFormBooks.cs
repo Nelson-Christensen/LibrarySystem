@@ -283,7 +283,8 @@ namespace Library
         {
             editTitleTB.Text = selectedBook.Title;
             editISBNTB.Text = selectedBook.ISBN;
-            editAuthorTB.Text = selectedBook.Authors[0].ToString();
+            if (selectedBook.Authors.Count > 0) //Can only display author if the book has a author registered
+                editAuthorTB.Text = selectedBook.Authors[0].ToString();
             editDescriptionTB.Text = selectedBook.Description;
 
             for (int i = 1; i < selectedBook.Authors.Count; i++)
