@@ -60,9 +60,11 @@ namespace Library.Services
                    select bc;
         }
 
-        public IEnumerable<string> GetAllBookCopyNames()
+        public IEnumerable<string> GetAllAvailableBookCopyNames()
         {
-            return bookCopyRepository.All().Select(a => a.ToString()).ToList();
+            return from bc in bookCopyRepository.All()
+                   where bc.OnActiveLoan() == false
+                   select bc.ToString();
         }
 
         /// <summary>

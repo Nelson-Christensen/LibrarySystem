@@ -21,7 +21,7 @@ namespace Library
 
         private void loansTab_Enter(object sender, EventArgs e)
         {
-            bookCopyLoanTB.AutoCompleteCustomSource.AddRange(bookCopyService.GetAllBookCopyNames().ToArray()); //Adds all the current bookCopies to autocomplete list.
+            bookCopyLoanTB.AutoCompleteCustomSource.AddRange(bookCopyService.GetAllAvailableBookCopyNames().ToArray()); //Adds all the current bookCopies to autocomplete list.
             memberLoanTB.AutoCompleteCustomSource.AddRange(memberService.GetAllMemberNames().ToArray()); //Adds all the current Members to autocomplete list.
             UpdateLoansList(LoanSearchResult().ToList());
 
@@ -34,12 +34,18 @@ namespace Library
         {
             if (createNewLoan)
             {
-                Member newMember = new Member()
-                {
-                    Name = "Nelson",
-                    personalID = "12348181"
-                };
-                Loan newLoan = new Loan(lbCopies.SelectedItem as BookCopy, newMember, timeOfLoanDTP.Value);
+                string selectedBookCopyName = bookCopyLoanTB.Text;
+                string[] selectedBookSplit = selectedBookCopyName.Split('-');
+                int selectedBookID = Int32.Parse(selectedBookSplit[selectedBookSplit.Count()-1].Trim());
+                BookCopy selectedBookCopy = bookCopyService.Find(selectedBookID);
+                string selectedMemberName = memberLoanTB.Text;
+                Member selectedMember = memberService.GetMemberByName(selectedMemberName);
+                //Member newMember = new Member()
+                //{
+                //    Name = "Nelson",
+                //    personalID = "12348181"
+                //};
+                Loan newLoan = new Loan(selectedBookCopy, selectedMember, timeOfLoanDTP.Value, dueDateDTP.Value);
                 loanService.Add(newLoan);
             }
             else //Return Loan
@@ -209,7 +215,7 @@ namespace Library
                 lvi.SubItems.Add(loan.BookCopy.Id.ToString());
                 lvi.SubItems.Add(loan.BookCopy.Book.Title);
                 lvi.SubItems.Add(loan.Member.ToString());
-                lvi.SubItems.Add(loan.StartDate.ToString());
+                lvi.SubItems.Add(loan.StartDate.ToShortDateString());
                 LoansLV.Items.Add(lvi);
             }
         }

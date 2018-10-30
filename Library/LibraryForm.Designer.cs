@@ -916,7 +916,7 @@
             // 
             // BookName
             // 
-            this.BookName.Text = "BookName";
+            this.BookName.Text = "Book Title";
             this.BookName.Width = 140;
             // 
             // Member
@@ -926,7 +926,7 @@
             // 
             // TimeOfLoan
             // 
-            this.TimeOfLoan.Text = "TimeOfLoan";
+            this.TimeOfLoan.Text = "Loan Date";
             this.TimeOfLoan.Width = 195;
             // 
             // returnCreateLoanBTN

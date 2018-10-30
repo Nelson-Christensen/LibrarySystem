@@ -24,6 +24,14 @@ namespace Library.Services
             return memberRepository.All().Select(a => a.ToString()).ToList();
         }
 
+        public Member GetMemberByName(string input)
+        {
+            return memberRepository.All()
+                .Where(m => m.Name == input)
+                .Select(a => a)
+                .First();
+        }
+
         public MemberService(RepositoryFactory rFactory)
         {
             this.memberRepository = rFactory.CreateMemberRepository();
