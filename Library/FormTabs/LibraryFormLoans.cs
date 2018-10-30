@@ -100,6 +100,13 @@ namespace Library
                 return false;
             if (!memberService.All().Contains(loanInputMember))
                 return false;
+
+            //Date Validation
+            //if (timeOfLoan.Value.Date <= DateTime.Now.Date) //Need to be able to set a passed date to create late loans for Demo.
+            //    return false;
+            if (dueDateDTP.Value.Date <= timeOfLoanDTP.Value.Date)
+                return false;
+
             return true;
         }
 
