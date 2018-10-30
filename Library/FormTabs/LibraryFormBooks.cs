@@ -287,7 +287,7 @@ namespace Library
                 editAuthorTB.Text = selectedBook.Authors[0].ToString();
             editDescriptionTB.Text = selectedBook.Description;
 
-            for (int i = 1; i < selectedBook.Authors.Count; i++)
+            for (int i = 1; i < selectedBook.Authors.Count; i++) // Populate additional author fields if multiple authors are registered.
             {
                 string authorName = selectedBook.Authors[i].ToString();
                 if (i < authorFields)
@@ -301,7 +301,7 @@ namespace Library
                 }
             }
             int deleteAuthorFieldCount = authorFields - selectedBook.Authors.Count;
-            if (deleteAuthorFieldCount > 0)
+            if (deleteAuthorFieldCount > 0 && authorFields > 1)
                 RemoveAuthorFields(authorFields - selectedBook.Authors.Count); // Remove Leftover Fields.
 
             // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
