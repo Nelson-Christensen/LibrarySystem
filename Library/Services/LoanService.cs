@@ -86,7 +86,7 @@ namespace Library.Services
         public IEnumerable<Loan> GetAllActiveLoans()
         {
             return from l in loanRepository.All()
-                   where l.IsReturned() == false
+                   where l.IsReturned == false
                    select l;
         }
 
@@ -97,7 +97,7 @@ namespace Library.Services
         public IEnumerable<Loan> GetAllOverdueLoans()
         {
             return from l in loanRepository.All()
-                   where l.IsReturned() == false && l.DueDate < DateTime.Now
+                   where l.IsReturned == false && l.DueDate < DateTime.Now
                    select l;
         }
 
@@ -111,6 +111,16 @@ namespace Library.Services
         public IEnumerable<Loan> CombineFilteredLists(IEnumerable<Loan> list1, IEnumerable<Loan> list2)
         {
             return list1.Intersect(list2);
+        }
+
+        /// <summary>
+        /// Returns the loan with specific primary key (Id)
+        /// </summary>
+        /// <param name="pk"></param>
+        /// <returns>Returns loan that has the specified primary key</returns>
+        public Loan Find(int pk)
+        {
+            return loanRepository.Find(pk);
         }
 
         /// <summary>

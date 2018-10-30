@@ -61,6 +61,16 @@ namespace Library.Services
         }
 
         /// <summary>
+        /// Returns the bookCopy with specific primary key (Id)
+        /// </summary>
+        /// <param name="pk"></param>
+        /// <returns>Returns the bookCopy that has the specified primary key</returns>
+        public BookCopy Find(int pk)
+        {
+            return bookCopyRepository.Find(pk);
+        }
+
+        /// <summary>
         /// Notifies subscribers that bookCopyRepository has been updated.
         /// </summary>
         /// <param name="e">EventArgs to send to event subscribers</param>

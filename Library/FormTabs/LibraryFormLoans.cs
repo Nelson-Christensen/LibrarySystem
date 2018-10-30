@@ -44,21 +44,76 @@ namespace Library
 
         private void findMemberLoanTB_TextChanged(object sender, EventArgs e)
         {
-
+            loanFilterByField = findMemberLoanTB;
+            UpdateLoansList(LoanSearchResult().ToList());
         }
 
         private void activeLoansCHK_CheckedChanged(object sender, EventArgs e)
         {
-
+            UpdateLoansList(LoanSearchResult().ToList());
         }
 
         private void overdueLoansCHK_CheckedChanged(object sender, EventArgs e)
         {
-
+            UpdateLoansList(LoanSearchResult().ToList());
         }
 
         private void LoansLV_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Cleared selection
+            if (LoansLV.SelectedItems.Count == 0)
+            {
+                ClearBookInfoPanel();
+            }
+            else // New Book Selected
+            {
+                ListViewItem item = LoansLV.SelectedItems[0];
+                int loanID = Int32.Parse(item.SubItems[0].Text);
+                Loan loan = loanService.Find(loanID);
+
+                UpdateLoanInfoPanel(loan);
+            }
+        }
+
+        private void UpdateLoanInfoPanel(Loan loan)
+        {
+            createNewLoan = false;
+
+            bookCopyLoanTB.Text = loan.BookCopy.ToString();
+            memberLoanTB.Text = loan.Member.ToString();
+            timeOfLoanDTP.Value = loan.StartDate;
+            dueDateDTP.Value = loan.DueDate;
+            if (loan.IsReturned) //If Loan has been returned it will fill out returnDate and make it readOnly
+            {
+                timeOfReturnDTP.Value = (DateTime)loan.ReturnDate;
+                timeOfReturnDTP.Enabled = false;
+            }
+            else //Otherwise returnDate will be defaulted to now, but the date will be modifiable.
+            {
+                timeOfReturnDTP.Value = DateTime.Now;
+                timeOfReturnDTP.Enabled = true;
+            }
+            bookCopyLoanTB.Enabled = false;
+            memberLoanTB.Enabled = false;
+            timeOfLoanDTP.Enabled = false;
+            dueDateDTP.Enabled = false;
+
+        }
+
+        private void ClearLoanInfoPanel()
+        {
+            createNewLoan = true;
+
+            bookCopyLoanTB.ResetText();
+            memberLoanTB.ResetText();
+            timeOfLoanDTP.Value = DateTime.Now;
+            dueDateDTP.Value = DateTime.Now;
+            timeOfReturnDTP.Value = DateTime.Now;
+            bookCopyLoanTB.Enabled = true;
+            memberLoanTB.Enabled = true;
+            timeOfLoanDTP.Enabled = true;
+            dueDateDTP.Enabled = true;
+            timeOfReturnDTP.Enabled = false;
 
         }
 

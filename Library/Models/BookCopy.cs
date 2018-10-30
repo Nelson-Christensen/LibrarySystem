@@ -19,7 +19,7 @@ namespace Library.Models
             {
                 foreach (Loan l in Loans)
                 {
-                    if (l.IsReturned() == false)
+                    if (l.IsReturned == false)
                         onLoan = true;
                 }
             }

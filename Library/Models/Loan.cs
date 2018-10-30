@@ -17,15 +17,7 @@ namespace Library.Models
         public DateTime? ReturnDate { get; set; } //Allow null as a returnDate if it hasnt been returned yet.
         public BookCopy BookCopy { get; set; }
         public Member Member { get; set; }
-
-        /// <summary>
-        /// Checks to see if loan has been returned
-        /// </summary>
-        /// <returns>Returns true if ReturnDate has been registered, else false.</returns>
-        public bool IsReturned()
-        {
-            return ReturnDate != null;
-        }
+        public bool IsReturned { get { return ReturnDate != null; } }
 
         /// <summary>
         /// Must include parameterless constructor for Entity Framework to function. It cannot be initialized from outside though.
