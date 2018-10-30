@@ -18,6 +18,18 @@ namespace Library
     {
         bool createNewLoan = true; // Bool that controls whether the GUI should show that user is creating a new loan or handling an already existing loan.
         TextBox loanFilterByField;
+
+        private void loansTab_Enter(object sender, EventArgs e)
+        {
+            bookCopyLoanTB.AutoCompleteCustomSource.AddRange(bookCopyService.GetAllBookCopyNames().ToArray()); //Adds all the current bookCopies to autocomplete list.
+            memberLoanTB.AutoCompleteCustomSource.AddRange(memberService.GetAllMemberNames().ToArray()); //Adds all the current Members to autocomplete list.
+            UpdateLoansList(LoanSearchResult().ToList());
+
+            if (createNewLoan == false)
+            {
+                ClearLoanInfoPanel();
+            }
+        }
         private void returnCreateLoanBTN_Click(object sender, EventArgs e)
         {
             if (createNewLoan)
@@ -32,8 +44,21 @@ namespace Library
             }
             else //Return Loan
             {
-
+                ListViewItem item = LoansLV.SelectedItems[0];
+                int loanID = Int32.Parse(item.SubItems[0].Text);
+                Loan loan = loanService.Find(loanID);
+                loanService.ReturnLoan(loan);
             }
+        }
+
+        private void removeLoanBTN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newLoanBTN_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void findTitleLoanTB_TextChanged(object sender, EventArgs e)
@@ -63,7 +88,10 @@ namespace Library
             // Cleared selection
             if (LoansLV.SelectedItems.Count == 0)
             {
-                ClearBookInfoPanel();
+                if (createNewLoan == false)
+                {
+                    ClearLoanInfoPanel();
+                }
             }
             else // New Book Selected
             {
@@ -97,7 +125,7 @@ namespace Library
             memberLoanTB.Enabled = false;
             timeOfLoanDTP.Enabled = false;
             dueDateDTP.Enabled = false;
-
+            returnCreateLoanBTN.Text = "Return loan";
         }
 
         private void ClearLoanInfoPanel()
@@ -114,6 +142,8 @@ namespace Library
             timeOfLoanDTP.Enabled = true;
             dueDateDTP.Enabled = true;
             timeOfReturnDTP.Enabled = false;
+
+            returnCreateLoanBTN.Text = "Add Loan";
 
         }
 
@@ -161,6 +191,8 @@ namespace Library
 
         private void UpdateLoansList(List<Loan> loanList)
         {
+            if (createNewLoan == false)
+                ClearLoanInfoPanel();
             currentLoanDisplay = loanList;
             LoansLV.Items.Clear();
             foreach (Loan loan in loanList)

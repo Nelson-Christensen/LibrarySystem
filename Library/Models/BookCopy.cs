@@ -31,7 +31,7 @@ namespace Library.Models
         /// </summary>
         public override string ToString()
         {
-            return String.Format("{0} -- {1}", this.Id, this.Book);
+            return String.Format("{0} -- {1}", this.Book, this.Id);
         }
     }
 }

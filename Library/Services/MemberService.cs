@@ -19,6 +19,11 @@ namespace Library.Services
             return memberRepository.All();
         }
 
+        public IEnumerable<string> GetAllMemberNames()
+        {
+            return memberRepository.All().Select(a => a.ToString()).ToList();
+        }
+
         public MemberService(RepositoryFactory rFactory)
         {
             this.memberRepository = rFactory.CreateMemberRepository();

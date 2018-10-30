@@ -123,6 +123,17 @@ namespace Library.Services
             return loanRepository.Find(pk);
         }
 
+        public void ReturnLoan(Loan l)
+        {
+            ReturnLoan(l, DateTime.Now);
+        }
+
+        public void ReturnLoan(Loan l, DateTime returnTime)
+        {
+            l.ReturnDate = returnTime;
+            loanRepository.Edit(l);
+        }
+
         /// <summary>
         /// Notifies subscribers that loanRepository has been updated.
         /// </summary>

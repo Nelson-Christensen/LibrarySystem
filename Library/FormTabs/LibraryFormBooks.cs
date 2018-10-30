@@ -329,6 +329,8 @@ namespace Library
         private void lbCopies_DoubleClick(object sender, EventArgs e)
         {
             tabControl1.SelectTab(2);
+            bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
+            createNewLoan = true;
         }
 
         private void AddAuthor1BTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

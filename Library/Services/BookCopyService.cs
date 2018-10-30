@@ -60,6 +60,11 @@ namespace Library.Services
                    select bc;
         }
 
+        public IEnumerable<string> GetAllBookCopyNames()
+        {
+            return bookCopyRepository.All().Select(a => a.ToString()).ToList();
+        }
+
         /// <summary>
         /// Returns the bookCopy with specific primary key (Id)
         /// </summary>

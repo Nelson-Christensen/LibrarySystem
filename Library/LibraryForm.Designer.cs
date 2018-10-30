@@ -93,8 +93,8 @@
             this.Member = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TimeOfLoan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.returnCreateLoanBTN = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.removeLoanBTN = new System.Windows.Forms.Button();
+            this.newLoanBTN = new System.Windows.Forms.Button();
             this.overdueLoansCHK = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
@@ -344,9 +344,9 @@
             this.removeCopyBTN.Location = new System.Drawing.Point(807, 479);
             this.removeCopyBTN.Margin = new System.Windows.Forms.Padding(2);
             this.removeCopyBTN.Name = "removeCopyBTN";
-            this.removeCopyBTN.Size = new System.Drawing.Size(106, 37);
+            this.removeCopyBTN.Size = new System.Drawing.Size(96, 37);
             this.removeCopyBTN.TabIndex = 33;
-            this.removeCopyBTN.Text = "Remove copy";
+            this.removeCopyBTN.Text = "Remove";
             this.removeCopyBTN.UseVisualStyleBackColor = true;
             this.removeCopyBTN.Click += new System.EventHandler(this.removeCopyBTN_Click);
             // 
@@ -370,7 +370,7 @@
             this.saveChangesBTN.Location = new System.Drawing.Point(551, 479);
             this.saveChangesBTN.Margin = new System.Windows.Forms.Padding(2);
             this.saveChangesBTN.Name = "saveChangesBTN";
-            this.saveChangesBTN.Size = new System.Drawing.Size(88, 37);
+            this.saveChangesBTN.Size = new System.Drawing.Size(96, 37);
             this.saveChangesBTN.TabIndex = 30;
             this.saveChangesBTN.Text = "Save";
             this.saveChangesBTN.UseVisualStyleBackColor = true;
@@ -383,7 +383,7 @@
             this.addCopyBTN.Location = new System.Drawing.Point(697, 479);
             this.addCopyBTN.Margin = new System.Windows.Forms.Padding(2);
             this.addCopyBTN.Name = "addCopyBTN";
-            this.addCopyBTN.Size = new System.Drawing.Size(80, 37);
+            this.addCopyBTN.Size = new System.Drawing.Size(96, 37);
             this.addCopyBTN.TabIndex = 28;
             this.addCopyBTN.Text = "Add copy";
             this.addCopyBTN.UseVisualStyleBackColor = true;
@@ -866,8 +866,8 @@
             this.loansTab.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.loansTab.Controls.Add(this.LoansLV);
             this.loansTab.Controls.Add(this.returnCreateLoanBTN);
-            this.loansTab.Controls.Add(this.button1);
-            this.loansTab.Controls.Add(this.button2);
+            this.loansTab.Controls.Add(this.removeLoanBTN);
+            this.loansTab.Controls.Add(this.newLoanBTN);
             this.loansTab.Controls.Add(this.overdueLoansCHK);
             this.loansTab.Controls.Add(this.flowLayoutPanel1);
             this.loansTab.Controls.Add(this.activeLoansCHK);
@@ -884,6 +884,7 @@
             this.loansTab.Size = new System.Drawing.Size(942, 549);
             this.loansTab.TabIndex = 2;
             this.loansTab.Text = "Loans";
+            this.loansTab.Enter += new System.EventHandler(this.loansTab_Enter);
             // 
             // LoansLV
             // 
@@ -911,59 +912,61 @@
             // CopyID
             // 
             this.CopyID.Text = "CopyID";
-            this.CopyID.Width = 66;
+            this.CopyID.Width = 39;
             // 
             // BookName
             // 
             this.BookName.Text = "BookName";
-            this.BookName.Width = 161;
+            this.BookName.Width = 140;
             // 
             // Member
             // 
             this.Member.Text = "Member";
-            this.Member.Width = 124;
+            this.Member.Width = 84;
             // 
             // TimeOfLoan
             // 
             this.TimeOfLoan.Text = "TimeOfLoan";
-            this.TimeOfLoan.Width = 108;
+            this.TimeOfLoan.Width = 195;
             // 
             // returnCreateLoanBTN
             // 
             this.returnCreateLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.returnCreateLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.returnCreateLoanBTN.Location = new System.Drawing.Point(830, 479);
+            this.returnCreateLoanBTN.Location = new System.Drawing.Point(821, 479);
             this.returnCreateLoanBTN.Margin = new System.Windows.Forms.Padding(2);
             this.returnCreateLoanBTN.Name = "returnCreateLoanBTN";
-            this.returnCreateLoanBTN.Size = new System.Drawing.Size(96, 37);
+            this.returnCreateLoanBTN.Size = new System.Drawing.Size(105, 37);
             this.returnCreateLoanBTN.TabIndex = 54;
-            this.returnCreateLoanBTN.Text = "Return/Create";
+            this.returnCreateLoanBTN.Text = "Add Loan";
             this.returnCreateLoanBTN.UseVisualStyleBackColor = true;
             this.returnCreateLoanBTN.Click += new System.EventHandler(this.returnCreateLoanBTN_Click);
             // 
-            // button1
+            // removeLoanBTN
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Georgia", 12F);
-            this.button1.Location = new System.Drawing.Point(126, 19);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 37);
-            this.button1.TabIndex = 53;
-            this.button1.Text = "Remove";
-            this.button1.UseVisualStyleBackColor = true;
+            this.removeLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.removeLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
+            this.removeLoanBTN.Location = new System.Drawing.Point(126, 19);
+            this.removeLoanBTN.Margin = new System.Windows.Forms.Padding(2);
+            this.removeLoanBTN.Name = "removeLoanBTN";
+            this.removeLoanBTN.Size = new System.Drawing.Size(96, 37);
+            this.removeLoanBTN.TabIndex = 53;
+            this.removeLoanBTN.Text = "Remove";
+            this.removeLoanBTN.UseVisualStyleBackColor = true;
+            this.removeLoanBTN.Click += new System.EventHandler(this.removeLoanBTN_Click);
             // 
-            // button2
+            // newLoanBTN
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Georgia", 12F);
-            this.button2.Location = new System.Drawing.Point(18, 19);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 37);
-            this.button2.TabIndex = 52;
-            this.button2.Text = "New Loan";
-            this.button2.UseVisualStyleBackColor = true;
+            this.newLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.newLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
+            this.newLoanBTN.Location = new System.Drawing.Point(18, 19);
+            this.newLoanBTN.Margin = new System.Windows.Forms.Padding(2);
+            this.newLoanBTN.Name = "newLoanBTN";
+            this.newLoanBTN.Size = new System.Drawing.Size(96, 37);
+            this.newLoanBTN.TabIndex = 52;
+            this.newLoanBTN.Text = "New Loan";
+            this.newLoanBTN.UseVisualStyleBackColor = true;
+            this.newLoanBTN.Click += new System.EventHandler(this.newLoanBTN_Click);
             // 
             // overdueLoansCHK
             // 
@@ -1007,6 +1010,8 @@
             // 
             // bookCopyLoanTB
             // 
+            this.bookCopyLoanTB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.bookCopyLoanTB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.bookCopyLoanTB.BackColor = System.Drawing.SystemColors.Info;
             this.bookCopyLoanTB.Location = new System.Drawing.Point(2, 20);
             this.bookCopyLoanTB.Margin = new System.Windows.Forms.Padding(2);
@@ -1026,6 +1031,8 @@
             // 
             // memberLoanTB
             // 
+            this.memberLoanTB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.memberLoanTB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.memberLoanTB.BackColor = System.Drawing.SystemColors.Info;
             this.memberLoanTB.Location = new System.Drawing.Point(2, 70);
             this.memberLoanTB.Margin = new System.Windows.Forms.Padding(2);
@@ -1079,6 +1086,7 @@
             // 
             // timeOfReturnDTP
             // 
+            this.timeOfReturnDTP.Enabled = false;
             this.timeOfReturnDTP.Location = new System.Drawing.Point(3, 225);
             this.timeOfReturnDTP.Name = "timeOfReturnDTP";
             this.timeOfReturnDTP.Size = new System.Drawing.Size(225, 28);
@@ -1287,8 +1295,8 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.DateTimePicker timeOfReturnDTP;
         private System.Windows.Forms.Button returnCreateLoanBTN;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button removeLoanBTN;
+        private System.Windows.Forms.Button newLoanBTN;
         private System.Windows.Forms.ListView LoansLV;
         private System.Windows.Forms.ColumnHeader BookName;
         private System.Windows.Forms.ColumnHeader CopyID;
