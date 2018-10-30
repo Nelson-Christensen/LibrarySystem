@@ -56,7 +56,7 @@
             this.lbBooks = new System.Windows.Forms.ListBox();
             this.membersTab = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.showPreviousLoans = new System.Windows.Forms.CheckBox();
             this.label24 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.saveMemberBTN = new System.Windows.Forms.Button();
             this.removeMemberBTN = new System.Windows.Forms.Button();
             this.memberLoanBTN = new System.Windows.Forms.Button();
             this.newMemberBTN = new System.Windows.Forms.Button();
@@ -470,7 +470,7 @@
             // 
             this.membersTab.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.membersTab.Controls.Add(this.label16);
-            this.membersTab.Controls.Add(this.checkBox1);
+            this.membersTab.Controls.Add(this.showPreviousLoans);
             this.membersTab.Controls.Add(this.label24);
             this.membersTab.Controls.Add(this.groupBox1);
             this.membersTab.Controls.Add(this.label18);
@@ -482,7 +482,7 @@
             this.membersTab.Controls.Add(this.label12);
             this.membersTab.Controls.Add(this.label11);
             this.membersTab.Controls.Add(this.label10);
-            this.membersTab.Controls.Add(this.button4);
+            this.membersTab.Controls.Add(this.saveMemberBTN);
             this.membersTab.Controls.Add(this.removeMemberBTN);
             this.membersTab.Controls.Add(this.memberLoanBTN);
             this.membersTab.Controls.Add(this.newMemberBTN);
@@ -496,6 +496,7 @@
             this.membersTab.Size = new System.Drawing.Size(942, 549);
             this.membersTab.TabIndex = 1;
             this.membersTab.Text = "Members";
+            this.membersTab.Click += new System.EventHandler(this.membersTab_Click);
             // 
             // label16
             // 
@@ -509,16 +510,17 @@
             this.label16.TabIndex = 47;
             this.label16.Text = "*Previous loans";
             // 
-            // checkBox1
+            // showPreviousLoans
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(524, 392);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(201, 27);
-            this.checkBox1.TabIndex = 46;
-            this.checkBox1.Text = "Show previous loans";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.showPreviousLoans.AutoSize = true;
+            this.showPreviousLoans.Location = new System.Drawing.Point(524, 392);
+            this.showPreviousLoans.Margin = new System.Windows.Forms.Padding(2);
+            this.showPreviousLoans.Name = "showPreviousLoans";
+            this.showPreviousLoans.Size = new System.Drawing.Size(201, 27);
+            this.showPreviousLoans.TabIndex = 46;
+            this.showPreviousLoans.Text = "Show previous loans";
+            this.showPreviousLoans.UseVisualStyleBackColor = true;
+            this.showPreviousLoans.CheckedChanged += new System.EventHandler(this.showPreviousLoans_CheckedChanged);
             // 
             // label24
             // 
@@ -684,6 +686,7 @@
             this.lbMemberLoans.Name = "lbMemberLoans";
             this.lbMemberLoans.Size = new System.Drawing.Size(185, 277);
             this.lbMemberLoans.TabIndex = 37;
+            this.lbMemberLoans.SelectedIndexChanged += new System.EventHandler(this.lbMemberLoans_SelectedIndexChanged);
             // 
             // memberNameBox
             // 
@@ -693,6 +696,7 @@
             this.memberNameBox.Name = "memberNameBox";
             this.memberNameBox.Size = new System.Drawing.Size(264, 28);
             this.memberNameBox.TabIndex = 34;
+            this.memberNameBox.TextChanged += new System.EventHandler(this.memberNameBox_TextChanged);
             // 
             // memberPersonnummerBox
             // 
@@ -702,6 +706,7 @@
             this.memberPersonnummerBox.Name = "memberPersonnummerBox";
             this.memberPersonnummerBox.Size = new System.Drawing.Size(162, 28);
             this.memberPersonnummerBox.TabIndex = 33;
+            this.memberPersonnummerBox.TextChanged += new System.EventHandler(this.memberPersonnummerBox_TextChanged);
             // 
             // memberIdBox
             // 
@@ -711,6 +716,7 @@
             this.memberIdBox.Name = "memberIdBox";
             this.memberIdBox.Size = new System.Drawing.Size(99, 28);
             this.memberIdBox.TabIndex = 32;
+            this.memberIdBox.TextChanged += new System.EventHandler(this.memberIdBox_TextChanged);
             // 
             // label14
             // 
@@ -756,16 +762,17 @@
             this.label10.TabIndex = 27;
             this.label10.Text = "Personnummer";
             // 
-            // button4
+            // saveMemberBTN
             // 
-            this.button4.Font = new System.Drawing.Font("Georgia", 12F);
-            this.button4.Location = new System.Drawing.Point(414, 184);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(96, 37);
-            this.button4.TabIndex = 24;
-            this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
+            this.saveMemberBTN.Font = new System.Drawing.Font("Georgia", 12F);
+            this.saveMemberBTN.Location = new System.Drawing.Point(414, 184);
+            this.saveMemberBTN.Margin = new System.Windows.Forms.Padding(2);
+            this.saveMemberBTN.Name = "saveMemberBTN";
+            this.saveMemberBTN.Size = new System.Drawing.Size(96, 37);
+            this.saveMemberBTN.TabIndex = 24;
+            this.saveMemberBTN.Text = "Save";
+            this.saveMemberBTN.UseVisualStyleBackColor = true;
+            this.saveMemberBTN.Click += new System.EventHandler(this.saveMemberBTN_Click);
             // 
             // removeMemberBTN
             // 
@@ -777,6 +784,7 @@
             this.removeMemberBTN.TabIndex = 23;
             this.removeMemberBTN.Text = "Remove";
             this.removeMemberBTN.UseVisualStyleBackColor = true;
+            this.removeMemberBTN.Click += new System.EventHandler(this.removeMemberBTN_Click);
             // 
             // memberLoanBTN
             // 
@@ -799,6 +807,7 @@
             this.newMemberBTN.TabIndex = 21;
             this.newMemberBTN.Text = "New";
             this.newMemberBTN.UseVisualStyleBackColor = true;
+            this.newMemberBTN.Click += new System.EventHandler(this.newMemberBTN_Click);
             // 
             // lbMemberResults
             // 
@@ -809,6 +818,7 @@
             this.lbMemberResults.Name = "lbMemberResults";
             this.lbMemberResults.Size = new System.Drawing.Size(198, 277);
             this.lbMemberResults.TabIndex = 20;
+            this.lbMemberResults.SelectedIndexChanged += new System.EventHandler(this.lbMemberResults_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -828,6 +838,7 @@
             this.findMemberSearchBox.Name = "findMemberSearchBox";
             this.findMemberSearchBox.Size = new System.Drawing.Size(198, 28);
             this.findMemberSearchBox.TabIndex = 14;
+            this.findMemberSearchBox.TextChanged += new System.EventHandler(this.findMemberSearchBox_TextChanged);
             // 
             // loansTab
             // 
@@ -977,7 +988,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button saveMemberBTN;
         private System.Windows.Forms.Button removeMemberBTN;
         private System.Windows.Forms.Button memberLoanBTN;
         private System.Windows.Forms.Button newMemberBTN;
@@ -998,7 +1009,7 @@
         private System.Windows.Forms.ListBox lbMemberLoans;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox showPreviousLoans;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
