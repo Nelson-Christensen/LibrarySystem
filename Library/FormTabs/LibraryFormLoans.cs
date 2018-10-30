@@ -120,20 +120,26 @@ namespace Library
         private IEnumerable<Loan> LoanSearchResult()
         {
             IEnumerable<Loan> activeLoanFilter;
-            switch (loanFilterByField.Name)
+            if (loanFilterByField != null)
             {
-                case "findTitleLoanTB":
-                    activeLoanFilter = loanService.GetAllThatContainsTitle(findTitleLoanTB.Text);
-                    break;
+                switch (loanFilterByField.Name)
+                {
+                    case "findTitleLoanTB":
+                        activeLoanFilter = loanService.GetAllThatContainsTitle(findTitleLoanTB.Text);
+                        break;
 
-                case "findMemberLoanTB":
-                    activeLoanFilter = loanService.GetAllThatContainsMember(findMemberLoanTB.Text);
-                    break;
+                    case "findMemberLoanTB":
+                        activeLoanFilter = loanService.GetAllThatContainsMember(findMemberLoanTB.Text);
+                        break;
 
-                default:
-                    activeLoanFilter = loanService.All();
-                    break;
+                    default:
+                        activeLoanFilter = loanService.All();
+                        break;
+                }
             }
+            else
+                activeLoanFilter = loanService.All();
+
             if (activeLoansCHK.Checked)
             {
                 IEnumerable<Loan> activeLoansOnlyFilter = loanService.GetAllActiveLoans().ToList();

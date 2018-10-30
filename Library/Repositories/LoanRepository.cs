@@ -35,7 +35,7 @@ namespace Library.Repositories
 
         public IEnumerable<Loan> All()
         {
-            return context.Loans;
+            return context.Loans.Include("BookCopy").Include("Member"); // Make sure you include bookCopy and Members when you load all loans. Otherwise it could load with null values in their place.
         }
 
         public void Edit(Loan l)
