@@ -63,6 +63,18 @@ namespace Library
             editAuthorTB.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
         }
 
+        private bool ConfirmedPopup(string boxText, string boxTitle)
+        {
+            DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.OK)
+                return true;
+            else
+                return false;
+        }
 
+        private void InfoPopup(string boxText, string boxTitle)
+        {
+            DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }

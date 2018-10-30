@@ -63,21 +63,7 @@ namespace Library
                 }
             }
         }
-
-        private bool ConfirmedPopup(string boxText, string boxTitle)
-        {
-            DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (dialog == DialogResult.OK)
-                return true;
-            else
-                return false;
-        }
-
-        private void InfoPopup(string boxText, string boxTitle)
-        {
-            DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
+        
         private void closeBTN_Click(object sender, EventArgs e)
         {
             Application.Exit();

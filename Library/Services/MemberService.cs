@@ -29,7 +29,7 @@ namespace Library.Services
             return memberRepository.All()
                 .Where(m => m.Name == input)
                 .Select(a => a)
-                .First();
+                .FirstOrDefault();
         }
 
         public MemberService(RepositoryFactory rFactory)

@@ -18,6 +18,8 @@ namespace Library
     {
         bool createNewLoan = true; // Bool that controls whether the GUI should show that user is creating a new loan or handling an already existing loan.
         TextBox loanFilterByField;
+        BookCopy loanInputBookCopy;
+        Member loanInputMember;
 
         private void loansTab_Enter(object sender, EventArgs e)
         {
@@ -34,19 +36,26 @@ namespace Library
         {
             if (createNewLoan)
             {
-                string selectedBookCopyName = bookCopyLoanTB.Text;
-                string[] selectedBookSplit = selectedBookCopyName.Split('-');
-                int selectedBookID = Int32.Parse(selectedBookSplit[selectedBookSplit.Count()-1].Trim());
-                BookCopy selectedBookCopy = bookCopyService.Find(selectedBookID);
-                string selectedMemberName = memberLoanTB.Text;
-                Member selectedMember = memberService.GetMemberByName(selectedMemberName);
-                //Member newMember = new Member()
-                //{
-                //    Name = "Nelson",
-                //    personalID = "12348181"
-                //};
-                Loan newLoan = new Loan(selectedBookCopy, selectedMember, timeOfLoanDTP.Value, dueDateDTP.Value);
-                loanService.Add(newLoan);
+                if (ValidLoanInput())
+                {
+                    if (loanInputBookCopy.OnActiveLoan())
+                    {
+                        string confirmBoxText = "The Bookcopy you selected is already on loan";
+                        string confirmBoxTitle = "Bookcopy already on loan";
+                        InfoPopup(confirmBoxText, confirmBoxTitle);
+                    }
+                    else // Allowed to create a new loan
+                    {
+                        Loan newLoan = new Loan(loanInputBookCopy, loanInputMember, timeOfLoanDTP.Value, dueDateDTP.Value);
+                        loanService.Add(newLoan);
+                    }
+                }
+                else
+                {
+                    string confirmBoxText = "All fields did not contain valid data. Make sure your BookCopy and Member fields contain existing data.";
+                    string confirmBoxTitle = "Invalid Loan Data.";
+                    InfoPopup(confirmBoxText, confirmBoxTitle);
+                }
             }
             else //Return Loan
             {
@@ -57,7 +66,28 @@ namespace Library
             }
         }
 
-        private void removeLoanBTN_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Checks the database to make sure that the bookCopy and member exist there and returns true if they are found.
+        /// </summary>
+        /// <returns>Returns true if both of the parameter values are found in the database. Otherwise returns false.</returns>
+        private bool ValidLoanInput()
+        {
+            string selectedBookCopyName = bookCopyLoanTB.Text;
+            string[] selectedBookSplit = selectedBookCopyName.Split('-');
+            int selectedBookID;
+            if (!int.TryParse(selectedBookSplit[selectedBookSplit.Count() - 1].Trim(), out selectedBookID)) //If the string doesnt end with a number
+                return false;
+            loanInputBookCopy = bookCopyService.Find(selectedBookID);
+            string selectedMemberName = memberLoanTB.Text;
+            loanInputMember = memberService.GetMemberByName(selectedMemberName);
+            if (!bookCopyService.All().Contains(loanInputBookCopy))
+                return false;
+            if (!memberService.All().Contains(loanInputMember))
+                return false;
+            return true;
+        }
+
+            private void removeLoanBTN_Click(object sender, EventArgs e)
         {
             // Checks to make sure a loan is selected.
             if (LoansLV.SelectedItems.Count != 0)
@@ -66,6 +96,7 @@ namespace Library
                 int loanID = Int32.Parse(item.SubItems[0].Text);
                 Loan loan = loanService.Find(loanID);
                 loanService.Remove(loan);
+                UpdateLoansList(LoanSearchResult().ToList());
             }
         }
 
