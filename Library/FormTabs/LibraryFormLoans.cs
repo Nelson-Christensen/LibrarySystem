@@ -53,12 +53,20 @@ namespace Library
 
         private void removeLoanBTN_Click(object sender, EventArgs e)
         {
-
+            // Checks to make sure a loan is selected.
+            if (LoansLV.SelectedItems.Count != 0)
+            {
+                ListViewItem item = LoansLV.SelectedItems[0];
+                int loanID = Int32.Parse(item.SubItems[0].Text);
+                Loan loan = loanService.Find(loanID);
+                loanService.Remove(loan);
+            }
         }
 
         private void newLoanBTN_Click(object sender, EventArgs e)
         {
-
+            ClearLoanInfoPanel();
+            bookCopyLoanTB.Focus();
         }
 
         private void findTitleLoanTB_TextChanged(object sender, EventArgs e)
