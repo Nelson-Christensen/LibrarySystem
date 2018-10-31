@@ -7,13 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Library.Services
-{
+{   /// <summary>
+/// handles interaction between gui and memberRepository
+/// </summary>
     class MemberService : IService
     {
         public event EventHandler Updated;
 
         MemberRepository memberRepository;
-
+        /// <summary>
+        /// retrieves all members in database
+        /// </summary>
+        /// <returns>returns all members</returns>
         public IEnumerable<Member> All()
         {
             return memberRepository.All();
@@ -24,6 +29,10 @@ namespace Library.Services
             return memberRepository.All().Select(a => a.ToString()).ToList();
         }
 
+        /// <summary>
+        /// Fetches all member references with names that match input string
+        /// </summary>
+        /// <returns>returns a list of names that matches search criteria</returns>
         public Member GetMemberByName(string input)
         {
             return memberRepository.All()
@@ -32,10 +41,18 @@ namespace Library.Services
                 .FirstOrDefault();
         }
 
+        /// <summary>
+        /// allows the service to create its own repository
+        /// </summary>
+        /// <param name="rFactory"></param>
         public MemberService(RepositoryFactory rFactory)
         {
             this.memberRepository = rFactory.CreateMemberRepository();
         }
+        /// <summary>
+        /// Adds a member to the repository
+        /// </summary>
+        /// <param name="m"></param>
         public void Add(Member m)
         {
             memberRepository.Add(m);
@@ -49,11 +66,19 @@ namespace Library.Services
             Updated?.Invoke(this, e);
         }
 
+        /// <summary>
+        /// removes a member from the repository
+        /// </summary>
+        /// <param name="m"></param>
         public void Remove(Member m)
         {
             memberRepository.Remove(m);
         }
 
+        /// <summary>
+        /// edits a repository reference
+        /// </summary>
+        /// <param name="m"></param>
         public void Edit(Member m)
         {
             memberRepository.Edit(m);
@@ -61,7 +86,12 @@ namespace Library.Services
             OnUpdated(e);
         }
 
-        public IEnumerable<Member> GetAllThatContainsInTitle(string input)
+        /// <summary>
+        /// finds in repository the match to inputted string. Matches lowercase characters.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>returns a list of members that contains the string input</returns>
+        public IEnumerable<Member> GetAllThatContainsInName(string input)
         {
             return from m in memberRepository.All()
                 where m.Name.ToLower().Contains(input.ToLower())
