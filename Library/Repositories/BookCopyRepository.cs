@@ -16,37 +16,52 @@ namespace Library.Repositories
             this.context = c;
         }
 
+        /// <summary>
+        /// Adds the bookcopy to the database and saves changes.
+        /// </summary>
+        /// <param name="bc">The BookCopy to be added</param>
         public void Add(BookCopy bc)
         {
             context.BookCopies.Add(bc);
             context.SaveChanges();
         }
 
+        /// <summary>
+        /// Removes the input BookCopy from the database and save changes.
+        /// </summary>
+        /// <param name="bc">The BookCopy to be removed</param>
         public void Remove(BookCopy bc)
         {
             context.BookCopies.Remove(bc);
             context.SaveChanges();
         }
 
+        /// <summary>
+        /// Finds the BookCopy with the ID that matches input.
+        /// </summary>
+        /// <param name="pk">The ID of the BookCopy that you want to find</param>
+        /// <returns>Returns the BookCopy that matches the ID</returns>
         public BookCopy Find(int pk)
         {
             return context.BookCopies.Find(pk);
         }
 
+        /// <summary>
+        /// Gets all BookCopies from the database.
+        /// </summary>
+        /// <returns>Returns a collection of all BookCopies that exist in the datbase</returns>
         public IEnumerable<BookCopy> All()
         {
             return context.BookCopies;
         }
 
+        /// <summary>
+        /// Saves all changes made to the database.
+        /// </summary>
+        /// <param name="b">Irrelevant value, always saves all changes to all db entries.</param>
         public void Edit(BookCopy bc)
         {
-            // Because the object b was retrieved through the same context, we don't need to do a lookup. 
-            // We can just tell the context to save any changes that happened.
             context.SaveChanges();
-            Debug.WriteLine("Edited: " + bc);
-            // Then why do we still pass the Book object all the way to the repository? Because the service
-            // layer doesn't know we use EF. If in the future we decide to switch EF to something else, 
-            // we won't have to change the service layer.
         }
     }
 }
