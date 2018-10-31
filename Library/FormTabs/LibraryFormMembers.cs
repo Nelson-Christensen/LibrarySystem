@@ -16,9 +16,16 @@ using System.Globalization;
 
 namespace Library
 {
+    /// <summary>
+    /// contains all methods and events from the Members tab of the form. LibraryForm.cs contains initialization of form.
+    /// </summary>
     public partial class LibraryForm : Form
     {
-
+        /// <summary>
+        /// as you enter the members-tab the current members will display and the searchbox will reset.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void membersTab_Enter(object sender, EventArgs e)
         {
             UpdateMemberList(memberService.All().ToList());
@@ -30,6 +37,10 @@ namespace Library
             UpdateMemberList(memberService.All().ToList());
         }
 
+        /// <summary>
+        /// Updates the member list with currently displayed members and resets member info
+        /// </summary>
+        /// <param name="memberList"></param>
         private void UpdateMemberList(List<Member> memberList)
         {
             currentMemberDisplay = memberList;
@@ -38,37 +49,51 @@ namespace Library
             {
                 lbMemberResults.Items.Add(member);
             }
-            memberIdBox.ResetText();
-            memberNameBox.ResetText();
-            memberPersonnummerBox.ResetText();
+
+            ClearMemberResultsPanel();
 
         }
-
+        /// <summary>
+        /// Method that clears the member info panel
+        /// </summary>
         public void ClearMemberResultsPanel()
         {
-            memberIdBox.ResetText();
+
             memberNameBox.ResetText();
             memberPersonnummerBox.ResetText();
         }
-
+        /// <summary>
+        /// clears the member loans panel (the info textboxes of loans)
+        /// </summary>
         public void ClearMemberLoansPanel()
         {
             loanIdTB.ResetText();
             timeOfLoanTB.ResetText();
             timeOfReturnTB.ResetText();
             dueDateTB.ResetText();
-            
+            feesDueTB.ResetText();
+
+
         }
 
 
         //BUTTONS
+        /// <summary>
+        /// this button clears all windows in order to create a new member from scratch
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void newMemberBTN_Click(object sender, EventArgs e)
         {
             ClearMemberResultsPanel();
             lbMemberResults.ClearSelected();
-            memberIdBox.Select();
-        }
 
+        }
+        /// <summary>
+        /// Removes selected member after asking for confirmation.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void removeMemberBTN_Click(object sender, EventArgs e)
         {
             // Can only remove book if a book is selected.
@@ -87,6 +112,11 @@ namespace Library
             }
         }
 
+        /// <summary>
+        /// Saves the edited member info or new member.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveMemberBTN_Click(object sender, EventArgs e)
         {
             if (lbMemberResults.SelectedItem == null)
@@ -118,6 +148,7 @@ namespace Library
             }
         }
 
+        //When you click the button the selected member will be inserted into the loans tab new loan info.
         private void memberLoanBTN_Click(object sender, EventArgs e)
         {
             if (lbMemberResults.SelectedItem != null) //If you have selected a member, otherwise it cant create a new loan
@@ -146,12 +177,22 @@ namespace Library
 
 
 
-        //Searchbox
+        /// <summary>
+        /// Updates the members displayed in the listbox as you type the name you're looking for.
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void findMemberSearchBox_TextChanged(object sender, EventArgs e)
         {
-            UpdateMemberList(memberService.GetAllThatContainsInTitle(findMemberSearchBox.Text).ToList());
+            UpdateMemberList(memberService.GetAllThatContainsInName(findMemberSearchBox.Text).ToList());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbMemberResults_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Cleared selection
@@ -165,17 +206,33 @@ namespace Library
             else // When a new member is selected
             {
                 Member selectedMember = currentMemberDisplay[lbMemberResults.SelectedIndex];
+
                 UpdateMemberInfoPanel(selectedMember);
                 memberLoanTB.Text = selectedMember.ToString();
                 createNewLoan = true;
                 lbMemberLoans.Items.Clear();
-                foreach (Loan l in selectedMember.Loans)
-                {
-                    lbMemberLoans.Items.Add(l.BookCopy.Book.Title);
+                if (showActiveLoansCB.Checked)
+                {   //only displays loans with no returndates = active loans
+                    for (var i = 0; i < selectedMember.Loans.Count && selectedMember.Loans[i].ReturnDate == null; i++)
+                    {
+                        Loan lc = selectedMember.Loans[i];
+                        lbMemberLoans.Items.Add(lc.BookCopy.Book.Title);
+                    }
                 }
+                else
+                {
+                    foreach (Loan l in selectedMember.Loans)
+                    {
+                        lbMemberLoans.Items.Add(l.BookCopy.Book.Title);
+                    }
+                }                
             }
         }
-
+        /// <summary>
+        /// When you change selection of a member's loan, the panel displaying loan info changes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbMemberLoans_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbMemberLoans.SelectedItem == null)
@@ -194,17 +251,19 @@ namespace Library
             memberPersonnummerBox.Text = selectedMember.personalID;
             memberNameBox.Text = selectedMember.Name;
 
-            // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
-            //UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
-        }
 
+        }
+        /// <summary>
+        /// Updates the loan info panel with information about the selected member loan
+        /// </summary>
+        /// <param name="selectedLoan"></param>
         public void UpdateMemberLoanPanel(Loan selectedLoan)
         {
             
             loanIdTB.Text = selectedLoan.Id.ToString();
             timeOfLoanTB.Text = selectedLoan.StartDate.ToString(CultureInfo.InvariantCulture);
             timeOfReturnTB.Text = selectedLoan.ReturnDate.ToString();
-            dueDateTB.Text = selectedLoan.DueDate.ToString(CultureInfo.CurrentCulture);
+            dueDateTB.Text = selectedLoan.DueDate.ToString(CultureInfo.InvariantCulture);
             //feesDueTB.Text = selectedLoan.
         }
 
@@ -226,10 +285,30 @@ namespace Library
         }
 
 
-
-        private void showPreviousLoans_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Displays different results in the member loans listbox depending on checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void showActiveLoansCB_CheckedChanged(object sender, EventArgs e)
         {
-
+            Member selectedMember = currentMemberDisplay[lbMemberResults.SelectedIndex];
+            lbMemberLoans.Items.Clear();
+            if (showActiveLoansCB.Checked)
+            {   //only displays loans with no returndates = active loans
+                for (var i = 0; i < selectedMember.Loans.Count && selectedMember.Loans[i].ReturnDate == null; i++)
+                {
+                    Loan lc = selectedMember.Loans[i];
+                    lbMemberLoans.Items.Add(lc.BookCopy.Book.Title);
+                }
+            }
+            else
+            {
+                foreach (Loan l in selectedMember.Loans)
+                {
+                    lbMemberLoans.Items.Add(l.BookCopy.Book.Title);
+                }
+            }
         }
         private void loanIdTB_TextChanged(object sender, EventArgs e)
         {

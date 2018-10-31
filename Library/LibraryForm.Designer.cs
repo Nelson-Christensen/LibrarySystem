@@ -56,7 +56,10 @@
             this.findBooksLabel = new System.Windows.Forms.Label();
             this.lbBooks = new System.Windows.Forms.ListBox();
             this.membersTab = new System.Windows.Forms.TabPage();
-            this.showPreviousLoans = new System.Windows.Forms.CheckBox();
+            this.overdueLoanMLegendLBL = new System.Windows.Forms.Label();
+            this.returnedLoanMLegendLBL = new System.Windows.Forms.Label();
+            this.activeLoanMLegendLBL = new System.Windows.Forms.Label();
+            this.showActiveLoansCB = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -73,10 +76,8 @@
             this.lbMemberLoans = new System.Windows.Forms.ListBox();
             this.memberNameBox = new System.Windows.Forms.TextBox();
             this.memberPersonnummerBox = new System.Windows.Forms.TextBox();
-            this.memberIdBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.saveMemberBTN = new System.Windows.Forms.Button();
             this.removeMemberBTN = new System.Windows.Forms.Button();
@@ -118,9 +119,6 @@
             this.findTitleLoanTB = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.closeBTN = new System.Windows.Forms.Button();
-            this.overdueLoanMLegendLBL = new System.Windows.Forms.Label();
-            this.returnedLoanMLegendLBL = new System.Windows.Forms.Label();
-            this.activeLoanMLegendLBL = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.BookInfoFLP.SuspendLayout();
@@ -532,16 +530,14 @@
             this.membersTab.Controls.Add(this.overdueLoanMLegendLBL);
             this.membersTab.Controls.Add(this.returnedLoanMLegendLBL);
             this.membersTab.Controls.Add(this.activeLoanMLegendLBL);
-            this.membersTab.Controls.Add(this.showPreviousLoans);
+            this.membersTab.Controls.Add(this.showActiveLoansCB);
             this.membersTab.Controls.Add(this.groupBox1);
             this.membersTab.Controls.Add(this.label18);
             this.membersTab.Controls.Add(this.lbMemberLoans);
             this.membersTab.Controls.Add(this.memberNameBox);
             this.membersTab.Controls.Add(this.memberPersonnummerBox);
-            this.membersTab.Controls.Add(this.memberIdBox);
             this.membersTab.Controls.Add(this.label14);
             this.membersTab.Controls.Add(this.label12);
-            this.membersTab.Controls.Add(this.label11);
             this.membersTab.Controls.Add(this.label10);
             this.membersTab.Controls.Add(this.saveMemberBTN);
             this.membersTab.Controls.Add(this.removeMemberBTN);
@@ -560,17 +556,47 @@
             this.membersTab.Text = "Members";
             this.membersTab.Enter += new System.EventHandler(this.membersTab_Enter);
             // 
-            // showPreviousLoans
+            // overdueLoanMLegendLBL
             // 
-            this.showPreviousLoans.AutoSize = true;
-            this.showPreviousLoans.Location = new System.Drawing.Point(524, 391);
-            this.showPreviousLoans.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.showPreviousLoans.Name = "showPreviousLoans";
-            this.showPreviousLoans.Size = new System.Drawing.Size(201, 27);
-            this.showPreviousLoans.TabIndex = 46;
-            this.showPreviousLoans.Text = "Show previous loans";
-            this.showPreviousLoans.UseVisualStyleBackColor = true;
-            this.showPreviousLoans.CheckedChanged += new System.EventHandler(this.showPreviousLoans_CheckedChanged);
+            this.overdueLoanMLegendLBL.AutoSize = true;
+            this.overdueLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overdueLoanMLegendLBL.Location = new System.Drawing.Point(521, 367);
+            this.overdueLoanMLegendLBL.Name = "overdueLoanMLegendLBL";
+            this.overdueLoanMLegendLBL.Size = new System.Drawing.Size(88, 15);
+            this.overdueLoanMLegendLBL.TabIndex = 61;
+            this.overdueLoanMLegendLBL.Text = "*overdue loan";
+            // 
+            // returnedLoanMLegendLBL
+            // 
+            this.returnedLoanMLegendLBL.AutoSize = true;
+            this.returnedLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnedLoanMLegendLBL.Location = new System.Drawing.Point(521, 352);
+            this.returnedLoanMLegendLBL.Name = "returnedLoanMLegendLBL";
+            this.returnedLoanMLegendLBL.Size = new System.Drawing.Size(93, 15);
+            this.returnedLoanMLegendLBL.TabIndex = 60;
+            this.returnedLoanMLegendLBL.Text = "*returned loan";
+            // 
+            // activeLoanMLegendLBL
+            // 
+            this.activeLoanMLegendLBL.AutoSize = true;
+            this.activeLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeLoanMLegendLBL.Location = new System.Drawing.Point(521, 337);
+            this.activeLoanMLegendLBL.Name = "activeLoanMLegendLBL";
+            this.activeLoanMLegendLBL.Size = new System.Drawing.Size(77, 15);
+            this.activeLoanMLegendLBL.TabIndex = 59;
+            this.activeLoanMLegendLBL.Text = "*active loan";
+            // 
+            // showActiveLoansCB
+            // 
+            this.showActiveLoansCB.AutoSize = true;
+            this.showActiveLoansCB.Location = new System.Drawing.Point(524, 391);
+            this.showActiveLoansCB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.showActiveLoansCB.Name = "showActiveLoansCB";
+            this.showActiveLoansCB.Size = new System.Drawing.Size(220, 27);
+            this.showActiveLoansCB.TabIndex = 46;
+            this.showActiveLoansCB.Text = "Only show active loans";
+            this.showActiveLoansCB.UseVisualStyleBackColor = true;
+            this.showActiveLoansCB.CheckedChanged += new System.EventHandler(this.showActiveLoansCB_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -716,9 +742,9 @@
             this.label18.Location = new System.Drawing.Point(520, 77);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(148, 18);
+            this.label18.Size = new System.Drawing.Size(187, 18);
             this.label18.TabIndex = 43;
-            this.label18.Text = "Current loans (title)";
+            this.label18.Text = "Loans by member (titles)";
             // 
             // lbMemberLoans
             // 
@@ -744,22 +770,12 @@
             // memberPersonnummerBox
             // 
             this.memberPersonnummerBox.BackColor = System.Drawing.SystemColors.Info;
-            this.memberPersonnummerBox.Location = new System.Drawing.Point(350, 99);
+            this.memberPersonnummerBox.Location = new System.Drawing.Point(247, 99);
             this.memberPersonnummerBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.memberPersonnummerBox.Name = "memberPersonnummerBox";
-            this.memberPersonnummerBox.Size = new System.Drawing.Size(162, 28);
+            this.memberPersonnummerBox.Size = new System.Drawing.Size(265, 28);
             this.memberPersonnummerBox.TabIndex = 33;
             this.memberPersonnummerBox.TextChanged += new System.EventHandler(this.memberPersonnummerBox_TextChanged);
-            // 
-            // memberIdBox
-            // 
-            this.memberIdBox.BackColor = System.Drawing.SystemColors.Info;
-            this.memberIdBox.Location = new System.Drawing.Point(247, 99);
-            this.memberIdBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.memberIdBox.Name = "memberIdBox";
-            this.memberIdBox.Size = new System.Drawing.Size(99, 28);
-            this.memberIdBox.TabIndex = 32;
-            this.memberIdBox.TextChanged += new System.EventHandler(this.memberIdBox_TextChanged);
             // 
             // label14
             // 
@@ -783,22 +799,11 @@
             this.label12.TabIndex = 29;
             this.label12.Text = "Results";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label11.Location = new System.Drawing.Point(244, 77);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(26, 18);
-            this.label11.TabIndex = 28;
-            this.label11.Text = "ID";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label10.Location = new System.Drawing.Point(346, 77);
+            this.label10.Location = new System.Drawing.Point(244, 80);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(118, 18);
@@ -1239,36 +1244,6 @@
             this.closeBTN.UseVisualStyleBackColor = false;
             this.closeBTN.Click += new System.EventHandler(this.closeBTN_Click);
             // 
-            // overdueLoanMLegendLBL
-            // 
-            this.overdueLoanMLegendLBL.AutoSize = true;
-            this.overdueLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overdueLoanMLegendLBL.Location = new System.Drawing.Point(521, 367);
-            this.overdueLoanMLegendLBL.Name = "overdueLoanMLegendLBL";
-            this.overdueLoanMLegendLBL.Size = new System.Drawing.Size(88, 15);
-            this.overdueLoanMLegendLBL.TabIndex = 61;
-            this.overdueLoanMLegendLBL.Text = "*overdue loan";
-            // 
-            // returnedLoanMLegendLBL
-            // 
-            this.returnedLoanMLegendLBL.AutoSize = true;
-            this.returnedLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnedLoanMLegendLBL.Location = new System.Drawing.Point(521, 352);
-            this.returnedLoanMLegendLBL.Name = "returnedLoanMLegendLBL";
-            this.returnedLoanMLegendLBL.Size = new System.Drawing.Size(93, 15);
-            this.returnedLoanMLegendLBL.TabIndex = 60;
-            this.returnedLoanMLegendLBL.Text = "*returned loan";
-            // 
-            // activeLoanMLegendLBL
-            // 
-            this.activeLoanMLegendLBL.AutoSize = true;
-            this.activeLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeLoanMLegendLBL.Location = new System.Drawing.Point(521, 337);
-            this.activeLoanMLegendLBL.Name = "activeLoanMLegendLBL";
-            this.activeLoanMLegendLBL.Size = new System.Drawing.Size(77, 15);
-            this.activeLoanMLegendLBL.TabIndex = 59;
-            this.activeLoanMLegendLBL.Text = "*active loan";
-            // 
             // LibraryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1334,7 +1309,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button saveMemberBTN;
         private System.Windows.Forms.Button removeMemberBTN;
@@ -1342,7 +1316,6 @@
         private System.Windows.Forms.Button newMemberBTN;
         private System.Windows.Forms.ListBox lbMemberResults;
         private System.Windows.Forms.TextBox memberPersonnummerBox;
-        private System.Windows.Forms.TextBox memberIdBox;
         private System.Windows.Forms.TextBox memberNameBox;
         private System.Windows.Forms.Button closeBTN;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1354,7 +1327,7 @@
         private System.Windows.Forms.TextBox dueDateTB;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ListBox lbMemberLoans;
-        private System.Windows.Forms.CheckBox showPreviousLoans;
+        private System.Windows.Forms.CheckBox showActiveLoansCB;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
