@@ -60,6 +60,23 @@ namespace Library.Services
                    select bc;
         }
 
+        public IEnumerable<string> GetAllAvailableBookCopyNames()
+        {
+            return from bc in bookCopyRepository.All()
+                   where bc.OnActiveLoan() == false
+                   select bc.ToString();
+        }
+
+        /// <summary>
+        /// Returns the bookCopy with specific primary key (Id)
+        /// </summary>
+        /// <param name="pk"></param>
+        /// <returns>Returns the bookCopy that has the specified primary key</returns>
+        public BookCopy Find(int pk)
+        {
+            return bookCopyRepository.Find(pk);
+        }
+
         /// <summary>
         /// Notifies subscribers that bookCopyRepository has been updated.
         /// </summary>

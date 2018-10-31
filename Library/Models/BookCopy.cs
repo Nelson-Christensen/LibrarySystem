@@ -15,10 +15,13 @@ namespace Library.Models
         public bool OnActiveLoan()
         {
             bool onLoan = false;
-            foreach (Loan l in Loans)
+            if (Loans != null)
             {
-                if (l.IsReturned() == false)
-                    onLoan = true;
+                foreach (Loan l in Loans)
+                {
+                    if (l.IsReturned == false)
+                        onLoan = true;
+                }
             }
             return onLoan;
         }
@@ -28,7 +31,7 @@ namespace Library.Models
         /// </summary>
         public override string ToString()
         {
-            return String.Format("{0} -- {1}", this.Id, this.Book);
+            return String.Format("{0} -- {1}", this.Book, this.Id);
         }
     }
 }

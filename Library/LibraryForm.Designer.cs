@@ -37,7 +37,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.editDescriptionTB = new System.Windows.Forms.RichTextBox();
             this.AvailableCHK = new System.Windows.Forms.CheckBox();
-            this.booksNewLoanBTN = new System.Windows.Forms.Button();
             this.lbCopies = new System.Windows.Forms.ListBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -87,11 +86,34 @@
             this.label8 = new System.Windows.Forms.Label();
             this.findMemberSearchBox = new System.Windows.Forms.TextBox();
             this.loansTab = new System.Windows.Forms.TabPage();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.LoansLV = new System.Windows.Forms.ListView();
+            this.LoanID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CopyID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BookName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Member = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TimeOfLoan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.returnCreateLoanBTN = new System.Windows.Forms.Button();
+            this.removeLoanBTN = new System.Windows.Forms.Button();
+            this.newLoanBTN = new System.Windows.Forms.Button();
+            this.overdueLoansCHK = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.bookCopyLoanTB = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.memberLoanTB = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.timeOfLoanDTP = new System.Windows.Forms.DateTimePicker();
+            this.label27 = new System.Windows.Forms.Label();
+            this.dueDateDTP = new System.Windows.Forms.DateTimePicker();
+            this.label28 = new System.Windows.Forms.Label();
+            this.timeOfReturnDTP = new System.Windows.Forms.DateTimePicker();
+            this.activeLoansCHK = new System.Windows.Forms.CheckBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.findMemberLoanTB = new System.Windows.Forms.TextBox();
+            this.findTitleLoanTB = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.closeBTN = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.booksTab.SuspendLayout();
@@ -99,6 +121,7 @@
             this.membersTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.loansTab.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -121,7 +144,6 @@
             this.booksTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.booksTab.Controls.Add(this.BookInfoFLP);
             this.booksTab.Controls.Add(this.AvailableCHK);
-            this.booksTab.Controls.Add(this.booksNewLoanBTN);
             this.booksTab.Controls.Add(this.lbCopies);
             this.booksTab.Controls.Add(this.label15);
             this.booksTab.Controls.Add(this.label13);
@@ -280,18 +302,6 @@
             this.AvailableCHK.UseVisualStyleBackColor = true;
             this.AvailableCHK.CheckedChanged += new System.EventHandler(this.AvailableCHK_CheckedChanged);
             // 
-            // booksNewLoanBTN
-            // 
-            this.booksNewLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.booksNewLoanBTN.Location = new System.Drawing.Point(826, 19);
-            this.booksNewLoanBTN.Margin = new System.Windows.Forms.Padding(2);
-            this.booksNewLoanBTN.Name = "booksNewLoanBTN";
-            this.booksNewLoanBTN.Size = new System.Drawing.Size(86, 37);
-            this.booksNewLoanBTN.TabIndex = 37;
-            this.booksNewLoanBTN.Text = "New loan";
-            this.booksNewLoanBTN.UseVisualStyleBackColor = true;
-            this.booksNewLoanBTN.Click += new System.EventHandler(this.booksNewLoanBTN_Click);
-            // 
             // lbCopies
             // 
             this.lbCopies.BackColor = System.Drawing.SystemColors.Window;
@@ -329,18 +339,20 @@
             // 
             // removeCopyBTN
             // 
+            this.removeCopyBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.removeCopyBTN.Location = new System.Drawing.Point(807, 479);
             this.removeCopyBTN.Margin = new System.Windows.Forms.Padding(2);
             this.removeCopyBTN.Name = "removeCopyBTN";
-            this.removeCopyBTN.Size = new System.Drawing.Size(106, 37);
+            this.removeCopyBTN.Size = new System.Drawing.Size(96, 37);
             this.removeCopyBTN.TabIndex = 33;
-            this.removeCopyBTN.Text = "Remove copy";
+            this.removeCopyBTN.Text = "Remove";
             this.removeCopyBTN.UseVisualStyleBackColor = true;
             this.removeCopyBTN.Click += new System.EventHandler(this.removeCopyBTN_Click);
             // 
             // removeBookBTN
             // 
+            this.removeBookBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeBookBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.removeBookBTN.Location = new System.Drawing.Point(126, 19);
             this.removeBookBTN.Margin = new System.Windows.Forms.Padding(2);
@@ -353,11 +365,12 @@
             // 
             // saveChangesBTN
             // 
+            this.saveChangesBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveChangesBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.saveChangesBTN.Location = new System.Drawing.Point(551, 479);
             this.saveChangesBTN.Margin = new System.Windows.Forms.Padding(2);
             this.saveChangesBTN.Name = "saveChangesBTN";
-            this.saveChangesBTN.Size = new System.Drawing.Size(88, 37);
+            this.saveChangesBTN.Size = new System.Drawing.Size(96, 37);
             this.saveChangesBTN.TabIndex = 30;
             this.saveChangesBTN.Text = "Save";
             this.saveChangesBTN.UseVisualStyleBackColor = true;
@@ -365,11 +378,12 @@
             // 
             // addCopyBTN
             // 
+            this.addCopyBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.addCopyBTN.Location = new System.Drawing.Point(697, 479);
             this.addCopyBTN.Margin = new System.Windows.Forms.Padding(2);
             this.addCopyBTN.Name = "addCopyBTN";
-            this.addCopyBTN.Size = new System.Drawing.Size(80, 37);
+            this.addCopyBTN.Size = new System.Drawing.Size(96, 37);
             this.addCopyBTN.TabIndex = 28;
             this.addCopyBTN.Text = "Add copy";
             this.addCopyBTN.UseVisualStyleBackColor = true;
@@ -377,13 +391,14 @@
             // 
             // addBookBTN
             // 
+            this.addBookBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBookBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.addBookBTN.Location = new System.Drawing.Point(18, 19);
             this.addBookBTN.Margin = new System.Windows.Forms.Padding(2);
             this.addBookBTN.Name = "addBookBTN";
             this.addBookBTN.Size = new System.Drawing.Size(96, 37);
             this.addBookBTN.TabIndex = 11;
-            this.addBookBTN.Text = "Add";
+            this.addBookBTN.Text = "New Book";
             this.addBookBTN.UseVisualStyleBackColor = true;
             this.addBookBTN.Click += new System.EventHandler(this.addBookBTN_Click);
             // 
@@ -491,6 +506,7 @@
             this.membersTab.Controls.Add(this.lbMemberResults);
             this.membersTab.Controls.Add(this.label8);
             this.membersTab.Controls.Add(this.findMemberSearchBox);
+            this.membersTab.Cursor = System.Windows.Forms.Cursors.Default;
             this.membersTab.Location = new System.Drawing.Point(4, 30);
             this.membersTab.Margin = new System.Windows.Forms.Padding(2);
             this.membersTab.Name = "membersTab";
@@ -771,6 +787,7 @@
             // 
             // saveMemberBTN
             // 
+            this.saveMemberBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveMemberBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.saveMemberBTN.Location = new System.Drawing.Point(414, 184);
             this.saveMemberBTN.Margin = new System.Windows.Forms.Padding(2);
@@ -783,6 +800,7 @@
             // 
             // removeMemberBTN
             // 
+            this.removeMemberBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeMemberBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.removeMemberBTN.Location = new System.Drawing.Point(136, 22);
             this.removeMemberBTN.Margin = new System.Windows.Forms.Padding(2);
@@ -806,6 +824,7 @@
             // 
             // newMemberBTN
             // 
+            this.newMemberBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.newMemberBTN.Font = new System.Drawing.Font("Georgia", 12F);
             this.newMemberBTN.Location = new System.Drawing.Point(35, 22);
             this.newMemberBTN.Margin = new System.Windows.Forms.Padding(2);
@@ -850,72 +869,306 @@
             // loansTab
             // 
             this.loansTab.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.loansTab.Controls.Add(this.radioButton3);
-            this.loansTab.Controls.Add(this.label25);
-            this.loansTab.Controls.Add(this.radioButton2);
-            this.loansTab.Controls.Add(this.radioButton1);
-            this.loansTab.Controls.Add(this.textBox1);
+            this.loansTab.Controls.Add(this.LoansLV);
+            this.loansTab.Controls.Add(this.returnCreateLoanBTN);
+            this.loansTab.Controls.Add(this.removeLoanBTN);
+            this.loansTab.Controls.Add(this.newLoanBTN);
+            this.loansTab.Controls.Add(this.overdueLoansCHK);
+            this.loansTab.Controls.Add(this.flowLayoutPanel1);
+            this.loansTab.Controls.Add(this.activeLoansCHK);
+            this.loansTab.Controls.Add(this.label29);
+            this.loansTab.Controls.Add(this.label30);
+            this.loansTab.Controls.Add(this.label32);
+            this.loansTab.Controls.Add(this.findMemberLoanTB);
+            this.loansTab.Controls.Add(this.findTitleLoanTB);
+            this.loansTab.Controls.Add(this.label33);
+            this.loansTab.Cursor = System.Windows.Forms.Cursors.Default;
             this.loansTab.Location = new System.Drawing.Point(4, 30);
             this.loansTab.Margin = new System.Windows.Forms.Padding(2);
             this.loansTab.Name = "loansTab";
             this.loansTab.Size = new System.Drawing.Size(942, 549);
             this.loansTab.TabIndex = 2;
             this.loansTab.Text = "Loans";
+            this.loansTab.Enter += new System.EventHandler(this.loansTab_Enter);
             // 
-            // radioButton3
+            // LoansLV
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(37, 211);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(148, 27);
-            this.radioButton3.TabIndex = 31;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Overdue loans";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.LoansLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.LoanID,
+            this.CopyID,
+            this.BookName,
+            this.Member,
+            this.TimeOfLoan});
+            this.LoansLV.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoansLV.FullRowSelect = true;
+            this.LoansLV.Location = new System.Drawing.Point(196, 92);
+            this.LoansLV.Name = "LoansLV";
+            this.LoansLV.Size = new System.Drawing.Size(463, 382);
+            this.LoansLV.TabIndex = 55;
+            this.LoansLV.UseCompatibleStateImageBehavior = false;
+            this.LoansLV.View = System.Windows.Forms.View.Details;
+            this.LoansLV.SelectedIndexChanged += new System.EventHandler(this.LoansLV_SelectedIndexChanged);
+            // 
+            // LoanID
+            // 
+            this.LoanID.Text = "LoanID";
+            this.LoanID.Width = 0;
+            // 
+            // CopyID
+            // 
+            this.CopyID.Text = "CopyID";
+            this.CopyID.Width = 39;
+            // 
+            // BookName
+            // 
+            this.BookName.Text = "Book Title";
+            this.BookName.Width = 140;
+            // 
+            // Member
+            // 
+            this.Member.Text = "Member";
+            this.Member.Width = 84;
+            // 
+            // TimeOfLoan
+            // 
+            this.TimeOfLoan.Text = "Loan Date";
+            this.TimeOfLoan.Width = 195;
+            // 
+            // returnCreateLoanBTN
+            // 
+            this.returnCreateLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.returnCreateLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
+            this.returnCreateLoanBTN.Location = new System.Drawing.Point(821, 479);
+            this.returnCreateLoanBTN.Margin = new System.Windows.Forms.Padding(2);
+            this.returnCreateLoanBTN.Name = "returnCreateLoanBTN";
+            this.returnCreateLoanBTN.Size = new System.Drawing.Size(105, 37);
+            this.returnCreateLoanBTN.TabIndex = 54;
+            this.returnCreateLoanBTN.Text = "Add Loan";
+            this.returnCreateLoanBTN.UseVisualStyleBackColor = true;
+            this.returnCreateLoanBTN.Click += new System.EventHandler(this.returnCreateLoanBTN_Click);
+            // 
+            // removeLoanBTN
+            // 
+            this.removeLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.removeLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
+            this.removeLoanBTN.Location = new System.Drawing.Point(126, 19);
+            this.removeLoanBTN.Margin = new System.Windows.Forms.Padding(2);
+            this.removeLoanBTN.Name = "removeLoanBTN";
+            this.removeLoanBTN.Size = new System.Drawing.Size(96, 37);
+            this.removeLoanBTN.TabIndex = 53;
+            this.removeLoanBTN.Text = "Remove";
+            this.removeLoanBTN.UseVisualStyleBackColor = true;
+            this.removeLoanBTN.Click += new System.EventHandler(this.removeLoanBTN_Click);
+            // 
+            // newLoanBTN
+            // 
+            this.newLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.newLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
+            this.newLoanBTN.Location = new System.Drawing.Point(18, 19);
+            this.newLoanBTN.Margin = new System.Windows.Forms.Padding(2);
+            this.newLoanBTN.Name = "newLoanBTN";
+            this.newLoanBTN.Size = new System.Drawing.Size(96, 37);
+            this.newLoanBTN.TabIndex = 52;
+            this.newLoanBTN.Text = "New Loan";
+            this.newLoanBTN.UseVisualStyleBackColor = true;
+            this.newLoanBTN.Click += new System.EventHandler(this.newLoanBTN_Click);
+            // 
+            // overdueLoansCHK
+            // 
+            this.overdueLoansCHK.AutoSize = true;
+            this.overdueLoansCHK.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overdueLoansCHK.Location = new System.Drawing.Point(18, 234);
+            this.overdueLoansCHK.Name = "overdueLoansCHK";
+            this.overdueLoansCHK.Size = new System.Drawing.Size(173, 22);
+            this.overdueLoansCHK.TabIndex = 51;
+            this.overdueLoansCHK.Text = "Only Overdue Loans";
+            this.overdueLoansCHK.UseVisualStyleBackColor = true;
+            this.overdueLoansCHK.CheckedChanged += new System.EventHandler(this.overdueLoansCHK_CheckedChanged);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.label9);
+            this.flowLayoutPanel1.Controls.Add(this.bookCopyLoanTB);
+            this.flowLayoutPanel1.Controls.Add(this.label26);
+            this.flowLayoutPanel1.Controls.Add(this.memberLoanTB);
+            this.flowLayoutPanel1.Controls.Add(this.label25);
+            this.flowLayoutPanel1.Controls.Add(this.timeOfLoanDTP);
+            this.flowLayoutPanel1.Controls.Add(this.label27);
+            this.flowLayoutPanel1.Controls.Add(this.dueDateDTP);
+            this.flowLayoutPanel1.Controls.Add(this.label28);
+            this.flowLayoutPanel1.Controls.Add(this.timeOfReturnDTP);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(679, 74);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(247, 400);
+            this.flowLayoutPanel1.TabIndex = 50;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label9.Location = new System.Drawing.Point(2, 0);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(236, 18);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "BookCopy";
+            // 
+            // bookCopyLoanTB
+            // 
+            this.bookCopyLoanTB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.bookCopyLoanTB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.bookCopyLoanTB.BackColor = System.Drawing.SystemColors.Info;
+            this.bookCopyLoanTB.Location = new System.Drawing.Point(2, 20);
+            this.bookCopyLoanTB.Margin = new System.Windows.Forms.Padding(2);
+            this.bookCopyLoanTB.Name = "bookCopyLoanTB";
+            this.bookCopyLoanTB.Size = new System.Drawing.Size(226, 28);
+            this.bookCopyLoanTB.TabIndex = 19;
+            // 
+            // label26
+            // 
+            this.label26.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label26.Location = new System.Drawing.Point(2, 50);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(236, 18);
+            this.label26.TabIndex = 24;
+            this.label26.Text = "Member";
+            // 
+            // memberLoanTB
+            // 
+            this.memberLoanTB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.memberLoanTB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.memberLoanTB.BackColor = System.Drawing.SystemColors.Info;
+            this.memberLoanTB.Location = new System.Drawing.Point(2, 70);
+            this.memberLoanTB.Margin = new System.Windows.Forms.Padding(2);
+            this.memberLoanTB.Name = "memberLoanTB";
+            this.memberLoanTB.Size = new System.Drawing.Size(226, 28);
+            this.memberLoanTB.TabIndex = 20;
             // 
             // label25
             // 
-            this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label25.Location = new System.Drawing.Point(34, 79);
+            this.label25.Location = new System.Drawing.Point(2, 100);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(178, 18);
-            this.label25.TabIndex = 30;
-            this.label25.Text = "Find specific loan (book)";
+            this.label25.Size = new System.Drawing.Size(236, 18);
+            this.label25.TabIndex = 32;
+            this.label25.Text = "Time of Loan";
             // 
-            // radioButton2
+            // timeOfLoanDTP
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(37, 180);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(150, 27);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Previous loans";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.timeOfLoanDTP.Location = new System.Drawing.Point(3, 121);
+            this.timeOfLoanDTP.Name = "timeOfLoanDTP";
+            this.timeOfLoanDTP.Size = new System.Drawing.Size(225, 28);
+            this.timeOfLoanDTP.TabIndex = 31;
             // 
-            // radioButton1
+            // label27
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(37, 148);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(143, 27);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Current loans";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.label27.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label27.Location = new System.Drawing.Point(2, 152);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(236, 18);
+            this.label27.TabIndex = 34;
+            this.label27.Text = "Due Date";
             // 
-            // textBox1
+            // dueDateDTP
             // 
-            this.textBox1.Location = new System.Drawing.Point(37, 101);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(205, 28);
-            this.textBox1.TabIndex = 0;
+            this.dueDateDTP.Location = new System.Drawing.Point(3, 173);
+            this.dueDateDTP.Name = "dueDateDTP";
+            this.dueDateDTP.Size = new System.Drawing.Size(225, 28);
+            this.dueDateDTP.TabIndex = 33;
+            // 
+            // label28
+            // 
+            this.label28.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label28.Location = new System.Drawing.Point(2, 204);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(236, 18);
+            this.label28.TabIndex = 36;
+            this.label28.Text = "Time of Return";
+            // 
+            // timeOfReturnDTP
+            // 
+            this.timeOfReturnDTP.Enabled = false;
+            this.timeOfReturnDTP.Location = new System.Drawing.Point(3, 225);
+            this.timeOfReturnDTP.Name = "timeOfReturnDTP";
+            this.timeOfReturnDTP.Size = new System.Drawing.Size(225, 28);
+            this.timeOfReturnDTP.TabIndex = 35;
+            // 
+            // activeLoansCHK
+            // 
+            this.activeLoansCHK.AutoSize = true;
+            this.activeLoansCHK.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeLoansCHK.Location = new System.Drawing.Point(18, 206);
+            this.activeLoansCHK.Name = "activeLoansCHK";
+            this.activeLoansCHK.Size = new System.Drawing.Size(156, 22);
+            this.activeLoansCHK.TabIndex = 49;
+            this.activeLoansCHK.Text = "Only Active Loans";
+            this.activeLoansCHK.UseVisualStyleBackColor = true;
+            this.activeLoansCHK.CheckedChanged += new System.EventHandler(this.activeLoansCHK_CheckedChanged);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label29.Location = new System.Drawing.Point(193, 69);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(60, 18);
+            this.label29.TabIndex = 48;
+            this.label29.Text = "Results";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label30.Location = new System.Drawing.Point(18, 96);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(97, 18);
+            this.label30.TabIndex = 47;
+            this.label30.Text = "By book title";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label32.Location = new System.Drawing.Point(18, 148);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(91, 18);
+            this.label32.TabIndex = 45;
+            this.label32.Text = "By member";
+            // 
+            // findMemberLoanTB
+            // 
+            this.findMemberLoanTB.Location = new System.Drawing.Point(18, 169);
+            this.findMemberLoanTB.Margin = new System.Windows.Forms.Padding(2);
+            this.findMemberLoanTB.Name = "findMemberLoanTB";
+            this.findMemberLoanTB.Size = new System.Drawing.Size(161, 28);
+            this.findMemberLoanTB.TabIndex = 43;
+            this.findMemberLoanTB.TextChanged += new System.EventHandler(this.findMemberLoanTB_TextChanged);
+            // 
+            // findTitleLoanTB
+            // 
+            this.findTitleLoanTB.Location = new System.Drawing.Point(18, 117);
+            this.findTitleLoanTB.Margin = new System.Windows.Forms.Padding(2);
+            this.findTitleLoanTB.Name = "findTitleLoanTB";
+            this.findTitleLoanTB.Size = new System.Drawing.Size(161, 28);
+            this.findTitleLoanTB.TabIndex = 42;
+            this.findTitleLoanTB.TextChanged += new System.EventHandler(this.findTitleLoanTB_TextChanged);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(18, 70);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(102, 23);
+            this.label33.TabIndex = 41;
+            this.label33.Text = "Find Loan:";
             // 
             // closeBTN
             // 
@@ -955,6 +1208,8 @@
             this.groupBox1.PerformLayout();
             this.loansTab.ResumeLayout(false);
             this.loansTab.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1004,7 +1259,6 @@
         private System.Windows.Forms.TextBox memberIdBox;
         private System.Windows.Forms.TextBox memberNameBox;
         private System.Windows.Forms.Button closeBTN;
-        private System.Windows.Forms.Button booksNewLoanBTN;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox feesDueTB;
         private System.Windows.Forms.TextBox loanIdTB;
@@ -1014,7 +1268,6 @@
         private System.Windows.Forms.TextBox dueDateTB;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ListBox lbMemberLoans;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox showPreviousLoans;
         private System.Windows.Forms.Label label24;
@@ -1023,14 +1276,38 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.CheckBox AvailableCHK;
         private System.Windows.Forms.FlowLayoutPanel BookInfoFLP;
         private System.Windows.Forms.LinkLabel AddAuthor1BTN;
         private System.Windows.Forms.LinkLabel RemoveAuthorBTN;
+        private System.Windows.Forms.CheckBox overdueLoansCHK;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox bookCopyLoanTB;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox memberLoanTB;
+        private System.Windows.Forms.CheckBox activeLoansCHK;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox findMemberLoanTB;
+        private System.Windows.Forms.TextBox findTitleLoanTB;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.DateTimePicker timeOfLoanDTP;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DateTimePicker dueDateDTP;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.DateTimePicker timeOfReturnDTP;
+        private System.Windows.Forms.Button returnCreateLoanBTN;
+        private System.Windows.Forms.Button removeLoanBTN;
+        private System.Windows.Forms.Button newLoanBTN;
+        private System.Windows.Forms.ListView LoansLV;
+        private System.Windows.Forms.ColumnHeader BookName;
+        private System.Windows.Forms.ColumnHeader CopyID;
+        private System.Windows.Forms.ColumnHeader Member;
+        private System.Windows.Forms.ColumnHeader TimeOfLoan;
+        private System.Windows.Forms.ColumnHeader LoanID;
     }
 }
 

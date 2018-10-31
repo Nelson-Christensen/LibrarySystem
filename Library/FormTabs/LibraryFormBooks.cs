@@ -63,21 +63,7 @@ namespace Library
                 }
             }
         }
-
-        private bool ConfirmedPopup(string boxText, string boxTitle)
-        {
-            DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (dialog == DialogResult.OK)
-                return true;
-            else
-                return false;
-        }
-
-        private void InfoPopup(string boxText, string boxTitle)
-        {
-            DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
+        
         private void closeBTN_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -283,10 +269,11 @@ namespace Library
         {
             editTitleTB.Text = selectedBook.Title;
             editISBNTB.Text = selectedBook.ISBN;
-            editAuthorTB.Text = selectedBook.Authors[0].ToString();
+            if (selectedBook.Authors.Count > 0) //Can only display author if the book has a author registered
+                editAuthorTB.Text = selectedBook.Authors[0].ToString();
             editDescriptionTB.Text = selectedBook.Description;
 
-            for (int i = 1; i < selectedBook.Authors.Count; i++)
+            for (int i = 1; i < selectedBook.Authors.Count; i++) // Populate additional author fields if multiple authors are registered.
             {
                 string authorName = selectedBook.Authors[i].ToString();
                 if (i < authorFields)
@@ -300,7 +287,7 @@ namespace Library
                 }
             }
             int deleteAuthorFieldCount = authorFields - selectedBook.Authors.Count;
-            if (deleteAuthorFieldCount > 0)
+            if (deleteAuthorFieldCount > 0 && authorFields > 1)
                 RemoveAuthorFields(authorFields - selectedBook.Authors.Count); // Remove Leftover Fields.
 
             // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
@@ -328,6 +315,8 @@ namespace Library
         private void lbCopies_DoubleClick(object sender, EventArgs e)
         {
             tabControl1.SelectTab(2);
+            bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
+            createNewLoan = true;
         }
 
         private void AddAuthor1BTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -404,24 +393,29 @@ namespace Library
         private IEnumerable<Book> SearchResult()
         {
             IEnumerable<Book> activeFilter;
-            switch (filterByField.Name)
+            if (filterByField != null)
             {
-                case "findAuthorTB":
-                    activeFilter = bookService.GetAllThatContainsAuthor(findAuthorTB.Text);
-                    break;
+                switch (filterByField.Name)
+                {
+                    case "findAuthorTB":
+                        activeFilter = bookService.GetAllThatContainsAuthor(findAuthorTB.Text);
+                        break;
 
-                case "findTitleTB":
-                    activeFilter = bookService.GetAllThatContainsInTitle(findTitleTB.Text);
-                    break;
+                    case "findTitleTB":
+                        activeFilter = bookService.GetAllThatContainsInTitle(findTitleTB.Text);
+                        break;
 
-                case "findISBNTB":
-                    activeFilter = bookService.GetAllThatContainsISBN(findISBNTB.Text);
-                    break;
+                    case "findISBNTB":
+                        activeFilter = bookService.GetAllThatContainsISBN(findISBNTB.Text);
+                        break;
 
-                default:
-                    activeFilter = bookService.All();
-                    break;
+                    default:
+                        activeFilter = bookService.All();
+                        break;
+                }
             }
+            else
+                activeFilter = bookService.All();
             if (AvailableCHK.Checked)
             {
                 IEnumerable<Book> availableFiltered = bookService.GetAllAvailableBooks().ToList();
@@ -437,33 +431,35 @@ namespace Library
         /// <param name="e"></param>
         private void lbCopies_DrawItem(object sender, DrawItemEventArgs e)
         {
-            BookCopy item = lbCopies.Items[e.Index] as BookCopy; // Get the current item and cast it to MyListBoxItem
-            e.DrawBackground();
-            e.DrawFocusRectangle();
-            if (item != null)
+            if (e.Index > -1) // If user clicked on an actual item from the listbox.
             {
-                Color color = bookCopyAvailableColor;
-                if (item.OnActiveLoan())
-                    color = bookCopyUnavailableColor;
-                e.Graphics.DrawString( // Draw the appropriate text in the ListBox
-                    item.ToString(), // The message linked to the item
-                    lbCopies.Font, // Take the font from the listbox
-                    new SolidBrush(color), // Set the color 
-                    0, // X pixel coordinate
-                    e.Index * lbCopies.ItemHeight // Y pixel coordinate.  Multiply the index by the ItemHeight defined in the listbox.
-                );
+                BookCopy item = lbCopies.Items[e.Index] as BookCopy; // Get the current item and cast it to MyListBoxItem
+                e.DrawBackground();
+                e.DrawFocusRectangle();
+                if (item != null)
+                {
+                    Color color = bookCopyAvailableColor;
+                    if (item.OnActiveLoan())
+                        color = bookCopyUnavailableColor;
+                    e.Graphics.DrawString( // Draw the appropriate text in the ListBox
+                        item.ToString(), // The message linked to the item
+                        lbCopies.Font, // Take the font from the listbox
+                        new SolidBrush(color), // Set the color 
+                        0, // X pixel coordinate
+                        e.Index * lbCopies.ItemHeight // Y pixel coordinate.  Multiply the index by the ItemHeight defined in the listbox.
+                    );
+                }
+                else
+                {
+                    e.Graphics.DrawString( // Draw the appropriate text in the ListBox
+                        lbCopies.Items[e.Index].ToString(), // The message linked to the item
+                        lbCopies.Font, // Take the font from the listbox
+                        new SolidBrush(Color.Black), // Set the color 
+                        0, // X pixel coordinate
+                        e.Index * lbCopies.ItemHeight // Y pixel coordinate.  Multiply the index by the ItemHeight defined in the listbox.
+                    );
+                }
             }
-            else
-            {
-                e.Graphics.DrawString( // Draw the appropriate text in the ListBox
-                    lbCopies.Items[e.Index].ToString(), // The message linked to the item
-                    lbCopies.Font, // Take the font from the listbox
-                    new SolidBrush(Color.Black), // Set the color 
-                    0, // X pixel coordinate
-                    e.Index * lbCopies.ItemHeight // Y pixel coordinate.  Multiply the index by the ItemHeight defined in the listbox.
-                );
-            }
-
         }
     }
 }

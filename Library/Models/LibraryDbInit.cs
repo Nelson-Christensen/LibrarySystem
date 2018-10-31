@@ -13,22 +13,6 @@ namespace Library.Models {
     class LibraryDbInit : DropCreateDatabaseIfModelChanges<LibraryContext> {
         protected override void Seed(LibraryContext context) {
             base.Seed(context);
-
-            Book monteCristo = new Book() {
-                Title = "The Count of Monte Cristo"
-            };
-
-            Book harryP = new Book()
-            {
-                Title = "Harry P"
-            };
-
-            // Add the book to the DbSet of books.
-            context.Books.Add(monteCristo);
-            context.Books.Add(harryP);
-
-            // Persist changes to the database
-            context.SaveChanges();
         }
     }
 }

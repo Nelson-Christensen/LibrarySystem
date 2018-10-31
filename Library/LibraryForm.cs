@@ -24,9 +24,11 @@ namespace Library
         BookService bookService;
         BookCopyService bookCopyService;
         AuthorService authorService;
+        LoanService loanService;
         List<Book> currentBookDisplay;
         List<BookCopy> currentBookCopyDisplay;
         List<Member> currentMemberDisplay;
+        List<Loan> currentLoanDisplay;
 
 
         public LibraryForm()
@@ -43,19 +45,36 @@ namespace Library
             this.bookCopyService = new BookCopyService(repFactory);
             this.authorService = new AuthorService(repFactory);
             this.memberService = new MemberService(repFactory);
+            this.loanService = new LoanService(repFactory);
 
             //Adds event listener to bookService.
             this.bookService.Updated += UpdateBookListEvent;
             this.bookCopyService.Updated += UpdateBookCopyListEvent;
             this.authorService.Updated += UpdatedAuthorEvent;
             this.memberService.Updated += UpdateMemberListEvent;
+            this.loanService.Updated += UpdatedLoansEvent;
 
             UpdateBookList(bookService.All().ToList());
             currentBookDisplay = bookService.All().ToList();
             currentBookCopyDisplay = new List<BookCopy>();
             currentMemberDisplay = memberService.All().ToList();
+            currentLoanDisplay = loanService.All().ToList();
 
             editAuthorTB.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
+        }
+
+        private bool ConfirmedPopup(string boxText, string boxTitle)
+        {
+            DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.OK)
+                return true;
+            else
+                return false;
+        }
+
+        private void InfoPopup(string boxText, string boxTitle)
+        {
+            DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

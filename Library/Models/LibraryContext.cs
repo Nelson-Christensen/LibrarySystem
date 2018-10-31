@@ -20,6 +20,7 @@ namespace Library.Models {
         public LibraryContext(){
             // Database strategy
             Database.SetInitializer<LibraryContext>(new LibraryDbInit());
+            this.Configuration.LazyLoadingEnabled = true;
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
