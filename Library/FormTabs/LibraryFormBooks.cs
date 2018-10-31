@@ -23,8 +23,6 @@ namespace Library
         int authorFields = 1;
         int maxAuthors = 4;
         TextBox filterByField;
-        Color bookCopyAvailableColor = Color.Black;
-        Color bookCopyUnavailableColor = Color.IndianRed;
 
         /// <summary>
         /// Resets the tab to empty search parameters and lists all books.
@@ -486,9 +484,9 @@ namespace Library
                 e.DrawFocusRectangle();
                 if (item != null)
                 {
-                    Color color = bookCopyAvailableColor;
+                    Color color = availableColor;
                     if (item.OnActiveLoan())
-                        color = bookCopyUnavailableColor;
+                        color = unavailableColor;
                     e.Graphics.DrawString( // Draw the appropriate text in the ListBox
                         item.ToString(), // The message linked to the item
                         lbCopies.Font, // Take the font from the listbox

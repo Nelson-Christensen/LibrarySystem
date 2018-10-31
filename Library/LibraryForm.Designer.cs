@@ -15,7 +15,6 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -25,6 +24,8 @@
         private void InitializeComponent() {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.booksTab = new System.Windows.Forms.TabPage();
+            this.unavailableCopyLegendLBL = new System.Windows.Forms.Label();
+            this.availableCopyLegendLBL = new System.Windows.Forms.Label();
             this.NewLoanBooksBTN = new System.Windows.Forms.Button();
             this.BookInfoFLP = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
@@ -55,9 +56,7 @@
             this.findBooksLabel = new System.Windows.Forms.Label();
             this.lbBooks = new System.Windows.Forms.ListBox();
             this.membersTab = new System.Windows.Forms.TabPage();
-            this.label16 = new System.Windows.Forms.Label();
             this.showPreviousLoans = new System.Windows.Forms.CheckBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -87,6 +86,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.findMemberSearchBox = new System.Windows.Forms.TextBox();
             this.loansTab = new System.Windows.Forms.TabPage();
+            this.overdueLoanLegendLBL = new System.Windows.Forms.Label();
+            this.returnedLoanLegendLBL = new System.Windows.Forms.Label();
+            this.activeLoanLegendLBL = new System.Windows.Forms.Label();
             this.LoansLV = new System.Windows.Forms.ListView();
             this.LoanID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CopyID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -116,9 +118,9 @@
             this.findTitleLoanTB = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.closeBTN = new System.Windows.Forms.Button();
-            this.activeLoanLegendLBL = new System.Windows.Forms.Label();
-            this.returnedLoanLegendLBL = new System.Windows.Forms.Label();
-            this.overdueLoanLegendLBL = new System.Windows.Forms.Label();
+            this.overdueLoanMLegendLBL = new System.Windows.Forms.Label();
+            this.returnedLoanMLegendLBL = new System.Windows.Forms.Label();
+            this.activeLoanMLegendLBL = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.BookInfoFLP.SuspendLayout();
@@ -146,6 +148,8 @@
             // 
             this.booksTab.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.booksTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.booksTab.Controls.Add(this.unavailableCopyLegendLBL);
+            this.booksTab.Controls.Add(this.availableCopyLegendLBL);
             this.booksTab.Controls.Add(this.NewLoanBooksBTN);
             this.booksTab.Controls.Add(this.BookInfoFLP);
             this.booksTab.Controls.Add(this.AvailableCHK);
@@ -175,6 +179,26 @@
             this.booksTab.Text = "Books";
             this.booksTab.Enter += new System.EventHandler(this.booksTab_Enter);
             // 
+            // unavailableCopyLegendLBL
+            // 
+            this.unavailableCopyLegendLBL.AutoSize = true;
+            this.unavailableCopyLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unavailableCopyLegendLBL.Location = new System.Drawing.Point(694, 471);
+            this.unavailableCopyLegendLBL.Name = "unavailableCopyLegendLBL";
+            this.unavailableCopyLegendLBL.Size = new System.Drawing.Size(113, 15);
+            this.unavailableCopyLegendLBL.TabIndex = 58;
+            this.unavailableCopyLegendLBL.Text = "*unavailable copy";
+            // 
+            // availableCopyLegendLBL
+            // 
+            this.availableCopyLegendLBL.AutoSize = true;
+            this.availableCopyLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.availableCopyLegendLBL.Location = new System.Drawing.Point(694, 456);
+            this.availableCopyLegendLBL.Name = "availableCopyLegendLBL";
+            this.availableCopyLegendLBL.Size = new System.Drawing.Size(97, 15);
+            this.availableCopyLegendLBL.TabIndex = 57;
+            this.availableCopyLegendLBL.Text = "*available copy";
+            // 
             // NewLoanBooksBTN
             // 
             this.NewLoanBooksBTN.Font = new System.Drawing.Font("Georgia", 12F);
@@ -200,7 +224,7 @@
             this.BookInfoFLP.Controls.Add(this.editAuthorTB);
             this.BookInfoFLP.Controls.Add(this.label7);
             this.BookInfoFLP.Controls.Add(this.editDescriptionTB);
-            this.BookInfoFLP.Location = new System.Drawing.Point(411, 74);
+            this.BookInfoFLP.Location = new System.Drawing.Point(425, 74);
             this.BookInfoFLP.Name = "BookInfoFLP";
             this.BookInfoFLP.Size = new System.Drawing.Size(247, 400);
             this.BookInfoFLP.TabIndex = 39;
@@ -328,7 +352,7 @@
             this.lbCopies.ItemHeight = 21;
             this.lbCopies.Location = new System.Drawing.Point(697, 92);
             this.lbCopies.Name = "lbCopies";
-            this.lbCopies.Size = new System.Drawing.Size(216, 361);
+            this.lbCopies.Size = new System.Drawing.Size(210, 361);
             this.lbCopies.TabIndex = 36;
             this.lbCopies.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbCopies_DrawItem);
             this.lbCopies.SelectedIndexChanged += new System.EventHandler(this.lbCopies_SelectedIndexChanged);
@@ -360,7 +384,7 @@
             // 
             this.removeCopyBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.removeCopyBTN.Location = new System.Drawing.Point(807, 480);
+            this.removeCopyBTN.Location = new System.Drawing.Point(807, 492);
             this.removeCopyBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.removeCopyBTN.Name = "removeCopyBTN";
             this.removeCopyBTN.Size = new System.Drawing.Size(96, 38);
@@ -386,7 +410,7 @@
             // 
             this.saveChangesBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveChangesBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.saveChangesBTN.Location = new System.Drawing.Point(551, 480);
+            this.saveChangesBTN.Location = new System.Drawing.Point(567, 492);
             this.saveChangesBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.saveChangesBTN.Name = "saveChangesBTN";
             this.saveChangesBTN.Size = new System.Drawing.Size(96, 38);
@@ -399,7 +423,7 @@
             // 
             this.addCopyBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.addCopyBTN.Location = new System.Drawing.Point(697, 480);
+            this.addCopyBTN.Location = new System.Drawing.Point(697, 492);
             this.addCopyBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.addCopyBTN.Name = "addCopyBTN";
             this.addCopyBTN.Size = new System.Drawing.Size(96, 38);
@@ -498,16 +522,17 @@
             this.lbBooks.ItemHeight = 21;
             this.lbBooks.Location = new System.Drawing.Point(196, 92);
             this.lbBooks.Name = "lbBooks";
-            this.lbBooks.Size = new System.Drawing.Size(196, 340);
+            this.lbBooks.Size = new System.Drawing.Size(210, 361);
             this.lbBooks.TabIndex = 0;
             this.lbBooks.SelectedIndexChanged += new System.EventHandler(this.lbBooks_SelectedIndexChanged);
             // 
             // membersTab
             // 
             this.membersTab.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.membersTab.Controls.Add(this.label16);
+            this.membersTab.Controls.Add(this.overdueLoanMLegendLBL);
+            this.membersTab.Controls.Add(this.returnedLoanMLegendLBL);
+            this.membersTab.Controls.Add(this.activeLoanMLegendLBL);
             this.membersTab.Controls.Add(this.showPreviousLoans);
-            this.membersTab.Controls.Add(this.label24);
             this.membersTab.Controls.Add(this.groupBox1);
             this.membersTab.Controls.Add(this.label18);
             this.membersTab.Controls.Add(this.lbMemberLoans);
@@ -535,18 +560,6 @@
             this.membersTab.Text = "Members";
             this.membersTab.Enter += new System.EventHandler(this.membersTab_Enter);
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label16.ForeColor = System.Drawing.Color.Gray;
-            this.label16.Location = new System.Drawing.Point(520, 441);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(118, 18);
-            this.label16.TabIndex = 47;
-            this.label16.Text = "*Previous loans";
-            // 
             // showPreviousLoans
             // 
             this.showPreviousLoans.AutoSize = true;
@@ -558,18 +571,6 @@
             this.showPreviousLoans.Text = "Show previous loans";
             this.showPreviousLoans.UseVisualStyleBackColor = true;
             this.showPreviousLoans.CheckedChanged += new System.EventHandler(this.showPreviousLoans_CheckedChanged);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(520, 422);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(111, 18);
-            this.label24.TabIndex = 45;
-            this.label24.Text = "*Overdue loan";
             // 
             // groupBox1
             // 
@@ -915,6 +916,36 @@
             this.loansTab.Text = "Loans";
             this.loansTab.Enter += new System.EventHandler(this.loansTab_Enter);
             // 
+            // overdueLoanLegendLBL
+            // 
+            this.overdueLoanLegendLBL.AutoSize = true;
+            this.overdueLoanLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overdueLoanLegendLBL.Location = new System.Drawing.Point(193, 506);
+            this.overdueLoanLegendLBL.Name = "overdueLoanLegendLBL";
+            this.overdueLoanLegendLBL.Size = new System.Drawing.Size(88, 15);
+            this.overdueLoanLegendLBL.TabIndex = 58;
+            this.overdueLoanLegendLBL.Text = "*overdue loan";
+            // 
+            // returnedLoanLegendLBL
+            // 
+            this.returnedLoanLegendLBL.AutoSize = true;
+            this.returnedLoanLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnedLoanLegendLBL.Location = new System.Drawing.Point(193, 491);
+            this.returnedLoanLegendLBL.Name = "returnedLoanLegendLBL";
+            this.returnedLoanLegendLBL.Size = new System.Drawing.Size(93, 15);
+            this.returnedLoanLegendLBL.TabIndex = 57;
+            this.returnedLoanLegendLBL.Text = "*returned loan";
+            // 
+            // activeLoanLegendLBL
+            // 
+            this.activeLoanLegendLBL.AutoSize = true;
+            this.activeLoanLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeLoanLegendLBL.Location = new System.Drawing.Point(193, 476);
+            this.activeLoanLegendLBL.Name = "activeLoanLegendLBL";
+            this.activeLoanLegendLBL.Size = new System.Drawing.Size(77, 15);
+            this.activeLoanLegendLBL.TabIndex = 56;
+            this.activeLoanLegendLBL.Text = "*active loan";
+            // 
             // LoansLV
             // 
             this.LoansLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1208,38 +1239,35 @@
             this.closeBTN.UseVisualStyleBackColor = false;
             this.closeBTN.Click += new System.EventHandler(this.closeBTN_Click);
             // 
-            // activeLoanLegendLBL
+            // overdueLoanMLegendLBL
             // 
-            this.activeLoanLegendLBL.AutoSize = true;
-            this.activeLoanLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeLoanLegendLBL.Location = new System.Drawing.Point(193, 480);
-            this.activeLoanLegendLBL.Name = "activeLoanLegendLBL";
-            this.activeLoanLegendLBL.Size = new System.Drawing.Size(77, 15);
-            this.activeLoanLegendLBL.TabIndex = 56;
-            this.activeLoanLegendLBL.Text = "*active loan";
-            this.activeLoanLegendLBL.ForeColor = availableColor;
+            this.overdueLoanMLegendLBL.AutoSize = true;
+            this.overdueLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overdueLoanMLegendLBL.Location = new System.Drawing.Point(521, 367);
+            this.overdueLoanMLegendLBL.Name = "overdueLoanMLegendLBL";
+            this.overdueLoanMLegendLBL.Size = new System.Drawing.Size(88, 15);
+            this.overdueLoanMLegendLBL.TabIndex = 61;
+            this.overdueLoanMLegendLBL.Text = "*overdue loan";
             // 
-            // returnedLoanLegendLBL
+            // returnedLoanMLegendLBL
             // 
-            this.returnedLoanLegendLBL.AutoSize = true;
-            this.returnedLoanLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnedLoanLegendLBL.Location = new System.Drawing.Point(193, 495);
-            this.returnedLoanLegendLBL.Name = "returnedLoanLegendLBL";
-            this.returnedLoanLegendLBL.Size = new System.Drawing.Size(93, 15);
-            this.returnedLoanLegendLBL.TabIndex = 57;
-            this.returnedLoanLegendLBL.Text = "*returned loan";
-            this.returnedLoanLegendLBL.ForeColor = inactiveColor;
+            this.returnedLoanMLegendLBL.AutoSize = true;
+            this.returnedLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnedLoanMLegendLBL.Location = new System.Drawing.Point(521, 352);
+            this.returnedLoanMLegendLBL.Name = "returnedLoanMLegendLBL";
+            this.returnedLoanMLegendLBL.Size = new System.Drawing.Size(93, 15);
+            this.returnedLoanMLegendLBL.TabIndex = 60;
+            this.returnedLoanMLegendLBL.Text = "*returned loan";
             // 
-            // overdueLoanLegendLBL
+            // activeLoanMLegendLBL
             // 
-            this.overdueLoanLegendLBL.AutoSize = true;
-            this.overdueLoanLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overdueLoanLegendLBL.Location = new System.Drawing.Point(193, 510);
-            this.overdueLoanLegendLBL.Name = "overdueLoanLegendLBL";
-            this.overdueLoanLegendLBL.Size = new System.Drawing.Size(88, 15);
-            this.overdueLoanLegendLBL.TabIndex = 58;
-            this.overdueLoanLegendLBL.Text = "*overdue loan";
-            this.overdueLoanLegendLBL.ForeColor = unavailableColor;
+            this.activeLoanMLegendLBL.AutoSize = true;
+            this.activeLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeLoanMLegendLBL.Location = new System.Drawing.Point(521, 337);
+            this.activeLoanMLegendLBL.Name = "activeLoanMLegendLBL";
+            this.activeLoanMLegendLBL.Size = new System.Drawing.Size(77, 15);
+            this.activeLoanMLegendLBL.TabIndex = 59;
+            this.activeLoanMLegendLBL.Text = "*active loan";
             // 
             // LibraryForm
             // 
@@ -1326,9 +1354,7 @@
         private System.Windows.Forms.TextBox dueDateTB;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ListBox lbMemberLoans;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox showPreviousLoans;
-        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
@@ -1370,6 +1396,11 @@
         private System.Windows.Forms.Label overdueLoanLegendLBL;
         private System.Windows.Forms.Label returnedLoanLegendLBL;
         private System.Windows.Forms.Label activeLoanLegendLBL;
+        private System.Windows.Forms.Label unavailableCopyLegendLBL;
+        private System.Windows.Forms.Label availableCopyLegendLBL;
+        private System.Windows.Forms.Label overdueLoanMLegendLBL;
+        private System.Windows.Forms.Label returnedLoanMLegendLBL;
+        private System.Windows.Forms.Label activeLoanMLegendLBL;
     }
 }
 

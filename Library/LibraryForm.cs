@@ -29,9 +29,9 @@ namespace Library
         List<BookCopy> currentBookCopyDisplay;
         List<Member> currentMemberDisplay;
         List<Loan> currentLoanDisplay;
-        Color unavailableColor = Color.Red;
-        Color inactiveColor = Color.DimGray;
-        Color availableColor = Color.Black;
+        public Color unavailableColor = Color.Red;
+        public Color inactiveColor = Color.DimGray;
+        public Color availableColor = Color.Black;
 
 
         public LibraryForm()
@@ -63,7 +63,27 @@ namespace Library
             currentMemberDisplay = memberService.All().ToList();
             currentLoanDisplay = loanService.All().ToList();
 
+            SetLegendColor();
+
+
             editAuthorTB.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
+        }
+
+        private void SetLegendColor()
+        {
+            // Books tab
+            availableCopyLegendLBL.ForeColor = availableColor;
+            unavailableCopyLegendLBL.ForeColor = unavailableColor;
+
+            //Members tab
+            overdueLoanMLegendLBL.ForeColor = unavailableColor;
+            returnedLoanMLegendLBL.ForeColor = inactiveColor;
+            activeLoanMLegendLBL.ForeColor = availableColor;
+
+            //Loans tab
+            overdueLoanLegendLBL.ForeColor = unavailableColor;
+            returnedLoanLegendLBL.ForeColor = inactiveColor;
+            activeLoanLegendLBL.ForeColor = availableColor;
         }
 
         private bool ConfirmedPopup(string boxText, string boxTitle)
