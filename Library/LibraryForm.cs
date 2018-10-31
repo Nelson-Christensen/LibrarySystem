@@ -36,6 +36,7 @@ namespace Library
         public Color inactivePanelColor = Color.FromArgb(230, 230, 230);
 
         public Color windowColor; //Will be set when the program is run and taken from current forms bg color.
+        public Color secondaryColor;
 
         // To Allow moving the window, even without default window border
         private bool mouseDown;
@@ -74,9 +75,19 @@ namespace Library
             editAuthorTB.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
         }
 
+        /// <summary>
+        /// Set Color of form elements based on variables to make the coloring more consistent across the form. Only needs to be executed once per session.
+        /// </summary>
         private void SetAllColors()
         {
-            windowColor = this.BackColor;
+            windowColor = this.BackColor; // old values: 104; 0; 0
+            secondaryColor = TopDragPanel.BackColor; // old values: 172; 30; 44
+            minimizeBTN.FlatAppearance.MouseDownBackColor = windowColor;
+            minimizeBTN.FlatAppearance.MouseOverBackColor = windowColor;
+            closeBTN.FlatAppearance.MouseDownBackColor = windowColor;
+            closeBTN.FlatAppearance.MouseOverBackColor = windowColor;
+
+
             SetActiveBookPanel(0);
             SetActiveMemberPanel(0);
             SetActiveLoanPanel(0);

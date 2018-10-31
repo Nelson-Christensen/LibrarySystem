@@ -1316,12 +1316,17 @@
             // 
             // closeBTN
             // 
-            this.closeBTN.BackColor = System.Drawing.Color.White;
-            this.closeBTN.ForeColor = System.Drawing.Color.Black;
-            this.closeBTN.Location = new System.Drawing.Point(971, 10);
+            this.closeBTN.BackColor = System.Drawing.Color.Transparent;
+            this.closeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeBTN.FlatAppearance.BorderSize = 0;
+            this.closeBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.closeBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.closeBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeBTN.ForeColor = System.Drawing.Color.White;
+            this.closeBTN.Location = new System.Drawing.Point(963, 0);
             this.closeBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.closeBTN.Name = "closeBTN";
-            this.closeBTN.Size = new System.Drawing.Size(30, 25);
+            this.closeBTN.Size = new System.Drawing.Size(40, 35);
             this.closeBTN.TabIndex = 3;
             this.closeBTN.Text = "X";
             this.closeBTN.UseVisualStyleBackColor = false;
@@ -1353,7 +1358,7 @@
             // 
             // TopDragPanel
             // 
-            this.TopDragPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(30)))), ((int)(((byte)(44)))));
+            this.TopDragPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(39)))), ((int)(((byte)(53)))));
             this.TopDragPanel.Controls.Add(this.minimizeBTN);
             this.TopDragPanel.Controls.Add(this.label16);
             this.TopDragPanel.Controls.Add(this.closeBTN);
@@ -1368,10 +1373,16 @@
             // 
             // minimizeBTN
             // 
-            this.minimizeBTN.BackColor = System.Drawing.Color.White;
-            this.minimizeBTN.Location = new System.Drawing.Point(940, 10);
+            this.minimizeBTN.BackColor = System.Drawing.Color.Transparent;
+            this.minimizeBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.minimizeBTN.FlatAppearance.BorderSize = 0;
+            this.minimizeBTN.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.minimizeBTN.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.minimizeBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minimizeBTN.ForeColor = System.Drawing.Color.White;
+            this.minimizeBTN.Location = new System.Drawing.Point(923, 0);
             this.minimizeBTN.Name = "minimizeBTN";
-            this.minimizeBTN.Size = new System.Drawing.Size(30, 25);
+            this.minimizeBTN.Size = new System.Drawing.Size(40, 35);
             this.minimizeBTN.TabIndex = 6;
             this.minimizeBTN.Text = "_";
             this.minimizeBTN.UseVisualStyleBackColor = false;
