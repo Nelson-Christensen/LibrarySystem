@@ -32,6 +32,38 @@ namespace Library
                 ClearLoanInfoPanel();
             }
         }
+
+        private void SetActiveLoanPanel(int panelNr)
+        {
+            switch (panelNr)
+            {
+                case 0:
+                    loanSearchBGPanel.BackColor = activePanelColor;
+                    loanInfoBGPanel.BackColor = inactivePanelColor;
+                    break;
+                case 1:
+                    loanSearchBGPanel.BackColor = inactivePanelColor;
+                    loanInfoBGPanel.BackColor = activePanelColor;
+                    break;
+                default:
+                    loanSearchBGPanel.BackColor = inactivePanelColor;
+                    loanInfoBGPanel.BackColor = inactivePanelColor;
+                    break;
+            }
+        }
+
+
+
+        private void loanSearchBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveLoanPanel(0);
+        }
+
+        private void loanInfoBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveLoanPanel(1);
+        }
+
         private void returnCreateLoanBTN_Click(object sender, EventArgs e)
         {
             if (createNewLoan)

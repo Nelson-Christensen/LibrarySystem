@@ -64,6 +64,21 @@ namespace Library
             }
         }
 
+        private void booksSearchBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveBookPanel(0);
+        }
+
+        private void bookInfoBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveBookPanel(1);
+        }
+
+        private void bookCopiesBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveBookPanel(2);
+        }
+
         private void UpdateBookListEvent(object sender, EventArgs e)
         {
             UpdateBookList(bookService.All().ToList());
@@ -306,9 +321,11 @@ namespace Library
 
         private void lbCopies_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
-            createNewLoan = true;
-
+            if (lbCopies.SelectedItem != null)
+            {
+                bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
+                createNewLoan = true;
+            }
         }
 
         public void UpdateBookInfoPanel(Book selectedBook)

@@ -33,9 +33,9 @@ namespace Library
         public Color inactiveColor = Color.DimGray;
         public Color availableColor = Color.Black;
         public Color activePanelColor = Color.FromArgb(240, 240, 240);
-        public Color inactivePanelColor = Color.FromArgb(224, 224, 224);
+        public Color inactivePanelColor = Color.FromArgb(230, 230, 230);
 
-        public Color windowColor;
+        public Color windowColor; //Will be set when the program is run and taken from current forms bg color.
 
         // To Allow moving the window, even without default window border
         private bool mouseDown;
@@ -78,6 +78,8 @@ namespace Library
         {
             windowColor = this.BackColor;
             SetActiveBookPanel(0);
+            SetActiveMemberPanel(0);
+            SetActiveLoanPanel(0);
             SetLegendColor();
         }
         private void SetLegendColor()
@@ -138,21 +140,6 @@ namespace Library
         private void minimizeBTN_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void booksSearchBGPanel_Enter(object sender, EventArgs e)
-        {
-            SetActiveBookPanel(0);
-        }
-
-        private void bookInfoBGPanel_Enter(object sender, EventArgs e)
-        {
-            SetActiveBookPanel(1);
-        }
-
-        private void bookCopiesBGPanel_Enter(object sender, EventArgs e)
-        {
-            SetActiveBookPanel(2);
         }
     }
 }
