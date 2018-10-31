@@ -110,6 +110,12 @@ namespace Library
             activeLoanLegendLBL.ForeColor = availableColor;
         }
 
+        /// <summary>
+        /// Creates a warning MessageBox popup based on parameters that returns true if the user presses OK, and returns false if user presses cancel or closes popup.
+        /// </summary>
+        /// <param name="boxText">The Message that is to be displayed in the MessageBox</param>
+        /// <param name="boxTitle">The Header of the MessageBox.</param>
+        /// <returns>Returns true if user clicks OK, and therefore confirms the info, otherwise it returns false</returns>
         private bool ConfirmedPopup(string boxText, string boxTitle)
         {
             DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
@@ -119,19 +125,34 @@ namespace Library
                 return false;
         }
 
+        /// <summary>
+        /// Creates a warning MessageBox popup that informs the user of a specific occurance, based on the parameter input.
+        /// </summary>
+        /// <param name="boxText">The Message that is to be displayed in the MessageBox</param>
+        /// <param name="boxTitle">The Header of the MessageBox.</param>
         private void InfoPopup(string boxText, string boxTitle)
         {
             DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
 
+        /// <summary>
+        /// Registers that the mouse is down on TopDragPanel, and makes the form moveable by making MouseMove work.
+        /// </summary>
         /// Taken from https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TopDragPanel_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
             lastLocation = e.Location;
         }
 
+        /// <summary>
+        /// Makes the Form follow the mouseMovement if the TopDragPanel is clicked. This is to allow the user to move the form without having a standard formBorder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TopDragPanel_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
@@ -143,11 +164,31 @@ namespace Library
             }
         }
 
+        /// <summary>
+        /// When the user releases the mouse over TopDragPanel, mouseDown is set to false to prevent the form from being moved.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TopDragPanel_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }
 
+        /// <summary>
+        /// Exits the application when the closeBTN is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void closeBTN_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        /// <summary>
+        /// Minimizes the Application when button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void minimizeBTN_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;

@@ -116,11 +116,6 @@ namespace Library
                 }
             }
         }
-        
-        private void closeBTN_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void booksNewLoanBTN_Click(object sender, EventArgs e)
         {
