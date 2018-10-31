@@ -120,6 +120,8 @@ namespace Library
             {
                 Member selectedMember = currentMemberDisplay[lbMemberResults.SelectedIndex];
                 UpdateMemberInfoPanel(selectedMember);
+                memberLoanTB.Text = selectedMember.ToString();
+                createNewLoan = true;
             }
         }
 

@@ -196,6 +196,7 @@ namespace Library
 
                         bookService.Add(newBook);
                         UpdateBookList(bookService.All().ToList());
+                        
                     }
                 }
                 else //Update Book
@@ -263,6 +264,13 @@ namespace Library
                 Book selectedBook = currentBookDisplay[lbBooks.SelectedIndex];
                 UpdateBookInfoPanel(selectedBook);
             }
+        }
+
+        private void lbCopies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
+            createNewLoan = true;
+
         }
 
         public void UpdateBookInfoPanel(Book selectedBook)
@@ -377,6 +385,12 @@ namespace Library
 
                 authorFields--;
             }
+        }
+        private void NewLoanBooksBTN_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(2);
+            bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
+            createNewLoan = true;
         }
 
         private void UpdatedAuthorEvent(object sender, EventArgs e)

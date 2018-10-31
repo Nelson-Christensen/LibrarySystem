@@ -77,9 +77,6 @@ namespace Library
             DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        private void activeLoansCHK_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }
