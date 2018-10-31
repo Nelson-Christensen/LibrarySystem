@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace Library
 {
@@ -48,6 +49,15 @@ namespace Library
             memberIdBox.ResetText();
             memberNameBox.ResetText();
             memberPersonnummerBox.ResetText();
+        }
+
+        public void ClearMemberLoansPanel()
+        {
+            loanIdTB.ResetText();
+            timeOfLoanTB.ResetText();
+            timeOfReturnTB.ResetText();
+            dueDateTB.ResetText();
+            
         }
 
 
@@ -98,8 +108,7 @@ namespace Library
                 string confirmBoxTitle = "Confirm Member Info Update";
                 if (ConfirmedPopup(confirmBoxText, confirmBoxTitle))
                 {
-                    Member m = lbMemberResults.SelectedItem as Member;
-                    if (m != null)
+                    if (lbMemberResults.SelectedItem is Member m)
                     {
                         m.personalID = memberPersonnummerBox.Text;
                         m.Name = memberNameBox.Text;
@@ -149,13 +158,34 @@ namespace Library
             if (lbMemberResults.SelectedItem == null)
             {
                 ClearMemberResultsPanel();
+                ClearMemberLoansPanel();
+                lbMemberLoans.Items.Clear();
+
             }
-            else // New member Selected
+            else // When a new member is selected
             {
                 Member selectedMember = currentMemberDisplay[lbMemberResults.SelectedIndex];
                 UpdateMemberInfoPanel(selectedMember);
                 memberLoanTB.Text = selectedMember.ToString();
                 createNewLoan = true;
+                lbMemberLoans.Items.Clear();
+                foreach (Loan l in selectedMember.Loans)
+                {
+                    lbMemberLoans.Items.Add(l.BookCopy.Book.Title);
+                }
+            }
+        }
+
+        private void lbMemberLoans_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbMemberLoans.SelectedItem == null)
+            {
+                ClearMemberLoansPanel();
+            }
+            else
+            {
+                Loan selectedLoan = currentLoanDisplay[lbMemberLoans.SelectedIndex];
+                UpdateMemberLoanPanel(selectedLoan);
             }
         }
 
@@ -167,6 +197,17 @@ namespace Library
             // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
             //UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
         }
+
+        public void UpdateMemberLoanPanel(Loan selectedLoan)
+        {
+            
+            loanIdTB.Text = selectedLoan.Id.ToString();
+            timeOfLoanTB.Text = selectedLoan.StartDate.ToString(CultureInfo.InvariantCulture);
+            timeOfReturnTB.Text = selectedLoan.ReturnDate.ToString();
+            dueDateTB.Text = selectedLoan.DueDate.ToString(CultureInfo.CurrentCulture);
+            //feesDueTB.Text = selectedLoan.
+        }
+
 
 
         private void memberIdBox_TextChanged(object sender, EventArgs e)
@@ -184,10 +225,7 @@ namespace Library
 
         }
 
-        private void lbMemberLoans_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void showPreviousLoans_CheckedChanged(object sender, EventArgs e)
         {
