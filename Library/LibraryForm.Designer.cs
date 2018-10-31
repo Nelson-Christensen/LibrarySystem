@@ -1059,6 +1059,7 @@
             // 
             this.timeOfLoanDTP.Location = new System.Drawing.Point(3, 121);
             this.timeOfLoanDTP.Name = "timeOfLoanDTP";
+            this.timeOfLoanDTP.ShowUpDown = true;
             this.timeOfLoanDTP.Size = new System.Drawing.Size(225, 28);
             this.timeOfLoanDTP.TabIndex = 31;
             // 
