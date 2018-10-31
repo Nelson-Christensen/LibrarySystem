@@ -29,6 +29,9 @@ namespace Library
         List<BookCopy> currentBookCopyDisplay;
         List<Member> currentMemberDisplay;
         List<Loan> currentLoanDisplay;
+        Color unavailableColor = Color.Red;
+        Color inactiveColor = Color.DimGray;
+        Color availableColor = Color.Black;
 
 
         public LibraryForm()

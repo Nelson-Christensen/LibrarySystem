@@ -116,6 +116,9 @@
             this.findTitleLoanTB = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.closeBTN = new System.Windows.Forms.Button();
+            this.activeLoanLegendLBL = new System.Windows.Forms.Label();
+            this.returnedLoanLegendLBL = new System.Windows.Forms.Label();
+            this.overdueLoanLegendLBL = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.booksTab.SuspendLayout();
             this.BookInfoFLP.SuspendLayout();
@@ -887,6 +890,9 @@
             // loansTab
             // 
             this.loansTab.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.loansTab.Controls.Add(this.overdueLoanLegendLBL);
+            this.loansTab.Controls.Add(this.returnedLoanLegendLBL);
+            this.loansTab.Controls.Add(this.activeLoanLegendLBL);
             this.loansTab.Controls.Add(this.LoansLV);
             this.loansTab.Controls.Add(this.returnCreateLoanBTN);
             this.loansTab.Controls.Add(this.removeLoanBTN);
@@ -1096,7 +1102,7 @@
             this.dueDateDTP.Name = "dueDateDTP";
             this.dueDateDTP.Size = new System.Drawing.Size(225, 28);
             this.dueDateDTP.TabIndex = 33;
-            this.dueDateDTP.Value = System.DateTime.Now.AddDays(15); //Default dueDate is in 15days
+            this.dueDateDTP.Value = new System.DateTime(2018, 11, 15, 13, 57, 51, 618);
             // 
             // label28
             // 
@@ -1201,6 +1207,39 @@
             this.closeBTN.Text = "X";
             this.closeBTN.UseVisualStyleBackColor = false;
             this.closeBTN.Click += new System.EventHandler(this.closeBTN_Click);
+            // 
+            // activeLoanLegendLBL
+            // 
+            this.activeLoanLegendLBL.AutoSize = true;
+            this.activeLoanLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeLoanLegendLBL.Location = new System.Drawing.Point(193, 480);
+            this.activeLoanLegendLBL.Name = "activeLoanLegendLBL";
+            this.activeLoanLegendLBL.Size = new System.Drawing.Size(77, 15);
+            this.activeLoanLegendLBL.TabIndex = 56;
+            this.activeLoanLegendLBL.Text = "*active loan";
+            this.activeLoanLegendLBL.ForeColor = availableColor;
+            // 
+            // returnedLoanLegendLBL
+            // 
+            this.returnedLoanLegendLBL.AutoSize = true;
+            this.returnedLoanLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnedLoanLegendLBL.Location = new System.Drawing.Point(193, 495);
+            this.returnedLoanLegendLBL.Name = "returnedLoanLegendLBL";
+            this.returnedLoanLegendLBL.Size = new System.Drawing.Size(93, 15);
+            this.returnedLoanLegendLBL.TabIndex = 57;
+            this.returnedLoanLegendLBL.Text = "*returned loan";
+            this.returnedLoanLegendLBL.ForeColor = inactiveColor;
+            // 
+            // overdueLoanLegendLBL
+            // 
+            this.overdueLoanLegendLBL.AutoSize = true;
+            this.overdueLoanLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overdueLoanLegendLBL.Location = new System.Drawing.Point(193, 510);
+            this.overdueLoanLegendLBL.Name = "overdueLoanLegendLBL";
+            this.overdueLoanLegendLBL.Size = new System.Drawing.Size(88, 15);
+            this.overdueLoanLegendLBL.TabIndex = 58;
+            this.overdueLoanLegendLBL.Text = "*overdue loan";
+            this.overdueLoanLegendLBL.ForeColor = unavailableColor;
             // 
             // LibraryForm
             // 
@@ -1328,6 +1367,9 @@
         private System.Windows.Forms.ColumnHeader TimeOfLoan;
         private System.Windows.Forms.ColumnHeader LoanID;
         private System.Windows.Forms.Button NewLoanBooksBTN;
+        private System.Windows.Forms.Label overdueLoanLegendLBL;
+        private System.Windows.Forms.Label returnedLoanLegendLBL;
+        private System.Windows.Forms.Label activeLoanLegendLBL;
     }
 }
 

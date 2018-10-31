@@ -270,6 +270,16 @@ namespace Library
                 lvi.SubItems.Add(loan.BookCopy.Book.Title);
                 lvi.SubItems.Add(loan.Member.ToString());
                 lvi.SubItems.Add(loan.StartDate.ToShortDateString());
+                // Color row based on if loan has been returned or not, and if the book is due or not.
+                if (!loan.IsReturned)
+                {
+                    if(DateTime.Now.Date > loan.DueDate.Date) // If due date has passed.
+                        lvi.ForeColor = unavailableColor;
+                    else
+                        lvi.ForeColor = availableColor;
+                }
+                else
+                    lvi.ForeColor = inactiveColor;
                 LoansLV.Items.Add(lvi);
             }
         }
