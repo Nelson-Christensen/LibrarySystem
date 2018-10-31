@@ -927,12 +927,12 @@
             // Member
             // 
             this.Member.Text = "Member";
-            this.Member.Width = 84;
+            this.Member.Width = 161;
             // 
             // TimeOfLoan
             // 
             this.TimeOfLoan.Text = "Loan Date";
-            this.TimeOfLoan.Width = 195;
+            this.TimeOfLoan.Width = 116;
             // 
             // returnCreateLoanBTN
             // 
