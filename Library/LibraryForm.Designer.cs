@@ -38,7 +38,7 @@
             this.editTitleTB = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.RemoveAuthorBTN = new System.Windows.Forms.LinkLabel();
-            this.AddAuthor1BTN = new System.Windows.Forms.LinkLabel();
+            this.AddAuthorBTN = new System.Windows.Forms.LinkLabel();
             this.editAuthorTB = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.editISBNTB = new System.Windows.Forms.TextBox();
@@ -294,7 +294,7 @@
             this.BookInfoFLP.Controls.Add(this.editTitleTB);
             this.BookInfoFLP.Controls.Add(this.label5);
             this.BookInfoFLP.Controls.Add(this.RemoveAuthorBTN);
-            this.BookInfoFLP.Controls.Add(this.AddAuthor1BTN);
+            this.BookInfoFLP.Controls.Add(this.AddAuthorBTN);
             this.BookInfoFLP.Controls.Add(this.editAuthorTB);
             this.BookInfoFLP.Controls.Add(this.label6);
             this.BookInfoFLP.Controls.Add(this.editISBNTB);
@@ -346,17 +346,17 @@
             this.RemoveAuthorBTN.Text = "-";
             this.RemoveAuthorBTN.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.RemoveAuthorBTN_LinkClicked);
             // 
-            // AddAuthor1BTN
+            // AddAuthorBTN
             // 
-            this.AddAuthor1BTN.AutoSize = true;
-            this.AddAuthor1BTN.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddAuthor1BTN.Location = new System.Drawing.Point(88, 48);
-            this.AddAuthor1BTN.Name = "AddAuthor1BTN";
-            this.AddAuthor1BTN.Size = new System.Drawing.Size(18, 18);
-            this.AddAuthor1BTN.TabIndex = 28;
-            this.AddAuthor1BTN.TabStop = true;
-            this.AddAuthor1BTN.Text = "+";
-            this.AddAuthor1BTN.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddAuthor1BTN_LinkClicked);
+            this.AddAuthorBTN.AutoSize = true;
+            this.AddAuthorBTN.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddAuthorBTN.Location = new System.Drawing.Point(88, 48);
+            this.AddAuthorBTN.Name = "AddAuthorBTN";
+            this.AddAuthorBTN.Size = new System.Drawing.Size(18, 18);
+            this.AddAuthorBTN.TabIndex = 28;
+            this.AddAuthorBTN.TabStop = true;
+            this.AddAuthorBTN.Text = "+";
+            this.AddAuthorBTN.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddAuthorBTN_LinkClicked);
             // 
             // editAuthorTB
             // 
@@ -1491,7 +1491,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.CheckBox AvailableCHK;
         private System.Windows.Forms.FlowLayoutPanel BookInfoFLP;
-        private System.Windows.Forms.LinkLabel AddAuthor1BTN;
+        private System.Windows.Forms.LinkLabel AddAuthorBTN;
         private System.Windows.Forms.LinkLabel RemoveAuthorBTN;
         private System.Windows.Forms.CheckBox overdueLoansCHK;
         private System.Windows.Forms.Label label9;
