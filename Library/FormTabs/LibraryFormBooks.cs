@@ -26,6 +26,18 @@ namespace Library
         Color bookCopyAvailableColor = Color.Black;
         Color bookCopyUnavailableColor = Color.IndianRed;
 
+        /// <summary>
+        /// Resets the tab to empty search parameters and lists all books.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void booksTab_Enter(object sender, EventArgs e)
+        {
+            UpdateBookList(bookService.All().ToList());
+            findTitleTB.ResetText();
+            findAuthorTB.ResetText();
+            findISBNTB.ResetText();
+        }
         private void UpdateBookListEvent(object sender, EventArgs e)
         {
             UpdateBookList(bookService.All().ToList());
@@ -322,9 +334,12 @@ namespace Library
 
         private void lbCopies_DoubleClick(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(2);
-            bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
-            createNewLoan = true;
+            if (lbCopies.SelectedItem != null) //If you double clicked on a item
+            {
+                tabControl1.SelectTab(2);
+                bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
+                createNewLoan = true;
+            }
         }
 
         private void AddAuthor1BTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -388,9 +403,28 @@ namespace Library
         }
         private void NewLoanBooksBTN_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(2);
-            bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
-            createNewLoan = true;
+            if (lbCopies.SelectedItem != null) //If you have selected a bookCopy, otherwise it cant create a new loan
+            {
+                bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
+                createNewLoan = true;
+                if (memberLoanTB.Text == "") // If no member has been selected for the loan, go to the members tab
+                {
+                    tabControl1.SelectTab(1);
+                    string confirmBoxText = "Select a member to add the loan to and click New Loan.";
+                    string confirmBoxTitle = "Select member to create a new loan";
+                    InfoPopup(confirmBoxText, confirmBoxTitle);
+                }
+                else // Otherwise, go to loan tab
+                {
+                    tabControl1.SelectTab(2);
+                }
+            }
+            else
+            {
+                string confirmBoxText = "Select a bookcopy from the list before you click New Loan.";
+                string confirmBoxTitle = "Select bookcopy";
+                InfoPopup(confirmBoxText, confirmBoxTitle);
+            }
         }
 
         private void UpdatedAuthorEvent(object sender, EventArgs e)

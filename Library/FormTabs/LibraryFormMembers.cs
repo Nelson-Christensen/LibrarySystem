@@ -18,6 +18,12 @@ namespace Library
     public partial class LibraryForm : Form
     {
 
+        private void membersTab_Enter(object sender, EventArgs e)
+        {
+            UpdateMemberList(memberService.All().ToList());
+            findMemberSearchBox.ResetText();
+        }
+
         private void UpdateMemberListEvent(object sender, EventArgs e)
         {
             UpdateMemberList(memberService.All().ToList());
@@ -103,6 +109,34 @@ namespace Library
             }
         }
 
+        private void memberLoanBTN_Click(object sender, EventArgs e)
+        {
+            if (lbMemberResults.SelectedItem != null) //If you have selected a member, otherwise it cant create a new loan
+            {
+                memberLoanTB.Text = lbMemberResults.SelectedItem.ToString();
+                createNewLoan = true;
+                if (bookCopyLoanTB.Text == "")
+                {
+                    tabControl1.SelectTab(0);
+                    string confirmBoxText = "Select a book and a bookCopy and click New Loan to add the bookCopy to the loan.";
+                    string confirmBoxTitle = "Select bookcopy to create a new loan";
+                    InfoPopup(confirmBoxText, confirmBoxTitle);
+                }
+                else
+                {
+                    tabControl1.SelectTab(2);
+                }
+            }
+            else
+            {
+                string confirmBoxText = "Select a bookcopy from the list before you click New Loan.";
+                string confirmBoxTitle = "Select bookcopy";
+                InfoPopup(confirmBoxText, confirmBoxTitle);
+            }
+        }
+
+
+
         //Searchbox
         private void findMemberSearchBox_TextChanged(object sender, EventArgs e)
         {
@@ -136,11 +170,6 @@ namespace Library
 
 
         private void memberIdBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void membersTab_Click(object sender, EventArgs e)
         {
 
         }

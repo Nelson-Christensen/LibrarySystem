@@ -132,11 +132,11 @@
             this.tabControl1.Controls.Add(this.loansTab);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabControl1.Font = new System.Drawing.Font("Georgia", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(45, 38);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControl1.Location = new System.Drawing.Point(30, 25);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1425, 898);
+            this.tabControl1.Size = new System.Drawing.Size(950, 584);
             this.tabControl1.TabIndex = 2;
             // 
             // booksTab
@@ -163,21 +163,22 @@
             this.booksTab.Controls.Add(this.findBooksLabel);
             this.booksTab.Controls.Add(this.lbBooks);
             this.booksTab.Cursor = System.Windows.Forms.Cursors.Default;
-            this.booksTab.Location = new System.Drawing.Point(4, 41);
-            this.booksTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.booksTab.Location = new System.Drawing.Point(4, 30);
+            this.booksTab.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.booksTab.Name = "booksTab";
-            this.booksTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.booksTab.Size = new System.Drawing.Size(1417, 853);
+            this.booksTab.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.booksTab.Size = new System.Drawing.Size(942, 550);
             this.booksTab.TabIndex = 0;
             this.booksTab.Text = "Books";
+            this.booksTab.Enter += new System.EventHandler(this.booksTab_Enter);
             // 
             // NewLoanBooksBTN
             // 
             this.NewLoanBooksBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.NewLoanBooksBTN.Location = new System.Drawing.Point(1224, 29);
-            this.NewLoanBooksBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NewLoanBooksBTN.Location = new System.Drawing.Point(816, 19);
+            this.NewLoanBooksBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.NewLoanBooksBTN.Name = "NewLoanBooksBTN";
-            this.NewLoanBooksBTN.Size = new System.Drawing.Size(144, 58);
+            this.NewLoanBooksBTN.Size = new System.Drawing.Size(96, 38);
             this.NewLoanBooksBTN.TabIndex = 40;
             this.NewLoanBooksBTN.Text = "New loan";
             this.NewLoanBooksBTN.UseVisualStyleBackColor = true;
@@ -196,54 +197,56 @@
             this.BookInfoFLP.Controls.Add(this.editAuthorTB);
             this.BookInfoFLP.Controls.Add(this.label7);
             this.BookInfoFLP.Controls.Add(this.editDescriptionTB);
-            this.BookInfoFLP.Location = new System.Drawing.Point(616, 114);
-            this.BookInfoFLP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BookInfoFLP.Location = new System.Drawing.Point(411, 74);
             this.BookInfoFLP.Name = "BookInfoFLP";
-            this.BookInfoFLP.Size = new System.Drawing.Size(370, 615);
+            this.BookInfoFLP.Size = new System.Drawing.Size(247, 400);
             this.BookInfoFLP.TabIndex = 39;
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Location = new System.Drawing.Point(2, 0);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(354, 28);
+            this.label6.Size = new System.Drawing.Size(236, 18);
             this.label6.TabIndex = 26;
             this.label6.Text = "ISBN";
             // 
             // editISBNTB
             // 
             this.editISBNTB.BackColor = System.Drawing.SystemColors.Info;
-            this.editISBNTB.Location = new System.Drawing.Point(3, 30);
-            this.editISBNTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editISBNTB.Location = new System.Drawing.Point(2, 19);
+            this.editISBNTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.editISBNTB.Name = "editISBNTB";
-            this.editISBNTB.Size = new System.Drawing.Size(337, 39);
+            this.editISBNTB.Size = new System.Drawing.Size(226, 28);
             this.editISBNTB.TabIndex = 19;
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label4.Location = new System.Drawing.Point(3, 71);
+            this.label4.Location = new System.Drawing.Point(2, 48);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(354, 28);
+            this.label4.Size = new System.Drawing.Size(236, 18);
             this.label4.TabIndex = 24;
             this.label4.Text = "Title";
             // 
             // editTitleTB
             // 
             this.editTitleTB.BackColor = System.Drawing.SystemColors.Info;
-            this.editTitleTB.Location = new System.Drawing.Point(3, 101);
-            this.editTitleTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editTitleTB.Location = new System.Drawing.Point(2, 67);
+            this.editTitleTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.editTitleTB.Name = "editTitleTB";
-            this.editTitleTB.Size = new System.Drawing.Size(337, 39);
+            this.editTitleTB.Size = new System.Drawing.Size(226, 28);
             this.editTitleTB.TabIndex = 20;
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label5.Location = new System.Drawing.Point(3, 142);
+            this.label5.Location = new System.Drawing.Point(2, 96);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 28);
+            this.label5.Size = new System.Drawing.Size(60, 18);
             this.label5.TabIndex = 25;
             this.label5.Text = "Author";
             // 
@@ -251,10 +254,9 @@
             // 
             this.RemoveAuthorBTN.AutoSize = true;
             this.RemoveAuthorBTN.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveAuthorBTN.Location = new System.Drawing.Point(100, 142);
-            this.RemoveAuthorBTN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.RemoveAuthorBTN.Location = new System.Drawing.Point(67, 96);
             this.RemoveAuthorBTN.Name = "RemoveAuthorBTN";
-            this.RemoveAuthorBTN.Size = new System.Drawing.Size(22, 29);
+            this.RemoveAuthorBTN.Size = new System.Drawing.Size(15, 18);
             this.RemoveAuthorBTN.TabIndex = 30;
             this.RemoveAuthorBTN.TabStop = true;
             this.RemoveAuthorBTN.Text = "-";
@@ -264,10 +266,9 @@
             // 
             this.AddAuthor1BTN.AutoSize = true;
             this.AddAuthor1BTN.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddAuthor1BTN.Location = new System.Drawing.Point(130, 142);
-            this.AddAuthor1BTN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AddAuthor1BTN.Location = new System.Drawing.Point(88, 96);
             this.AddAuthor1BTN.Name = "AddAuthor1BTN";
-            this.AddAuthor1BTN.Size = new System.Drawing.Size(28, 29);
+            this.AddAuthor1BTN.Size = new System.Drawing.Size(18, 18);
             this.AddAuthor1BTN.TabIndex = 28;
             this.AddAuthor1BTN.TabStop = true;
             this.AddAuthor1BTN.Text = "+";
@@ -278,28 +279,29 @@
             this.editAuthorTB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.editAuthorTB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.editAuthorTB.BackColor = System.Drawing.SystemColors.Info;
-            this.editAuthorTB.Location = new System.Drawing.Point(3, 173);
-            this.editAuthorTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editAuthorTB.Location = new System.Drawing.Point(2, 115);
+            this.editAuthorTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.editAuthorTB.Name = "editAuthorTB";
-            this.editAuthorTB.Size = new System.Drawing.Size(337, 39);
+            this.editAuthorTB.Size = new System.Drawing.Size(226, 28);
             this.editAuthorTB.TabIndex = 21;
             // 
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label7.Location = new System.Drawing.Point(3, 214);
+            this.label7.Location = new System.Drawing.Point(2, 144);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(354, 28);
+            this.label7.Size = new System.Drawing.Size(236, 18);
             this.label7.TabIndex = 27;
             this.label7.Text = "Description";
             // 
             // editDescriptionTB
             // 
             this.editDescriptionTB.BackColor = System.Drawing.SystemColors.Info;
-            this.editDescriptionTB.Location = new System.Drawing.Point(3, 244);
-            this.editDescriptionTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editDescriptionTB.Location = new System.Drawing.Point(2, 163);
+            this.editDescriptionTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.editDescriptionTB.Name = "editDescriptionTB";
-            this.editDescriptionTB.Size = new System.Drawing.Size(337, 178);
+            this.editDescriptionTB.Size = new System.Drawing.Size(226, 117);
             this.editDescriptionTB.TabIndex = 23;
             this.editDescriptionTB.Text = "";
             // 
@@ -307,10 +309,9 @@
             // 
             this.AvailableCHK.AutoSize = true;
             this.AvailableCHK.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AvailableCHK.Location = new System.Drawing.Point(27, 388);
-            this.AvailableCHK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AvailableCHK.Location = new System.Drawing.Point(18, 252);
             this.AvailableCHK.Name = "AvailableCHK";
-            this.AvailableCHK.Size = new System.Drawing.Size(265, 33);
+            this.AvailableCHK.Size = new System.Drawing.Size(176, 22);
             this.AvailableCHK.TabIndex = 38;
             this.AvailableCHK.Text = "Only Available Books";
             this.AvailableCHK.UseVisualStyleBackColor = true;
@@ -322,10 +323,9 @@
             this.lbCopies.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lbCopies.FormattingEnabled = true;
             this.lbCopies.ItemHeight = 21;
-            this.lbCopies.Location = new System.Drawing.Point(1045, 141);
-            this.lbCopies.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lbCopies.Location = new System.Drawing.Point(697, 92);
             this.lbCopies.Name = "lbCopies";
-            this.lbCopies.Size = new System.Drawing.Size(322, 571);
+            this.lbCopies.Size = new System.Drawing.Size(216, 361);
             this.lbCopies.TabIndex = 36;
             this.lbCopies.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbCopies_DrawItem);
             this.lbCopies.SelectedIndexChanged += new System.EventHandler(this.lbCopies_SelectedIndexChanged);
@@ -335,9 +335,10 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label15.Location = new System.Drawing.Point(1041, 106);
+            this.label15.Location = new System.Drawing.Point(694, 69);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(84, 29);
+            this.label15.Size = new System.Drawing.Size(54, 18);
             this.label15.TabIndex = 35;
             this.label15.Text = "Copies";
             // 
@@ -345,9 +346,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label13.Location = new System.Drawing.Point(289, 106);
+            this.label13.Location = new System.Drawing.Point(193, 69);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(91, 29);
+            this.label13.Size = new System.Drawing.Size(60, 18);
             this.label13.TabIndex = 34;
             this.label13.Text = "Results";
             // 
@@ -355,10 +357,10 @@
             // 
             this.removeCopyBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.removeCopyBTN.Location = new System.Drawing.Point(1210, 738);
-            this.removeCopyBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.removeCopyBTN.Location = new System.Drawing.Point(807, 480);
+            this.removeCopyBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.removeCopyBTN.Name = "removeCopyBTN";
-            this.removeCopyBTN.Size = new System.Drawing.Size(144, 58);
+            this.removeCopyBTN.Size = new System.Drawing.Size(96, 38);
             this.removeCopyBTN.TabIndex = 33;
             this.removeCopyBTN.Text = "Remove";
             this.removeCopyBTN.UseVisualStyleBackColor = true;
@@ -368,10 +370,10 @@
             // 
             this.removeBookBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeBookBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.removeBookBTN.Location = new System.Drawing.Point(189, 29);
-            this.removeBookBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.removeBookBTN.Location = new System.Drawing.Point(126, 19);
+            this.removeBookBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.removeBookBTN.Name = "removeBookBTN";
-            this.removeBookBTN.Size = new System.Drawing.Size(144, 58);
+            this.removeBookBTN.Size = new System.Drawing.Size(96, 38);
             this.removeBookBTN.TabIndex = 29;
             this.removeBookBTN.Text = "Remove";
             this.removeBookBTN.UseVisualStyleBackColor = true;
@@ -381,10 +383,10 @@
             // 
             this.saveChangesBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveChangesBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.saveChangesBTN.Location = new System.Drawing.Point(827, 738);
-            this.saveChangesBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.saveChangesBTN.Location = new System.Drawing.Point(551, 480);
+            this.saveChangesBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.saveChangesBTN.Name = "saveChangesBTN";
-            this.saveChangesBTN.Size = new System.Drawing.Size(144, 58);
+            this.saveChangesBTN.Size = new System.Drawing.Size(96, 38);
             this.saveChangesBTN.TabIndex = 30;
             this.saveChangesBTN.Text = "Save";
             this.saveChangesBTN.UseVisualStyleBackColor = true;
@@ -394,10 +396,10 @@
             // 
             this.addCopyBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.addCopyBTN.Location = new System.Drawing.Point(1045, 738);
-            this.addCopyBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addCopyBTN.Location = new System.Drawing.Point(697, 480);
+            this.addCopyBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.addCopyBTN.Name = "addCopyBTN";
-            this.addCopyBTN.Size = new System.Drawing.Size(144, 58);
+            this.addCopyBTN.Size = new System.Drawing.Size(96, 38);
             this.addCopyBTN.TabIndex = 28;
             this.addCopyBTN.Text = "Add copy";
             this.addCopyBTN.UseVisualStyleBackColor = true;
@@ -407,10 +409,10 @@
             // 
             this.addBookBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBookBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.addBookBTN.Location = new System.Drawing.Point(27, 29);
-            this.addBookBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.addBookBTN.Location = new System.Drawing.Point(18, 19);
+            this.addBookBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.addBookBTN.Name = "addBookBTN";
-            this.addBookBTN.Size = new System.Drawing.Size(144, 58);
+            this.addBookBTN.Size = new System.Drawing.Size(96, 38);
             this.addBookBTN.TabIndex = 11;
             this.addBookBTN.Text = "New Book";
             this.addBookBTN.UseVisualStyleBackColor = true;
@@ -420,9 +422,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label3.Location = new System.Drawing.Point(27, 148);
+            this.label3.Location = new System.Drawing.Point(18, 96);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 29);
+            this.label3.Size = new System.Drawing.Size(59, 18);
             this.label3.TabIndex = 18;
             this.label3.Text = "By title";
             // 
@@ -430,9 +433,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label2.Location = new System.Drawing.Point(27, 308);
+            this.label2.Location = new System.Drawing.Point(18, 200);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 29);
+            this.label2.Size = new System.Drawing.Size(69, 18);
             this.label2.TabIndex = 17;
             this.label2.Text = "By ISBN";
             // 
@@ -440,45 +444,47 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label1.Location = new System.Drawing.Point(27, 228);
+            this.label1.Location = new System.Drawing.Point(18, 148);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 29);
+            this.label1.Size = new System.Drawing.Size(78, 18);
             this.label1.TabIndex = 16;
             this.label1.Text = "By author";
             // 
             // findISBNTB
             // 
-            this.findISBNTB.Location = new System.Drawing.Point(27, 340);
-            this.findISBNTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.findISBNTB.Location = new System.Drawing.Point(18, 221);
+            this.findISBNTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.findISBNTB.Name = "findISBNTB";
-            this.findISBNTB.Size = new System.Drawing.Size(239, 39);
+            this.findISBNTB.Size = new System.Drawing.Size(161, 28);
             this.findISBNTB.TabIndex = 15;
             this.findISBNTB.TextChanged += new System.EventHandler(this.findISBNTB_TextChanged);
             // 
             // findAuthorTB
             // 
-            this.findAuthorTB.Location = new System.Drawing.Point(27, 260);
-            this.findAuthorTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.findAuthorTB.Location = new System.Drawing.Point(18, 169);
+            this.findAuthorTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.findAuthorTB.Name = "findAuthorTB";
-            this.findAuthorTB.Size = new System.Drawing.Size(239, 39);
+            this.findAuthorTB.Size = new System.Drawing.Size(161, 28);
             this.findAuthorTB.TabIndex = 14;
             this.findAuthorTB.TextChanged += new System.EventHandler(this.findAuthorTB_TextChanged);
             // 
             // findTitleTB
             // 
-            this.findTitleTB.Location = new System.Drawing.Point(27, 180);
-            this.findTitleTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.findTitleTB.Location = new System.Drawing.Point(18, 117);
+            this.findTitleTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.findTitleTB.Name = "findTitleTB";
-            this.findTitleTB.Size = new System.Drawing.Size(239, 39);
+            this.findTitleTB.Size = new System.Drawing.Size(161, 28);
             this.findTitleTB.TabIndex = 13;
             this.findTitleTB.TextChanged += new System.EventHandler(this.findTitleTB_TextChanged);
             // 
             // findBooksLabel
             // 
             this.findBooksLabel.AutoSize = true;
-            this.findBooksLabel.Location = new System.Drawing.Point(27, 108);
+            this.findBooksLabel.Location = new System.Drawing.Point(18, 70);
+            this.findBooksLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.findBooksLabel.Name = "findBooksLabel";
-            this.findBooksLabel.Size = new System.Drawing.Size(150, 32);
+            this.findBooksLabel.Size = new System.Drawing.Size(101, 23);
             this.findBooksLabel.TabIndex = 12;
             this.findBooksLabel.Text = "Find book:";
             // 
@@ -486,11 +492,10 @@
             // 
             this.lbBooks.BackColor = System.Drawing.SystemColors.Window;
             this.lbBooks.FormattingEnabled = true;
-            this.lbBooks.ItemHeight = 32;
-            this.lbBooks.Location = new System.Drawing.Point(294, 141);
-            this.lbBooks.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lbBooks.ItemHeight = 21;
+            this.lbBooks.Location = new System.Drawing.Point(196, 92);
             this.lbBooks.Name = "lbBooks";
-            this.lbBooks.Size = new System.Drawing.Size(292, 548);
+            this.lbBooks.Size = new System.Drawing.Size(196, 340);
             this.lbBooks.TabIndex = 0;
             this.lbBooks.SelectedIndexChanged += new System.EventHandler(this.lbBooks_SelectedIndexChanged);
             // 
@@ -518,33 +523,34 @@
             this.membersTab.Controls.Add(this.label8);
             this.membersTab.Controls.Add(this.findMemberSearchBox);
             this.membersTab.Cursor = System.Windows.Forms.Cursors.Default;
-            this.membersTab.Location = new System.Drawing.Point(4, 41);
-            this.membersTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.membersTab.Location = new System.Drawing.Point(4, 30);
+            this.membersTab.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.membersTab.Name = "membersTab";
-            this.membersTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.membersTab.Size = new System.Drawing.Size(1417, 853);
+            this.membersTab.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.membersTab.Size = new System.Drawing.Size(942, 550);
             this.membersTab.TabIndex = 1;
             this.membersTab.Text = "Members";
-            this.membersTab.Click += new System.EventHandler(this.membersTab_Click);
+            this.membersTab.Enter += new System.EventHandler(this.membersTab_Enter);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Georgia", 12F);
             this.label16.ForeColor = System.Drawing.Color.Gray;
-            this.label16.Location = new System.Drawing.Point(780, 679);
+            this.label16.Location = new System.Drawing.Point(520, 441);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(179, 29);
+            this.label16.Size = new System.Drawing.Size(118, 18);
             this.label16.TabIndex = 47;
             this.label16.Text = "*Previous loans";
             // 
             // showPreviousLoans
             // 
             this.showPreviousLoans.AutoSize = true;
-            this.showPreviousLoans.Location = new System.Drawing.Point(786, 602);
-            this.showPreviousLoans.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.showPreviousLoans.Location = new System.Drawing.Point(524, 391);
+            this.showPreviousLoans.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.showPreviousLoans.Name = "showPreviousLoans";
-            this.showPreviousLoans.Size = new System.Drawing.Size(297, 36);
+            this.showPreviousLoans.Size = new System.Drawing.Size(201, 27);
             this.showPreviousLoans.TabIndex = 46;
             this.showPreviousLoans.Text = "Show previous loans";
             this.showPreviousLoans.UseVisualStyleBackColor = true;
@@ -555,9 +561,10 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Georgia", 12F);
             this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(780, 649);
+            this.label24.Location = new System.Drawing.Point(520, 422);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(168, 29);
+            this.label24.Size = new System.Drawing.Size(111, 18);
             this.label24.TabIndex = 45;
             this.label24.Text = "*Overdue loan";
             // 
@@ -575,11 +582,11 @@
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.timeOfReturnTB);
             this.groupBox1.Controls.Add(this.dueDateTB);
-            this.groupBox1.Location = new System.Drawing.Point(1081, 152);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Location = new System.Drawing.Point(721, 99);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(305, 442);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.groupBox1.Size = new System.Drawing.Size(203, 287);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             // 
@@ -587,9 +594,10 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label23.Location = new System.Drawing.Point(15, 332);
+            this.label23.Location = new System.Drawing.Point(10, 216);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(107, 29);
+            this.label23.Size = new System.Drawing.Size(71, 18);
             this.label23.TabIndex = 48;
             this.label23.Text = "Fees due";
             // 
@@ -597,18 +605,20 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label22.Location = new System.Drawing.Point(30, 332);
+            this.label22.Location = new System.Drawing.Point(20, 216);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(0, 29);
+            this.label22.Size = new System.Drawing.Size(0, 18);
             this.label22.TabIndex = 47;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label21.Location = new System.Drawing.Point(15, 252);
+            this.label21.Location = new System.Drawing.Point(10, 164);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(109, 29);
+            this.label21.Size = new System.Drawing.Size(71, 18);
             this.label21.TabIndex = 46;
             this.label21.Text = "Due date";
             // 
@@ -616,9 +626,10 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label20.Location = new System.Drawing.Point(15, 172);
+            this.label20.Location = new System.Drawing.Point(10, 112);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(169, 29);
+            this.label20.Size = new System.Drawing.Size(112, 18);
             this.label20.TabIndex = 45;
             this.label20.Text = "Time of return";
             // 
@@ -626,39 +637,40 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label19.Location = new System.Drawing.Point(15, 92);
+            this.label19.Location = new System.Drawing.Point(10, 60);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(147, 29);
+            this.label19.Size = new System.Drawing.Size(95, 18);
             this.label19.TabIndex = 44;
             this.label19.Text = "Time of loan";
             // 
             // feesDueTB
             // 
-            this.feesDueTB.Location = new System.Drawing.Point(19, 366);
-            this.feesDueTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.feesDueTB.Location = new System.Drawing.Point(13, 238);
+            this.feesDueTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.feesDueTB.Name = "feesDueTB";
             this.feesDueTB.ReadOnly = true;
-            this.feesDueTB.Size = new System.Drawing.Size(264, 39);
+            this.feesDueTB.Size = new System.Drawing.Size(177, 28);
             this.feesDueTB.TabIndex = 43;
             this.feesDueTB.TextChanged += new System.EventHandler(this.feesDueTB_TextChanged);
             // 
             // loanIdTB
             // 
-            this.loanIdTB.Location = new System.Drawing.Point(19, 40);
-            this.loanIdTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.loanIdTB.Location = new System.Drawing.Point(13, 26);
+            this.loanIdTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.loanIdTB.Name = "loanIdTB";
             this.loanIdTB.ReadOnly = true;
-            this.loanIdTB.Size = new System.Drawing.Size(264, 39);
+            this.loanIdTB.Size = new System.Drawing.Size(177, 28);
             this.loanIdTB.TabIndex = 38;
             this.loanIdTB.TextChanged += new System.EventHandler(this.loanIdTB_TextChanged);
             // 
             // timeOfLoanTB
             // 
-            this.timeOfLoanTB.Location = new System.Drawing.Point(19, 126);
-            this.timeOfLoanTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.timeOfLoanTB.Location = new System.Drawing.Point(13, 82);
+            this.timeOfLoanTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.timeOfLoanTB.Name = "timeOfLoanTB";
             this.timeOfLoanTB.ReadOnly = true;
-            this.timeOfLoanTB.Size = new System.Drawing.Size(264, 39);
+            this.timeOfLoanTB.Size = new System.Drawing.Size(177, 28);
             this.timeOfLoanTB.TabIndex = 39;
             this.timeOfLoanTB.TextChanged += new System.EventHandler(this.timeOfLoanTB_TextChanged);
             // 
@@ -666,29 +678,30 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label17.Location = new System.Drawing.Point(15, 12);
+            this.label17.Location = new System.Drawing.Point(10, 8);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(99, 29);
+            this.label17.Size = new System.Drawing.Size(65, 18);
             this.label17.TabIndex = 42;
             this.label17.Text = "Loan ID";
             // 
             // timeOfReturnTB
             // 
-            this.timeOfReturnTB.Location = new System.Drawing.Point(19, 206);
-            this.timeOfReturnTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.timeOfReturnTB.Location = new System.Drawing.Point(13, 134);
+            this.timeOfReturnTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.timeOfReturnTB.Name = "timeOfReturnTB";
             this.timeOfReturnTB.ReadOnly = true;
-            this.timeOfReturnTB.Size = new System.Drawing.Size(264, 39);
+            this.timeOfReturnTB.Size = new System.Drawing.Size(177, 28);
             this.timeOfReturnTB.TabIndex = 40;
             this.timeOfReturnTB.TextChanged += new System.EventHandler(this.timeOfReturnTB_TextChanged);
             // 
             // dueDateTB
             // 
-            this.dueDateTB.Location = new System.Drawing.Point(19, 286);
-            this.dueDateTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dueDateTB.Location = new System.Drawing.Point(13, 186);
+            this.dueDateTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.dueDateTB.Name = "dueDateTB";
             this.dueDateTB.ReadOnly = true;
-            this.dueDateTB.Size = new System.Drawing.Size(264, 39);
+            this.dueDateTB.Size = new System.Drawing.Size(177, 28);
             this.dueDateTB.TabIndex = 41;
             this.dueDateTB.TextChanged += new System.EventHandler(this.dueDateTB_TextChanged);
             // 
@@ -696,50 +709,51 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label18.Location = new System.Drawing.Point(780, 119);
+            this.label18.Location = new System.Drawing.Point(520, 77);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(224, 29);
+            this.label18.Size = new System.Drawing.Size(148, 18);
             this.label18.TabIndex = 43;
             this.label18.Text = "Current loans (title)";
             // 
             // lbMemberLoans
             // 
             this.lbMemberLoans.FormattingEnabled = true;
-            this.lbMemberLoans.ItemHeight = 32;
-            this.lbMemberLoans.Location = new System.Drawing.Point(786, 152);
-            this.lbMemberLoans.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbMemberLoans.ItemHeight = 21;
+            this.lbMemberLoans.Location = new System.Drawing.Point(524, 99);
+            this.lbMemberLoans.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.lbMemberLoans.Name = "lbMemberLoans";
-            this.lbMemberLoans.Size = new System.Drawing.Size(275, 388);
+            this.lbMemberLoans.Size = new System.Drawing.Size(185, 235);
             this.lbMemberLoans.TabIndex = 37;
             this.lbMemberLoans.SelectedIndexChanged += new System.EventHandler(this.lbMemberLoans_SelectedIndexChanged);
             // 
             // memberNameBox
             // 
             this.memberNameBox.BackColor = System.Drawing.SystemColors.Info;
-            this.memberNameBox.Location = new System.Drawing.Point(370, 232);
-            this.memberNameBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.memberNameBox.Location = new System.Drawing.Point(247, 151);
+            this.memberNameBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.memberNameBox.Name = "memberNameBox";
-            this.memberNameBox.Size = new System.Drawing.Size(394, 39);
+            this.memberNameBox.Size = new System.Drawing.Size(264, 28);
             this.memberNameBox.TabIndex = 34;
             this.memberNameBox.TextChanged += new System.EventHandler(this.memberNameBox_TextChanged);
             // 
             // memberPersonnummerBox
             // 
             this.memberPersonnummerBox.BackColor = System.Drawing.SystemColors.Info;
-            this.memberPersonnummerBox.Location = new System.Drawing.Point(525, 152);
-            this.memberPersonnummerBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.memberPersonnummerBox.Location = new System.Drawing.Point(350, 99);
+            this.memberPersonnummerBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.memberPersonnummerBox.Name = "memberPersonnummerBox";
-            this.memberPersonnummerBox.Size = new System.Drawing.Size(241, 39);
+            this.memberPersonnummerBox.Size = new System.Drawing.Size(162, 28);
             this.memberPersonnummerBox.TabIndex = 33;
             this.memberPersonnummerBox.TextChanged += new System.EventHandler(this.memberPersonnummerBox_TextChanged);
             // 
             // memberIdBox
             // 
             this.memberIdBox.BackColor = System.Drawing.SystemColors.Info;
-            this.memberIdBox.Location = new System.Drawing.Point(370, 152);
-            this.memberIdBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.memberIdBox.Location = new System.Drawing.Point(247, 99);
+            this.memberIdBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.memberIdBox.Name = "memberIdBox";
-            this.memberIdBox.Size = new System.Drawing.Size(147, 39);
+            this.memberIdBox.Size = new System.Drawing.Size(99, 28);
             this.memberIdBox.TabIndex = 32;
             this.memberIdBox.TextChanged += new System.EventHandler(this.memberIdBox_TextChanged);
             // 
@@ -747,9 +761,10 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label14.Location = new System.Drawing.Point(366, 199);
+            this.label14.Location = new System.Drawing.Point(244, 129);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(76, 29);
+            this.label14.Size = new System.Drawing.Size(50, 18);
             this.label14.TabIndex = 30;
             this.label14.Text = "Name";
             // 
@@ -757,9 +772,10 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label12.Location = new System.Drawing.Point(50, 199);
+            this.label12.Location = new System.Drawing.Point(33, 129);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 29);
+            this.label12.Size = new System.Drawing.Size(60, 18);
             this.label12.TabIndex = 29;
             this.label12.Text = "Results";
             // 
@@ -767,9 +783,10 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label11.Location = new System.Drawing.Point(366, 119);
+            this.label11.Location = new System.Drawing.Point(244, 77);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 29);
+            this.label11.Size = new System.Drawing.Size(26, 18);
             this.label11.TabIndex = 28;
             this.label11.Text = "ID";
             // 
@@ -777,9 +794,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label10.Location = new System.Drawing.Point(519, 119);
+            this.label10.Location = new System.Drawing.Point(346, 77);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(179, 29);
+            this.label10.Size = new System.Drawing.Size(118, 18);
             this.label10.TabIndex = 27;
             this.label10.Text = "Personnummer";
             // 
@@ -787,10 +805,10 @@
             // 
             this.saveMemberBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveMemberBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.saveMemberBTN.Location = new System.Drawing.Point(621, 282);
-            this.saveMemberBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.saveMemberBTN.Location = new System.Drawing.Point(414, 183);
+            this.saveMemberBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.saveMemberBTN.Name = "saveMemberBTN";
-            this.saveMemberBTN.Size = new System.Drawing.Size(144, 58);
+            this.saveMemberBTN.Size = new System.Drawing.Size(96, 38);
             this.saveMemberBTN.TabIndex = 24;
             this.saveMemberBTN.Text = "Save";
             this.saveMemberBTN.UseVisualStyleBackColor = true;
@@ -800,10 +818,10 @@
             // 
             this.removeMemberBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeMemberBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.removeMemberBTN.Location = new System.Drawing.Point(204, 34);
-            this.removeMemberBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.removeMemberBTN.Location = new System.Drawing.Point(136, 22);
+            this.removeMemberBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.removeMemberBTN.Name = "removeMemberBTN";
-            this.removeMemberBTN.Size = new System.Drawing.Size(144, 58);
+            this.removeMemberBTN.Size = new System.Drawing.Size(96, 38);
             this.removeMemberBTN.TabIndex = 23;
             this.removeMemberBTN.Text = "Remove";
             this.removeMemberBTN.UseVisualStyleBackColor = true;
@@ -811,23 +829,25 @@
             // 
             // memberLoanBTN
             // 
+            this.memberLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.memberLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.memberLoanBTN.Location = new System.Drawing.Point(1221, 34);
-            this.memberLoanBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.memberLoanBTN.Location = new System.Drawing.Point(814, 22);
+            this.memberLoanBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.memberLoanBTN.Name = "memberLoanBTN";
-            this.memberLoanBTN.Size = new System.Drawing.Size(144, 58);
+            this.memberLoanBTN.Size = new System.Drawing.Size(96, 38);
             this.memberLoanBTN.TabIndex = 22;
             this.memberLoanBTN.Text = "New loan";
             this.memberLoanBTN.UseVisualStyleBackColor = true;
+            this.memberLoanBTN.Click += new System.EventHandler(this.memberLoanBTN_Click);
             // 
             // newMemberBTN
             // 
             this.newMemberBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.newMemberBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.newMemberBTN.Location = new System.Drawing.Point(53, 34);
-            this.newMemberBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.newMemberBTN.Location = new System.Drawing.Point(35, 22);
+            this.newMemberBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.newMemberBTN.Name = "newMemberBTN";
-            this.newMemberBTN.Size = new System.Drawing.Size(144, 58);
+            this.newMemberBTN.Size = new System.Drawing.Size(96, 38);
             this.newMemberBTN.TabIndex = 21;
             this.newMemberBTN.Text = "New";
             this.newMemberBTN.UseVisualStyleBackColor = true;
@@ -836,11 +856,11 @@
             // lbMemberResults
             // 
             this.lbMemberResults.FormattingEnabled = true;
-            this.lbMemberResults.ItemHeight = 32;
-            this.lbMemberResults.Location = new System.Drawing.Point(54, 232);
-            this.lbMemberResults.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lbMemberResults.ItemHeight = 21;
+            this.lbMemberResults.Location = new System.Drawing.Point(36, 151);
+            this.lbMemberResults.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.lbMemberResults.Name = "lbMemberResults";
-            this.lbMemberResults.Size = new System.Drawing.Size(295, 388);
+            this.lbMemberResults.Size = new System.Drawing.Size(198, 235);
             this.lbMemberResults.TabIndex = 20;
             this.lbMemberResults.SelectedIndexChanged += new System.EventHandler(this.lbMemberResults_SelectedIndexChanged);
             // 
@@ -848,18 +868,19 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label8.Location = new System.Drawing.Point(50, 119);
+            this.label8.Location = new System.Drawing.Point(33, 77);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(157, 29);
+            this.label8.Size = new System.Drawing.Size(104, 18);
             this.label8.TabIndex = 19;
             this.label8.Text = "Find member";
             // 
             // findMemberSearchBox
             // 
-            this.findMemberSearchBox.Location = new System.Drawing.Point(54, 152);
-            this.findMemberSearchBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.findMemberSearchBox.Location = new System.Drawing.Point(36, 99);
+            this.findMemberSearchBox.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.findMemberSearchBox.Name = "findMemberSearchBox";
-            this.findMemberSearchBox.Size = new System.Drawing.Size(295, 39);
+            this.findMemberSearchBox.Size = new System.Drawing.Size(198, 28);
             this.findMemberSearchBox.TabIndex = 14;
             this.findMemberSearchBox.TextChanged += new System.EventHandler(this.findMemberSearchBox_TextChanged);
             // 
@@ -880,10 +901,10 @@
             this.loansTab.Controls.Add(this.findTitleLoanTB);
             this.loansTab.Controls.Add(this.label33);
             this.loansTab.Cursor = System.Windows.Forms.Cursors.Default;
-            this.loansTab.Location = new System.Drawing.Point(4, 41);
-            this.loansTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.loansTab.Location = new System.Drawing.Point(4, 30);
+            this.loansTab.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.loansTab.Name = "loansTab";
-            this.loansTab.Size = new System.Drawing.Size(1417, 853);
+            this.loansTab.Size = new System.Drawing.Size(942, 550);
             this.loansTab.TabIndex = 2;
             this.loansTab.Text = "Loans";
             this.loansTab.Enter += new System.EventHandler(this.loansTab_Enter);
@@ -898,10 +919,9 @@
             this.TimeOfLoan});
             this.LoansLV.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoansLV.FullRowSelect = true;
-            this.LoansLV.Location = new System.Drawing.Point(294, 141);
-            this.LoansLV.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.LoansLV.Location = new System.Drawing.Point(196, 92);
             this.LoansLV.Name = "LoansLV";
-            this.LoansLV.Size = new System.Drawing.Size(692, 585);
+            this.LoansLV.Size = new System.Drawing.Size(463, 382);
             this.LoansLV.TabIndex = 55;
             this.LoansLV.UseCompatibleStateImageBehavior = false;
             this.LoansLV.View = System.Windows.Forms.View.Details;
@@ -936,10 +956,10 @@
             // 
             this.returnCreateLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.returnCreateLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.returnCreateLoanBTN.Location = new System.Drawing.Point(1232, 738);
-            this.returnCreateLoanBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.returnCreateLoanBTN.Location = new System.Drawing.Point(821, 480);
+            this.returnCreateLoanBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.returnCreateLoanBTN.Name = "returnCreateLoanBTN";
-            this.returnCreateLoanBTN.Size = new System.Drawing.Size(158, 58);
+            this.returnCreateLoanBTN.Size = new System.Drawing.Size(105, 38);
             this.returnCreateLoanBTN.TabIndex = 54;
             this.returnCreateLoanBTN.Text = "Add Loan";
             this.returnCreateLoanBTN.UseVisualStyleBackColor = true;
@@ -949,10 +969,10 @@
             // 
             this.removeLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.removeLoanBTN.Location = new System.Drawing.Point(189, 29);
-            this.removeLoanBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.removeLoanBTN.Location = new System.Drawing.Point(126, 19);
+            this.removeLoanBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.removeLoanBTN.Name = "removeLoanBTN";
-            this.removeLoanBTN.Size = new System.Drawing.Size(144, 58);
+            this.removeLoanBTN.Size = new System.Drawing.Size(96, 38);
             this.removeLoanBTN.TabIndex = 53;
             this.removeLoanBTN.Text = "Remove";
             this.removeLoanBTN.UseVisualStyleBackColor = true;
@@ -962,10 +982,10 @@
             // 
             this.newLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.newLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.newLoanBTN.Location = new System.Drawing.Point(27, 29);
-            this.newLoanBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.newLoanBTN.Location = new System.Drawing.Point(18, 19);
+            this.newLoanBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.newLoanBTN.Name = "newLoanBTN";
-            this.newLoanBTN.Size = new System.Drawing.Size(144, 58);
+            this.newLoanBTN.Size = new System.Drawing.Size(96, 38);
             this.newLoanBTN.TabIndex = 52;
             this.newLoanBTN.Text = "New Loan";
             this.newLoanBTN.UseVisualStyleBackColor = true;
@@ -975,10 +995,9 @@
             // 
             this.overdueLoansCHK.AutoSize = true;
             this.overdueLoansCHK.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overdueLoansCHK.Location = new System.Drawing.Point(27, 360);
-            this.overdueLoansCHK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.overdueLoansCHK.Location = new System.Drawing.Point(18, 234);
             this.overdueLoansCHK.Name = "overdueLoansCHK";
-            this.overdueLoansCHK.Size = new System.Drawing.Size(257, 33);
+            this.overdueLoansCHK.Size = new System.Drawing.Size(173, 22);
             this.overdueLoansCHK.TabIndex = 51;
             this.overdueLoansCHK.Text = "Only Overdue Loans";
             this.overdueLoansCHK.UseVisualStyleBackColor = true;
@@ -997,18 +1016,18 @@
             this.flowLayoutPanel1.Controls.Add(this.dueDateDTP);
             this.flowLayoutPanel1.Controls.Add(this.label28);
             this.flowLayoutPanel1.Controls.Add(this.timeOfReturnDTP);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1018, 114);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(679, 74);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(370, 615);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(247, 400);
             this.flowLayoutPanel1.TabIndex = 50;
             // 
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label9.Location = new System.Drawing.Point(3, 0);
+            this.label9.Location = new System.Drawing.Point(2, 0);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(354, 28);
+            this.label9.Size = new System.Drawing.Size(236, 18);
             this.label9.TabIndex = 26;
             this.label9.Text = "BookCopy";
             // 
@@ -1017,18 +1036,19 @@
             this.bookCopyLoanTB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.bookCopyLoanTB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.bookCopyLoanTB.BackColor = System.Drawing.SystemColors.Info;
-            this.bookCopyLoanTB.Location = new System.Drawing.Point(3, 30);
-            this.bookCopyLoanTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bookCopyLoanTB.Location = new System.Drawing.Point(2, 19);
+            this.bookCopyLoanTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.bookCopyLoanTB.Name = "bookCopyLoanTB";
-            this.bookCopyLoanTB.Size = new System.Drawing.Size(337, 39);
+            this.bookCopyLoanTB.Size = new System.Drawing.Size(226, 28);
             this.bookCopyLoanTB.TabIndex = 19;
             // 
             // label26
             // 
             this.label26.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label26.Location = new System.Drawing.Point(3, 71);
+            this.label26.Location = new System.Drawing.Point(2, 48);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(354, 28);
+            this.label26.Size = new System.Drawing.Size(236, 18);
             this.label26.TabIndex = 24;
             this.label26.Text = "Member";
             // 
@@ -1037,72 +1057,72 @@
             this.memberLoanTB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.memberLoanTB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.memberLoanTB.BackColor = System.Drawing.SystemColors.Info;
-            this.memberLoanTB.Location = new System.Drawing.Point(3, 101);
-            this.memberLoanTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.memberLoanTB.Location = new System.Drawing.Point(2, 67);
+            this.memberLoanTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.memberLoanTB.Name = "memberLoanTB";
-            this.memberLoanTB.Size = new System.Drawing.Size(337, 39);
+            this.memberLoanTB.Size = new System.Drawing.Size(226, 28);
             this.memberLoanTB.TabIndex = 20;
             // 
             // label25
             // 
             this.label25.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label25.Location = new System.Drawing.Point(3, 142);
+            this.label25.Location = new System.Drawing.Point(2, 96);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(354, 28);
+            this.label25.Size = new System.Drawing.Size(236, 18);
             this.label25.TabIndex = 32;
             this.label25.Text = "Time of Loan";
             // 
             // timeOfLoanDTP
             // 
-            this.timeOfLoanDTP.Location = new System.Drawing.Point(4, 175);
-            this.timeOfLoanDTP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.timeOfLoanDTP.Location = new System.Drawing.Point(3, 117);
             this.timeOfLoanDTP.Name = "timeOfLoanDTP";
-            this.timeOfLoanDTP.Size = new System.Drawing.Size(336, 39);
+            this.timeOfLoanDTP.Size = new System.Drawing.Size(225, 28);
             this.timeOfLoanDTP.TabIndex = 31;
             // 
             // label27
             // 
             this.label27.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label27.Location = new System.Drawing.Point(3, 219);
+            this.label27.Location = new System.Drawing.Point(2, 148);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(354, 28);
+            this.label27.Size = new System.Drawing.Size(236, 18);
             this.label27.TabIndex = 34;
             this.label27.Text = "Due Date";
             // 
             // dueDateDTP
             // 
-            this.dueDateDTP.Location = new System.Drawing.Point(4, 252);
-            this.dueDateDTP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dueDateDTP.Location = new System.Drawing.Point(3, 169);
             this.dueDateDTP.Name = "dueDateDTP";
-            this.dueDateDTP.Size = new System.Drawing.Size(336, 39);
+            this.dueDateDTP.Size = new System.Drawing.Size(225, 28);
             this.dueDateDTP.TabIndex = 33;
+            this.dueDateDTP.Value = System.DateTime.Now.AddDays(15); //Default dueDate is in 15days
             // 
             // label28
             // 
             this.label28.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label28.Location = new System.Drawing.Point(3, 296);
+            this.label28.Location = new System.Drawing.Point(2, 200);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(354, 28);
+            this.label28.Size = new System.Drawing.Size(236, 18);
             this.label28.TabIndex = 36;
             this.label28.Text = "Time of Return";
             // 
             // timeOfReturnDTP
             // 
             this.timeOfReturnDTP.Enabled = false;
-            this.timeOfReturnDTP.Location = new System.Drawing.Point(4, 329);
-            this.timeOfReturnDTP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.timeOfReturnDTP.Location = new System.Drawing.Point(3, 221);
             this.timeOfReturnDTP.Name = "timeOfReturnDTP";
-            this.timeOfReturnDTP.Size = new System.Drawing.Size(336, 39);
+            this.timeOfReturnDTP.Size = new System.Drawing.Size(225, 28);
             this.timeOfReturnDTP.TabIndex = 35;
             // 
             // activeLoansCHK
             // 
             this.activeLoansCHK.AutoSize = true;
             this.activeLoansCHK.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeLoansCHK.Location = new System.Drawing.Point(27, 318);
-            this.activeLoansCHK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.activeLoansCHK.Location = new System.Drawing.Point(18, 207);
             this.activeLoansCHK.Name = "activeLoansCHK";
-            this.activeLoansCHK.Size = new System.Drawing.Size(231, 33);
+            this.activeLoansCHK.Size = new System.Drawing.Size(156, 22);
             this.activeLoansCHK.TabIndex = 49;
             this.activeLoansCHK.Text = "Only Active Loans";
             this.activeLoansCHK.UseVisualStyleBackColor = true;
@@ -1112,9 +1132,10 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label29.Location = new System.Drawing.Point(289, 106);
+            this.label29.Location = new System.Drawing.Point(193, 69);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(91, 29);
+            this.label29.Size = new System.Drawing.Size(60, 18);
             this.label29.TabIndex = 48;
             this.label29.Text = "Results";
             // 
@@ -1122,9 +1143,10 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label30.Location = new System.Drawing.Point(27, 148);
+            this.label30.Location = new System.Drawing.Point(18, 96);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(147, 29);
+            this.label30.Size = new System.Drawing.Size(97, 18);
             this.label30.TabIndex = 47;
             this.label30.Text = "By book title";
             // 
@@ -1132,36 +1154,38 @@
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label32.Location = new System.Drawing.Point(27, 228);
+            this.label32.Location = new System.Drawing.Point(18, 148);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(136, 29);
+            this.label32.Size = new System.Drawing.Size(91, 18);
             this.label32.TabIndex = 45;
             this.label32.Text = "By member";
             // 
             // findMemberLoanTB
             // 
-            this.findMemberLoanTB.Location = new System.Drawing.Point(27, 260);
-            this.findMemberLoanTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.findMemberLoanTB.Location = new System.Drawing.Point(18, 169);
+            this.findMemberLoanTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.findMemberLoanTB.Name = "findMemberLoanTB";
-            this.findMemberLoanTB.Size = new System.Drawing.Size(239, 39);
+            this.findMemberLoanTB.Size = new System.Drawing.Size(161, 28);
             this.findMemberLoanTB.TabIndex = 43;
             this.findMemberLoanTB.TextChanged += new System.EventHandler(this.findMemberLoanTB_TextChanged);
             // 
             // findTitleLoanTB
             // 
-            this.findTitleLoanTB.Location = new System.Drawing.Point(27, 180);
-            this.findTitleLoanTB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.findTitleLoanTB.Location = new System.Drawing.Point(18, 117);
+            this.findTitleLoanTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.findTitleLoanTB.Name = "findTitleLoanTB";
-            this.findTitleLoanTB.Size = new System.Drawing.Size(239, 39);
+            this.findTitleLoanTB.Size = new System.Drawing.Size(161, 28);
             this.findTitleLoanTB.TabIndex = 42;
             this.findTitleLoanTB.TextChanged += new System.EventHandler(this.findTitleLoanTB_TextChanged);
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(27, 108);
+            this.label33.Location = new System.Drawing.Point(18, 70);
+            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(152, 32);
+            this.label33.Size = new System.Drawing.Size(102, 23);
             this.label33.TabIndex = 41;
             this.label33.Text = "Find Loan:";
             // 
@@ -1169,10 +1193,10 @@
             // 
             this.closeBTN.BackColor = System.Drawing.Color.Red;
             this.closeBTN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeBTN.Location = new System.Drawing.Point(1455, 1);
-            this.closeBTN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.closeBTN.Location = new System.Drawing.Point(970, 1);
+            this.closeBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.closeBTN.Name = "closeBTN";
-            this.closeBTN.Size = new System.Drawing.Size(50, 40);
+            this.closeBTN.Size = new System.Drawing.Size(33, 26);
             this.closeBTN.TabIndex = 3;
             this.closeBTN.Text = "X";
             this.closeBTN.UseVisualStyleBackColor = false;
@@ -1180,16 +1204,15 @@
             // 
             // LibraryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1504, 974);
+            this.ClientSize = new System.Drawing.Size(1003, 633);
             this.Controls.Add(this.closeBTN);
             this.Controls.Add(this.tabControl1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LibraryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Library";

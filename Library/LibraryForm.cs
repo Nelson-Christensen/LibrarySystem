@@ -77,6 +77,5 @@ namespace Library
             DialogResult dialog = MessageBox.Show(boxText, boxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-
     }
 }
