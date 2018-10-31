@@ -64,12 +64,12 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.feesDueTB = new System.Windows.Forms.TextBox();
+            this.loanIdTB = new System.Windows.Forms.TextBox();
+            this.timeOfLoanTB = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.timeOfReturnTB = new System.Windows.Forms.TextBox();
+            this.dueDateTB = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.lbMemberLoans = new System.Windows.Forms.ListBox();
             this.memberNameBox = new System.Windows.Forms.TextBox();
@@ -544,12 +544,12 @@
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.textBox10);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.feesDueTB);
+            this.groupBox1.Controls.Add(this.loanIdTB);
+            this.groupBox1.Controls.Add(this.timeOfLoanTB);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox9);
+            this.groupBox1.Controls.Add(this.timeOfReturnTB);
+            this.groupBox1.Controls.Add(this.dueDateTB);
             this.groupBox1.Location = new System.Drawing.Point(721, 99);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -612,32 +612,35 @@
             this.label19.TabIndex = 44;
             this.label19.Text = "Time of loan";
             // 
-            // textBox10
+            // feesDueTB
             // 
-            this.textBox10.Location = new System.Drawing.Point(13, 238);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(177, 28);
-            this.textBox10.TabIndex = 43;
+            this.feesDueTB.Location = new System.Drawing.Point(13, 238);
+            this.feesDueTB.Margin = new System.Windows.Forms.Padding(2);
+            this.feesDueTB.Name = "feesDueTB";
+            this.feesDueTB.ReadOnly = true;
+            this.feesDueTB.Size = new System.Drawing.Size(177, 28);
+            this.feesDueTB.TabIndex = 43;
+            this.feesDueTB.TextChanged += new System.EventHandler(this.feesDueTB_TextChanged);
             // 
-            // textBox5
+            // loanIdTB
             // 
-            this.textBox5.Location = new System.Drawing.Point(13, 26);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(177, 28);
-            this.textBox5.TabIndex = 38;
+            this.loanIdTB.Location = new System.Drawing.Point(13, 26);
+            this.loanIdTB.Margin = new System.Windows.Forms.Padding(2);
+            this.loanIdTB.Name = "loanIdTB";
+            this.loanIdTB.ReadOnly = true;
+            this.loanIdTB.Size = new System.Drawing.Size(177, 28);
+            this.loanIdTB.TabIndex = 38;
+            this.loanIdTB.TextChanged += new System.EventHandler(this.loanIdTB_TextChanged);
             // 
-            // textBox6
+            // timeOfLoanTB
             // 
-            this.textBox6.Location = new System.Drawing.Point(13, 82);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(177, 28);
-            this.textBox6.TabIndex = 39;
+            this.timeOfLoanTB.Location = new System.Drawing.Point(13, 82);
+            this.timeOfLoanTB.Margin = new System.Windows.Forms.Padding(2);
+            this.timeOfLoanTB.Name = "timeOfLoanTB";
+            this.timeOfLoanTB.ReadOnly = true;
+            this.timeOfLoanTB.Size = new System.Drawing.Size(177, 28);
+            this.timeOfLoanTB.TabIndex = 39;
+            this.timeOfLoanTB.TextChanged += new System.EventHandler(this.timeOfLoanTB_TextChanged);
             // 
             // label17
             // 
@@ -650,23 +653,25 @@
             this.label17.TabIndex = 42;
             this.label17.Text = "Loan ID";
             // 
-            // textBox8
+            // timeOfReturnTB
             // 
-            this.textBox8.Location = new System.Drawing.Point(13, 134);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(177, 28);
-            this.textBox8.TabIndex = 40;
+            this.timeOfReturnTB.Location = new System.Drawing.Point(13, 134);
+            this.timeOfReturnTB.Margin = new System.Windows.Forms.Padding(2);
+            this.timeOfReturnTB.Name = "timeOfReturnTB";
+            this.timeOfReturnTB.ReadOnly = true;
+            this.timeOfReturnTB.Size = new System.Drawing.Size(177, 28);
+            this.timeOfReturnTB.TabIndex = 40;
+            this.timeOfReturnTB.TextChanged += new System.EventHandler(this.timeOfReturnTB_TextChanged);
             // 
-            // textBox9
+            // dueDateTB
             // 
-            this.textBox9.Location = new System.Drawing.Point(13, 186);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(177, 28);
-            this.textBox9.TabIndex = 41;
+            this.dueDateTB.Location = new System.Drawing.Point(13, 186);
+            this.dueDateTB.Margin = new System.Windows.Forms.Padding(2);
+            this.dueDateTB.Name = "dueDateTB";
+            this.dueDateTB.ReadOnly = true;
+            this.dueDateTB.Size = new System.Drawing.Size(177, 28);
+            this.dueDateTB.TabIndex = 41;
+            this.dueDateTB.TextChanged += new System.EventHandler(this.dueDateTB_TextChanged);
             // 
             // label18
             // 
@@ -1001,12 +1006,12 @@
         private System.Windows.Forms.Button closeBTN;
         private System.Windows.Forms.Button booksNewLoanBTN;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox feesDueTB;
+        private System.Windows.Forms.TextBox loanIdTB;
+        private System.Windows.Forms.TextBox timeOfLoanTB;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox timeOfReturnTB;
+        private System.Windows.Forms.TextBox dueDateTB;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ListBox lbMemberLoans;
         private System.Windows.Forms.TextBox textBox1;
