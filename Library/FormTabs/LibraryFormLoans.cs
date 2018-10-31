@@ -20,7 +20,7 @@ namespace Library
         TextBox loanFilterByField;
         BookCopy loanInputBookCopy;
         Member loanInputMember;
-
+        int dailyFine = 15;
 
         // Non eventbound methods ---------------------------------------------------------
 
@@ -199,6 +199,23 @@ namespace Library
             }
         }
 
+        private int CalculateLoanFine(Loan loan)
+        {
+            if (loan.ReturnDate != null) //Book has been returned
+            {
+                DateTime returnDate = (DateTime)loan.ReturnDate; // Has to cast it to DateTime to allow operations and comparisons
+                if (returnDate.Date > loan.DueDate.Date)
+                {
+                    int daysLate = (returnDate - loan.DueDate).Days;
+                    return daysLate * dailyFine;
+                }
+                else
+                    return 0;
+            }
+            else
+                return 0;
+        }
+
 
         // Eventbound methods ------------------------------------------------------------
 
@@ -275,11 +292,9 @@ namespace Library
                 int loanID = Int32.Parse(item.SubItems[0].Text);
                 Loan loan = loanService.Find(loanID);
                 loanService.ReturnLoan(loan, timeOfReturnDTP.Value);
-                DateTime returnDate = (DateTime)loan.ReturnDate; // Has to cast it to DateTime to allow operations and comparisons
-                if (returnDate.Date > loan.DueDate.Date)
+                if (CalculateLoanFine(loan) > 0)
                 {
-                    int daysLate = (returnDate - loan.DueDate).Days;
-                    string confirmBoxText = string.Format("The Book was returned {0} days late. Fine for a {0} day late return is {1}.", daysLate, daysLate*15);
+                    string confirmBoxText = string.Format("The Book was returned {0} days late. Fine for a {0} day late return is {1}.", CalculateLoanFine(loan)/dailyFine, CalculateLoanFine(loan));
                     string confirmBoxTitle = "Fine for late return";
                     InfoPopup(confirmBoxText, confirmBoxTitle);
                 }

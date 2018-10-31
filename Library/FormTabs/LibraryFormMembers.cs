@@ -32,6 +32,10 @@ namespace Library
             findMemberSearchBox.ResetText();
         }
 
+        /// <summary>
+        /// Sets the current active backgroundPanel by changing panel colors
+        /// </summary>
+        /// <param name="panelNr">The panelNr that is to be selected. Starts from 0, based on the displayOrder from left to right.</param>
         private void SetActiveMemberPanel(int panelNr)
         {
             switch (panelNr)
@@ -59,16 +63,31 @@ namespace Library
             }
         }
 
+        /// <summary>
+        /// When a control inside the panel gets focus it sets this panel as the focused panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void memberSearchBGPanel_Enter(object sender, EventArgs e)
         {
             SetActiveMemberPanel(0);
         }
 
+        /// <summary>
+        /// When a control inside the panel gets focus it sets this panel as the focused panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void memberInfoBGPanel_Enter(object sender, EventArgs e)
         {
             SetActiveMemberPanel(1);
         }
 
+        /// <summary>
+        /// When a control inside the panel gets focus it sets this panel as the focused panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void memberLoanBGPanel_Enter(object sender, EventArgs e)
         {
             SetActiveMemberPanel(2);
@@ -302,26 +321,8 @@ namespace Library
             timeOfLoanTB.Text = selectedLoan.StartDate.ToString(CultureInfo.InvariantCulture);
             timeOfReturnTB.Text = selectedLoan.ReturnDate.ToString();
             dueDateTB.Text = selectedLoan.DueDate.ToString(CultureInfo.InvariantCulture);
-            //feesDueTB.Text = selectedLoan.
+            feesDueTB.Text = CalculateLoanFine(selectedLoan).ToString();
         }
-
-
-
-        private void memberIdBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void memberPersonnummerBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void memberNameBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         /// <summary>
         /// Displays different results in the member loans listbox depending on checked
@@ -347,30 +348,6 @@ namespace Library
                     lbMemberLoans.Items.Add(l.BookCopy.Book.Title);
                 }
             }
-        }
-        private void loanIdTB_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timeOfLoanTB_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timeOfReturnTB_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dueDateTB_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void feesDueTB_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

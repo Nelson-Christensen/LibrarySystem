@@ -732,7 +732,6 @@
             this.feesDueTB.ReadOnly = true;
             this.feesDueTB.Size = new System.Drawing.Size(177, 28);
             this.feesDueTB.TabIndex = 43;
-            this.feesDueTB.TextChanged += new System.EventHandler(this.feesDueTB_TextChanged);
             // 
             // loanIdTB
             // 
@@ -742,7 +741,6 @@
             this.loanIdTB.ReadOnly = true;
             this.loanIdTB.Size = new System.Drawing.Size(177, 28);
             this.loanIdTB.TabIndex = 38;
-            this.loanIdTB.TextChanged += new System.EventHandler(this.loanIdTB_TextChanged);
             // 
             // timeOfLoanTB
             // 
@@ -752,7 +750,6 @@
             this.timeOfLoanTB.ReadOnly = true;
             this.timeOfLoanTB.Size = new System.Drawing.Size(177, 28);
             this.timeOfLoanTB.TabIndex = 39;
-            this.timeOfLoanTB.TextChanged += new System.EventHandler(this.timeOfLoanTB_TextChanged);
             // 
             // label17
             // 
@@ -773,7 +770,6 @@
             this.timeOfReturnTB.ReadOnly = true;
             this.timeOfReturnTB.Size = new System.Drawing.Size(177, 28);
             this.timeOfReturnTB.TabIndex = 40;
-            this.timeOfReturnTB.TextChanged += new System.EventHandler(this.timeOfReturnTB_TextChanged);
             // 
             // dueDateTB
             // 
@@ -783,7 +779,6 @@
             this.dueDateTB.ReadOnly = true;
             this.dueDateTB.Size = new System.Drawing.Size(177, 28);
             this.dueDateTB.TabIndex = 41;
-            this.dueDateTB.TextChanged += new System.EventHandler(this.dueDateTB_TextChanged);
             // 
             // returnedLoanMLegendLBL
             // 
@@ -873,7 +868,6 @@
             this.memberPersonnummerBox.Name = "memberPersonnummerBox";
             this.memberPersonnummerBox.Size = new System.Drawing.Size(223, 28);
             this.memberPersonnummerBox.TabIndex = 33;
-            this.memberPersonnummerBox.TextChanged += new System.EventHandler(this.memberPersonnummerBox_TextChanged);
             // 
             // memberNameBox
             // 
@@ -883,7 +877,6 @@
             this.memberNameBox.Name = "memberNameBox";
             this.memberNameBox.Size = new System.Drawing.Size(223, 28);
             this.memberNameBox.TabIndex = 34;
-            this.memberNameBox.TextChanged += new System.EventHandler(this.memberNameBox_TextChanged);
             // 
             // memberSearchBGPanel
             // 
