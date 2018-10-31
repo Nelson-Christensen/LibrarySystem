@@ -53,6 +53,11 @@ namespace Library.Services
             OnUpdated(e);
         }
 
+        /// <summary>
+        /// Retrieves all bookCopies of a specific book.
+        /// </summary>
+        /// <param name="input">The Book that you want to retrieve copies from</param>
+        /// <returns>Returns a collection of Bookcopies from a specific book</returns>
         public IEnumerable<BookCopy> GetAllCopiesByBook(Book input)
         {
             return from bc in bookCopyRepository.All()
@@ -60,6 +65,10 @@ namespace Library.Services
                    select bc;
         }
 
+        /// <summary>
+        /// Retrieves all available bookCopies and returns them as strings
+        /// </summary>
+        /// <returns>Returns a collection of strings containing the names of all available BookCopies</returns>
         public IEnumerable<string> GetAllAvailableBookCopyNames()
         {
             return from bc in bookCopyRepository.All()
@@ -70,7 +79,7 @@ namespace Library.Services
         /// <summary>
         /// Returns the bookCopy with specific primary key (Id)
         /// </summary>
-        /// <param name="pk"></param>
+        /// <param name="pk">The PrimaryKey(Id) that the BookCopy has</param>
         /// <returns>Returns the bookCopy that has the specified primary key</returns>
         public BookCopy Find(int pk)
         {

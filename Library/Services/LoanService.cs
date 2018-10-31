@@ -9,7 +9,7 @@ using Library.Repositories;
 namespace Library.Services
 {
     /// <summary>
-    /// Handles interaction between GUI and the bookCopyRepository(Database)
+    /// Handles interaction between GUI and the loanRepository(Database)
     /// </summary>
     class LoanService : IService
     {
@@ -123,11 +123,20 @@ namespace Library.Services
             return loanRepository.Find(pk);
         }
 
+        /// <summary>
+        /// Returns the specific loan.
+        /// </summary>
+        /// <param name="l">The Loan to be returned</param>
         public void ReturnLoan(Loan l)
         {
             ReturnLoan(l, DateTime.Now);
         }
 
+        /// <summary>
+        /// Returns the specific loan.
+        /// </summary>
+        /// <param name="l">The Loan to be returned</param>
+        /// <param name="returnTime">The DateTime that the loan was returned. If left out, it will be returned at current time.</param>
         public void ReturnLoan(Loan l, DateTime returnTime)
         {
             l.ReturnDate = returnTime;
