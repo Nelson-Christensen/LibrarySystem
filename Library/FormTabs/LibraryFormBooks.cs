@@ -36,6 +36,34 @@ namespace Library
             findAuthorTB.ResetText();
             findISBNTB.ResetText();
         }
+
+        private void SetActiveBookPanel(int panelNr)
+        {
+            switch (panelNr)
+            {
+                case 0:
+                    booksSearchBGPanel.BackColor = activePanelColor;
+                    bookInfoBGPanel.BackColor = inactivePanelColor;
+                    bookCopiesBGPanel.BackColor = inactivePanelColor;
+                    break;
+                case 1:
+                    booksSearchBGPanel.BackColor = inactivePanelColor;
+                    bookInfoBGPanel.BackColor = activePanelColor;
+                    bookCopiesBGPanel.BackColor = inactivePanelColor;
+                    break;
+                case 2:
+                    booksSearchBGPanel.BackColor = inactivePanelColor;
+                    bookInfoBGPanel.BackColor = inactivePanelColor;
+                    bookCopiesBGPanel.BackColor = activePanelColor;
+                    break;
+                default:
+                    booksSearchBGPanel.BackColor = inactivePanelColor;
+                    bookInfoBGPanel.BackColor = inactivePanelColor;
+                    bookCopiesBGPanel.BackColor = inactivePanelColor;
+                    break;
+            }
+        }
+
         private void UpdateBookListEvent(object sender, EventArgs e)
         {
             UpdateBookList(bookService.All().ToList());

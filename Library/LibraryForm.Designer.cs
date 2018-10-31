@@ -24,38 +24,44 @@
         private void InitializeComponent() {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.booksTab = new System.Windows.Forms.TabPage();
+            this.bookCopiesBGPanel = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.addCopyBTN = new System.Windows.Forms.Button();
             this.unavailableCopyLegendLBL = new System.Windows.Forms.Label();
+            this.removeCopyBTN = new System.Windows.Forms.Button();
             this.availableCopyLegendLBL = new System.Windows.Forms.Label();
+            this.lbCopies = new System.Windows.Forms.ListBox();
             this.NewLoanBooksBTN = new System.Windows.Forms.Button();
+            this.bookInfoBGPanel = new System.Windows.Forms.Panel();
             this.BookInfoFLP = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.editISBNTB = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.editTitleTB = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.RemoveAuthorBTN = new System.Windows.Forms.LinkLabel();
             this.AddAuthor1BTN = new System.Windows.Forms.LinkLabel();
             this.editAuthorTB = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.editISBNTB = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.editDescriptionTB = new System.Windows.Forms.RichTextBox();
-            this.AvailableCHK = new System.Windows.Forms.CheckBox();
-            this.lbCopies = new System.Windows.Forms.ListBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.removeCopyBTN = new System.Windows.Forms.Button();
-            this.removeBookBTN = new System.Windows.Forms.Button();
             this.saveChangesBTN = new System.Windows.Forms.Button();
-            this.addCopyBTN = new System.Windows.Forms.Button();
+            this.booksSearchBGPanel = new System.Windows.Forms.Panel();
             this.addBookBTN = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.findISBNTB = new System.Windows.Forms.TextBox();
-            this.findAuthorTB = new System.Windows.Forms.TextBox();
-            this.findTitleTB = new System.Windows.Forms.TextBox();
-            this.findBooksLabel = new System.Windows.Forms.Label();
             this.lbBooks = new System.Windows.Forms.ListBox();
+            this.findBooksLabel = new System.Windows.Forms.Label();
+            this.findTitleTB = new System.Windows.Forms.TextBox();
+            this.findAuthorTB = new System.Windows.Forms.TextBox();
+            this.AvailableCHK = new System.Windows.Forms.CheckBox();
+            this.findISBNTB = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.removeBookBTN = new System.Windows.Forms.Button();
             this.membersTab = new System.Windows.Forms.TabPage();
+            this.overdueLoanMLegendLBL = new System.Windows.Forms.Label();
+            this.returnedLoanMLegendLBL = new System.Windows.Forms.Label();
+            this.activeLoanMLegendLBL = new System.Windows.Forms.Label();
             this.showPreviousLoans = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -118,16 +124,21 @@
             this.findTitleLoanTB = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.closeBTN = new System.Windows.Forms.Button();
-            this.overdueLoanMLegendLBL = new System.Windows.Forms.Label();
-            this.returnedLoanMLegendLBL = new System.Windows.Forms.Label();
-            this.activeLoanMLegendLBL = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.TopDragPanel = new System.Windows.Forms.Panel();
+            this.minimizeBTN = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.booksTab.SuspendLayout();
+            this.bookCopiesBGPanel.SuspendLayout();
+            this.bookInfoBGPanel.SuspendLayout();
             this.BookInfoFLP.SuspendLayout();
+            this.booksSearchBGPanel.SuspendLayout();
             this.membersTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.loansTab.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.TopDragPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -137,8 +148,9 @@
             this.tabControl1.Controls.Add(this.loansTab);
             this.tabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabControl1.Font = new System.Drawing.Font("Georgia", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(30, 25);
+            this.tabControl1.Location = new System.Drawing.Point(20, 39);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(950, 584);
@@ -146,29 +158,11 @@
             // 
             // booksTab
             // 
-            this.booksTab.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.booksTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.booksTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.booksTab.Controls.Add(this.unavailableCopyLegendLBL);
-            this.booksTab.Controls.Add(this.availableCopyLegendLBL);
-            this.booksTab.Controls.Add(this.NewLoanBooksBTN);
-            this.booksTab.Controls.Add(this.BookInfoFLP);
-            this.booksTab.Controls.Add(this.AvailableCHK);
-            this.booksTab.Controls.Add(this.lbCopies);
-            this.booksTab.Controls.Add(this.label15);
-            this.booksTab.Controls.Add(this.label13);
-            this.booksTab.Controls.Add(this.removeCopyBTN);
-            this.booksTab.Controls.Add(this.removeBookBTN);
-            this.booksTab.Controls.Add(this.saveChangesBTN);
-            this.booksTab.Controls.Add(this.addCopyBTN);
-            this.booksTab.Controls.Add(this.addBookBTN);
-            this.booksTab.Controls.Add(this.label3);
-            this.booksTab.Controls.Add(this.label2);
-            this.booksTab.Controls.Add(this.label1);
-            this.booksTab.Controls.Add(this.findISBNTB);
-            this.booksTab.Controls.Add(this.findAuthorTB);
-            this.booksTab.Controls.Add(this.findTitleTB);
-            this.booksTab.Controls.Add(this.findBooksLabel);
-            this.booksTab.Controls.Add(this.lbBooks);
+            this.booksTab.Controls.Add(this.bookCopiesBGPanel);
+            this.booksTab.Controls.Add(this.bookInfoBGPanel);
+            this.booksTab.Controls.Add(this.booksSearchBGPanel);
             this.booksTab.Cursor = System.Windows.Forms.Cursors.Default;
             this.booksTab.Location = new System.Drawing.Point(4, 30);
             this.booksTab.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -179,30 +173,96 @@
             this.booksTab.Text = "Books";
             this.booksTab.Enter += new System.EventHandler(this.booksTab_Enter);
             // 
+            // bookCopiesBGPanel
+            // 
+            this.bookCopiesBGPanel.Controls.Add(this.label15);
+            this.bookCopiesBGPanel.Controls.Add(this.addCopyBTN);
+            this.bookCopiesBGPanel.Controls.Add(this.unavailableCopyLegendLBL);
+            this.bookCopiesBGPanel.Controls.Add(this.removeCopyBTN);
+            this.bookCopiesBGPanel.Controls.Add(this.availableCopyLegendLBL);
+            this.bookCopiesBGPanel.Controls.Add(this.lbCopies);
+            this.bookCopiesBGPanel.Controls.Add(this.NewLoanBooksBTN);
+            this.bookCopiesBGPanel.Location = new System.Drawing.Point(689, 0);
+            this.bookCopiesBGPanel.Name = "bookCopiesBGPanel";
+            this.bookCopiesBGPanel.Size = new System.Drawing.Size(253, 550);
+            this.bookCopiesBGPanel.TabIndex = 40;
+            this.bookCopiesBGPanel.Enter += new System.EventHandler(this.bookCopiesBGPanel_Enter);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label15.Location = new System.Drawing.Point(17, 65);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(54, 18);
+            this.label15.TabIndex = 35;
+            this.label15.Text = "Copies";
+            // 
+            // addCopyBTN
+            // 
+            this.addCopyBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
+            this.addCopyBTN.Location = new System.Drawing.Point(20, 488);
+            this.addCopyBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.addCopyBTN.Name = "addCopyBTN";
+            this.addCopyBTN.Size = new System.Drawing.Size(96, 38);
+            this.addCopyBTN.TabIndex = 28;
+            this.addCopyBTN.Text = "Add copy";
+            this.addCopyBTN.UseVisualStyleBackColor = true;
+            this.addCopyBTN.Click += new System.EventHandler(this.addCopyBTN_Click);
+            // 
             // unavailableCopyLegendLBL
             // 
             this.unavailableCopyLegendLBL.AutoSize = true;
             this.unavailableCopyLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unavailableCopyLegendLBL.Location = new System.Drawing.Point(694, 471);
+            this.unavailableCopyLegendLBL.Location = new System.Drawing.Point(17, 467);
             this.unavailableCopyLegendLBL.Name = "unavailableCopyLegendLBL";
             this.unavailableCopyLegendLBL.Size = new System.Drawing.Size(113, 15);
             this.unavailableCopyLegendLBL.TabIndex = 58;
             this.unavailableCopyLegendLBL.Text = "*unavailable copy";
             // 
+            // removeCopyBTN
+            // 
+            this.removeCopyBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.removeCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
+            this.removeCopyBTN.Location = new System.Drawing.Point(130, 488);
+            this.removeCopyBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.removeCopyBTN.Name = "removeCopyBTN";
+            this.removeCopyBTN.Size = new System.Drawing.Size(96, 38);
+            this.removeCopyBTN.TabIndex = 33;
+            this.removeCopyBTN.Text = "Remove";
+            this.removeCopyBTN.UseVisualStyleBackColor = true;
+            this.removeCopyBTN.Click += new System.EventHandler(this.removeCopyBTN_Click);
+            // 
             // availableCopyLegendLBL
             // 
             this.availableCopyLegendLBL.AutoSize = true;
             this.availableCopyLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.availableCopyLegendLBL.Location = new System.Drawing.Point(694, 456);
+            this.availableCopyLegendLBL.Location = new System.Drawing.Point(17, 452);
             this.availableCopyLegendLBL.Name = "availableCopyLegendLBL";
             this.availableCopyLegendLBL.Size = new System.Drawing.Size(97, 15);
             this.availableCopyLegendLBL.TabIndex = 57;
             this.availableCopyLegendLBL.Text = "*available copy";
             // 
+            // lbCopies
+            // 
+            this.lbCopies.BackColor = System.Drawing.SystemColors.Window;
+            this.lbCopies.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbCopies.FormattingEnabled = true;
+            this.lbCopies.ItemHeight = 21;
+            this.lbCopies.Location = new System.Drawing.Point(20, 88);
+            this.lbCopies.Name = "lbCopies";
+            this.lbCopies.Size = new System.Drawing.Size(210, 361);
+            this.lbCopies.TabIndex = 36;
+            this.lbCopies.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbCopies_DrawItem);
+            this.lbCopies.SelectedIndexChanged += new System.EventHandler(this.lbCopies_SelectedIndexChanged);
+            this.lbCopies.DoubleClick += new System.EventHandler(this.lbCopies_DoubleClick);
+            // 
             // NewLoanBooksBTN
             // 
             this.NewLoanBooksBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.NewLoanBooksBTN.Location = new System.Drawing.Point(816, 19);
+            this.NewLoanBooksBTN.Location = new System.Drawing.Point(139, 15);
             this.NewLoanBooksBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.NewLoanBooksBTN.Name = "NewLoanBooksBTN";
             this.NewLoanBooksBTN.Size = new System.Drawing.Size(96, 38);
@@ -211,47 +271,38 @@
             this.NewLoanBooksBTN.UseVisualStyleBackColor = true;
             this.NewLoanBooksBTN.Click += new System.EventHandler(this.NewLoanBooksBTN_Click);
             // 
+            // bookInfoBGPanel
+            // 
+            this.bookInfoBGPanel.Controls.Add(this.BookInfoFLP);
+            this.bookInfoBGPanel.Controls.Add(this.saveChangesBTN);
+            this.bookInfoBGPanel.Location = new System.Drawing.Point(419, 0);
+            this.bookInfoBGPanel.Name = "bookInfoBGPanel";
+            this.bookInfoBGPanel.Size = new System.Drawing.Size(270, 550);
+            this.bookInfoBGPanel.TabIndex = 60;
+            this.bookInfoBGPanel.Enter += new System.EventHandler(this.bookInfoBGPanel_Enter);
+            // 
             // BookInfoFLP
             // 
             this.BookInfoFLP.AutoScroll = true;
-            this.BookInfoFLP.Controls.Add(this.label6);
-            this.BookInfoFLP.Controls.Add(this.editISBNTB);
             this.BookInfoFLP.Controls.Add(this.label4);
             this.BookInfoFLP.Controls.Add(this.editTitleTB);
             this.BookInfoFLP.Controls.Add(this.label5);
             this.BookInfoFLP.Controls.Add(this.RemoveAuthorBTN);
             this.BookInfoFLP.Controls.Add(this.AddAuthor1BTN);
             this.BookInfoFLP.Controls.Add(this.editAuthorTB);
+            this.BookInfoFLP.Controls.Add(this.label6);
+            this.BookInfoFLP.Controls.Add(this.editISBNTB);
             this.BookInfoFLP.Controls.Add(this.label7);
             this.BookInfoFLP.Controls.Add(this.editDescriptionTB);
-            this.BookInfoFLP.Location = new System.Drawing.Point(425, 74);
+            this.BookInfoFLP.Location = new System.Drawing.Point(10, 70);
             this.BookInfoFLP.Name = "BookInfoFLP";
             this.BookInfoFLP.Size = new System.Drawing.Size(247, 400);
             this.BookInfoFLP.TabIndex = 39;
             // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label6.Location = new System.Drawing.Point(2, 0);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(236, 18);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "ISBN";
-            // 
-            // editISBNTB
-            // 
-            this.editISBNTB.BackColor = System.Drawing.SystemColors.Info;
-            this.editISBNTB.Location = new System.Drawing.Point(2, 19);
-            this.editISBNTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.editISBNTB.Name = "editISBNTB";
-            this.editISBNTB.Size = new System.Drawing.Size(226, 28);
-            this.editISBNTB.TabIndex = 19;
-            // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label4.Location = new System.Drawing.Point(2, 48);
+            this.label4.Location = new System.Drawing.Point(2, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(236, 18);
@@ -261,7 +312,7 @@
             // editTitleTB
             // 
             this.editTitleTB.BackColor = System.Drawing.SystemColors.Info;
-            this.editTitleTB.Location = new System.Drawing.Point(2, 67);
+            this.editTitleTB.Location = new System.Drawing.Point(2, 19);
             this.editTitleTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.editTitleTB.Name = "editTitleTB";
             this.editTitleTB.Size = new System.Drawing.Size(226, 28);
@@ -270,7 +321,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label5.Location = new System.Drawing.Point(2, 96);
+            this.label5.Location = new System.Drawing.Point(2, 48);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 18);
@@ -281,7 +332,7 @@
             // 
             this.RemoveAuthorBTN.AutoSize = true;
             this.RemoveAuthorBTN.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveAuthorBTN.Location = new System.Drawing.Point(67, 96);
+            this.RemoveAuthorBTN.Location = new System.Drawing.Point(67, 48);
             this.RemoveAuthorBTN.Name = "RemoveAuthorBTN";
             this.RemoveAuthorBTN.Size = new System.Drawing.Size(15, 18);
             this.RemoveAuthorBTN.TabIndex = 30;
@@ -293,7 +344,7 @@
             // 
             this.AddAuthor1BTN.AutoSize = true;
             this.AddAuthor1BTN.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddAuthor1BTN.Location = new System.Drawing.Point(88, 96);
+            this.AddAuthor1BTN.Location = new System.Drawing.Point(88, 48);
             this.AddAuthor1BTN.Name = "AddAuthor1BTN";
             this.AddAuthor1BTN.Size = new System.Drawing.Size(18, 18);
             this.AddAuthor1BTN.TabIndex = 28;
@@ -306,11 +357,30 @@
             this.editAuthorTB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.editAuthorTB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.editAuthorTB.BackColor = System.Drawing.SystemColors.Info;
-            this.editAuthorTB.Location = new System.Drawing.Point(2, 115);
+            this.editAuthorTB.Location = new System.Drawing.Point(2, 67);
             this.editAuthorTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.editAuthorTB.Name = "editAuthorTB";
             this.editAuthorTB.Size = new System.Drawing.Size(226, 28);
             this.editAuthorTB.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label6.Location = new System.Drawing.Point(2, 96);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(236, 18);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "ISBN";
+            // 
+            // editISBNTB
+            // 
+            this.editISBNTB.BackColor = System.Drawing.SystemColors.Info;
+            this.editISBNTB.Location = new System.Drawing.Point(2, 115);
+            this.editISBNTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.editISBNTB.Name = "editISBNTB";
+            this.editISBNTB.Size = new System.Drawing.Size(226, 28);
+            this.editISBNTB.TabIndex = 19;
             // 
             // label7
             // 
@@ -332,85 +402,11 @@
             this.editDescriptionTB.TabIndex = 23;
             this.editDescriptionTB.Text = "";
             // 
-            // AvailableCHK
-            // 
-            this.AvailableCHK.AutoSize = true;
-            this.AvailableCHK.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AvailableCHK.Location = new System.Drawing.Point(18, 252);
-            this.AvailableCHK.Name = "AvailableCHK";
-            this.AvailableCHK.Size = new System.Drawing.Size(176, 22);
-            this.AvailableCHK.TabIndex = 38;
-            this.AvailableCHK.Text = "Only Available Books";
-            this.AvailableCHK.UseVisualStyleBackColor = true;
-            this.AvailableCHK.CheckedChanged += new System.EventHandler(this.AvailableCHK_CheckedChanged);
-            // 
-            // lbCopies
-            // 
-            this.lbCopies.BackColor = System.Drawing.SystemColors.Window;
-            this.lbCopies.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbCopies.FormattingEnabled = true;
-            this.lbCopies.ItemHeight = 21;
-            this.lbCopies.Location = new System.Drawing.Point(697, 92);
-            this.lbCopies.Name = "lbCopies";
-            this.lbCopies.Size = new System.Drawing.Size(210, 361);
-            this.lbCopies.TabIndex = 36;
-            this.lbCopies.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lbCopies_DrawItem);
-            this.lbCopies.SelectedIndexChanged += new System.EventHandler(this.lbCopies_SelectedIndexChanged);
-            this.lbCopies.DoubleClick += new System.EventHandler(this.lbCopies_DoubleClick);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label15.Location = new System.Drawing.Point(694, 69);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(54, 18);
-            this.label15.TabIndex = 35;
-            this.label15.Text = "Copies";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label13.Location = new System.Drawing.Point(193, 69);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 18);
-            this.label13.TabIndex = 34;
-            this.label13.Text = "Results";
-            // 
-            // removeCopyBTN
-            // 
-            this.removeCopyBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.removeCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.removeCopyBTN.Location = new System.Drawing.Point(807, 492);
-            this.removeCopyBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.removeCopyBTN.Name = "removeCopyBTN";
-            this.removeCopyBTN.Size = new System.Drawing.Size(96, 38);
-            this.removeCopyBTN.TabIndex = 33;
-            this.removeCopyBTN.Text = "Remove";
-            this.removeCopyBTN.UseVisualStyleBackColor = true;
-            this.removeCopyBTN.Click += new System.EventHandler(this.removeCopyBTN_Click);
-            // 
-            // removeBookBTN
-            // 
-            this.removeBookBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.removeBookBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.removeBookBTN.Location = new System.Drawing.Point(126, 19);
-            this.removeBookBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.removeBookBTN.Name = "removeBookBTN";
-            this.removeBookBTN.Size = new System.Drawing.Size(96, 38);
-            this.removeBookBTN.TabIndex = 29;
-            this.removeBookBTN.Text = "Remove";
-            this.removeBookBTN.UseVisualStyleBackColor = true;
-            this.removeBookBTN.Click += new System.EventHandler(this.removeBookBTN_Click);
-            // 
             // saveChangesBTN
             // 
             this.saveChangesBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveChangesBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.saveChangesBTN.Location = new System.Drawing.Point(567, 492);
+            this.saveChangesBTN.Location = new System.Drawing.Point(152, 488);
             this.saveChangesBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.saveChangesBTN.Name = "saveChangesBTN";
             this.saveChangesBTN.Size = new System.Drawing.Size(96, 38);
@@ -419,24 +415,32 @@
             this.saveChangesBTN.UseVisualStyleBackColor = true;
             this.saveChangesBTN.Click += new System.EventHandler(this.saveChangesBTN_Click);
             // 
-            // addCopyBTN
+            // booksSearchBGPanel
             // 
-            this.addCopyBTN.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addCopyBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.addCopyBTN.Location = new System.Drawing.Point(697, 492);
-            this.addCopyBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.addCopyBTN.Name = "addCopyBTN";
-            this.addCopyBTN.Size = new System.Drawing.Size(96, 38);
-            this.addCopyBTN.TabIndex = 28;
-            this.addCopyBTN.Text = "Add copy";
-            this.addCopyBTN.UseVisualStyleBackColor = true;
-            this.addCopyBTN.Click += new System.EventHandler(this.addCopyBTN_Click);
+            this.booksSearchBGPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.booksSearchBGPanel.Controls.Add(this.addBookBTN);
+            this.booksSearchBGPanel.Controls.Add(this.lbBooks);
+            this.booksSearchBGPanel.Controls.Add(this.findBooksLabel);
+            this.booksSearchBGPanel.Controls.Add(this.findTitleTB);
+            this.booksSearchBGPanel.Controls.Add(this.findAuthorTB);
+            this.booksSearchBGPanel.Controls.Add(this.AvailableCHK);
+            this.booksSearchBGPanel.Controls.Add(this.findISBNTB);
+            this.booksSearchBGPanel.Controls.Add(this.label1);
+            this.booksSearchBGPanel.Controls.Add(this.label2);
+            this.booksSearchBGPanel.Controls.Add(this.label13);
+            this.booksSearchBGPanel.Controls.Add(this.label3);
+            this.booksSearchBGPanel.Controls.Add(this.removeBookBTN);
+            this.booksSearchBGPanel.Location = new System.Drawing.Point(0, 0);
+            this.booksSearchBGPanel.Name = "booksSearchBGPanel";
+            this.booksSearchBGPanel.Size = new System.Drawing.Size(419, 550);
+            this.booksSearchBGPanel.TabIndex = 59;
+            this.booksSearchBGPanel.Enter += new System.EventHandler(this.booksSearchBGPanel_Enter);
             // 
             // addBookBTN
             // 
             this.addBookBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBookBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.addBookBTN.Location = new System.Drawing.Point(18, 19);
+            this.addBookBTN.Location = new System.Drawing.Point(24, 17);
             this.addBookBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.addBookBTN.Name = "addBookBTN";
             this.addBookBTN.Size = new System.Drawing.Size(96, 38);
@@ -445,90 +449,125 @@
             this.addBookBTN.UseVisualStyleBackColor = true;
             this.addBookBTN.Click += new System.EventHandler(this.addBookBTN_Click);
             // 
-            // label3
+            // lbBooks
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label3.Location = new System.Drawing.Point(18, 96);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 18);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "By title";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label2.Location = new System.Drawing.Point(18, 200);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 18);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "By ISBN";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Georgia", 12F);
-            this.label1.Location = new System.Drawing.Point(18, 148);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 18);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "By author";
-            // 
-            // findISBNTB
-            // 
-            this.findISBNTB.Location = new System.Drawing.Point(18, 221);
-            this.findISBNTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.findISBNTB.Name = "findISBNTB";
-            this.findISBNTB.Size = new System.Drawing.Size(161, 28);
-            this.findISBNTB.TabIndex = 15;
-            this.findISBNTB.TextChanged += new System.EventHandler(this.findISBNTB_TextChanged);
-            // 
-            // findAuthorTB
-            // 
-            this.findAuthorTB.Location = new System.Drawing.Point(18, 169);
-            this.findAuthorTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.findAuthorTB.Name = "findAuthorTB";
-            this.findAuthorTB.Size = new System.Drawing.Size(161, 28);
-            this.findAuthorTB.TabIndex = 14;
-            this.findAuthorTB.TextChanged += new System.EventHandler(this.findAuthorTB_TextChanged);
-            // 
-            // findTitleTB
-            // 
-            this.findTitleTB.Location = new System.Drawing.Point(18, 117);
-            this.findTitleTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.findTitleTB.Name = "findTitleTB";
-            this.findTitleTB.Size = new System.Drawing.Size(161, 28);
-            this.findTitleTB.TabIndex = 13;
-            this.findTitleTB.TextChanged += new System.EventHandler(this.findTitleTB_TextChanged);
+            this.lbBooks.BackColor = System.Drawing.SystemColors.Window;
+            this.lbBooks.FormattingEnabled = true;
+            this.lbBooks.ItemHeight = 21;
+            this.lbBooks.Location = new System.Drawing.Point(202, 90);
+            this.lbBooks.Name = "lbBooks";
+            this.lbBooks.Size = new System.Drawing.Size(210, 361);
+            this.lbBooks.TabIndex = 0;
+            this.lbBooks.SelectedIndexChanged += new System.EventHandler(this.lbBooks_SelectedIndexChanged);
             // 
             // findBooksLabel
             // 
             this.findBooksLabel.AutoSize = true;
-            this.findBooksLabel.Location = new System.Drawing.Point(18, 70);
+            this.findBooksLabel.Location = new System.Drawing.Point(24, 68);
             this.findBooksLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.findBooksLabel.Name = "findBooksLabel";
             this.findBooksLabel.Size = new System.Drawing.Size(101, 23);
             this.findBooksLabel.TabIndex = 12;
             this.findBooksLabel.Text = "Find book:";
             // 
-            // lbBooks
+            // findTitleTB
             // 
-            this.lbBooks.BackColor = System.Drawing.SystemColors.Window;
-            this.lbBooks.FormattingEnabled = true;
-            this.lbBooks.ItemHeight = 21;
-            this.lbBooks.Location = new System.Drawing.Point(196, 92);
-            this.lbBooks.Name = "lbBooks";
-            this.lbBooks.Size = new System.Drawing.Size(210, 361);
-            this.lbBooks.TabIndex = 0;
-            this.lbBooks.SelectedIndexChanged += new System.EventHandler(this.lbBooks_SelectedIndexChanged);
+            this.findTitleTB.Location = new System.Drawing.Point(24, 115);
+            this.findTitleTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.findTitleTB.Name = "findTitleTB";
+            this.findTitleTB.Size = new System.Drawing.Size(161, 28);
+            this.findTitleTB.TabIndex = 13;
+            this.findTitleTB.TextChanged += new System.EventHandler(this.findTitleTB_TextChanged);
+            // 
+            // findAuthorTB
+            // 
+            this.findAuthorTB.Location = new System.Drawing.Point(24, 167);
+            this.findAuthorTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.findAuthorTB.Name = "findAuthorTB";
+            this.findAuthorTB.Size = new System.Drawing.Size(161, 28);
+            this.findAuthorTB.TabIndex = 14;
+            this.findAuthorTB.TextChanged += new System.EventHandler(this.findAuthorTB_TextChanged);
+            // 
+            // AvailableCHK
+            // 
+            this.AvailableCHK.AutoSize = true;
+            this.AvailableCHK.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AvailableCHK.Location = new System.Drawing.Point(24, 250);
+            this.AvailableCHK.Name = "AvailableCHK";
+            this.AvailableCHK.Size = new System.Drawing.Size(176, 22);
+            this.AvailableCHK.TabIndex = 38;
+            this.AvailableCHK.Text = "Only Available Books";
+            this.AvailableCHK.UseVisualStyleBackColor = true;
+            this.AvailableCHK.CheckedChanged += new System.EventHandler(this.AvailableCHK_CheckedChanged);
+            // 
+            // findISBNTB
+            // 
+            this.findISBNTB.Location = new System.Drawing.Point(24, 219);
+            this.findISBNTB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.findISBNTB.Name = "findISBNTB";
+            this.findISBNTB.Size = new System.Drawing.Size(161, 28);
+            this.findISBNTB.TabIndex = 15;
+            this.findISBNTB.TextChanged += new System.EventHandler(this.findISBNTB_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label1.Location = new System.Drawing.Point(24, 146);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 18);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "By author";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label2.Location = new System.Drawing.Point(24, 198);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 18);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "By ISBN";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label13.Location = new System.Drawing.Point(199, 67);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(60, 18);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "Results";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Georgia", 12F);
+            this.label3.Location = new System.Drawing.Point(24, 94);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 18);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "By title";
+            // 
+            // removeBookBTN
+            // 
+            this.removeBookBTN.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.removeBookBTN.Font = new System.Drawing.Font("Georgia", 12F);
+            this.removeBookBTN.Location = new System.Drawing.Point(132, 17);
+            this.removeBookBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.removeBookBTN.Name = "removeBookBTN";
+            this.removeBookBTN.Size = new System.Drawing.Size(96, 38);
+            this.removeBookBTN.TabIndex = 29;
+            this.removeBookBTN.Text = "Remove";
+            this.removeBookBTN.UseVisualStyleBackColor = true;
+            this.removeBookBTN.Click += new System.EventHandler(this.removeBookBTN_Click);
             // 
             // membersTab
             // 
-            this.membersTab.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.membersTab.Controls.Add(this.overdueLoanMLegendLBL);
             this.membersTab.Controls.Add(this.returnedLoanMLegendLBL);
             this.membersTab.Controls.Add(this.activeLoanMLegendLBL);
@@ -559,6 +598,36 @@
             this.membersTab.TabIndex = 1;
             this.membersTab.Text = "Members";
             this.membersTab.Enter += new System.EventHandler(this.membersTab_Enter);
+            // 
+            // overdueLoanMLegendLBL
+            // 
+            this.overdueLoanMLegendLBL.AutoSize = true;
+            this.overdueLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overdueLoanMLegendLBL.Location = new System.Drawing.Point(521, 367);
+            this.overdueLoanMLegendLBL.Name = "overdueLoanMLegendLBL";
+            this.overdueLoanMLegendLBL.Size = new System.Drawing.Size(88, 15);
+            this.overdueLoanMLegendLBL.TabIndex = 61;
+            this.overdueLoanMLegendLBL.Text = "*overdue loan";
+            // 
+            // returnedLoanMLegendLBL
+            // 
+            this.returnedLoanMLegendLBL.AutoSize = true;
+            this.returnedLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnedLoanMLegendLBL.Location = new System.Drawing.Point(521, 352);
+            this.returnedLoanMLegendLBL.Name = "returnedLoanMLegendLBL";
+            this.returnedLoanMLegendLBL.Size = new System.Drawing.Size(93, 15);
+            this.returnedLoanMLegendLBL.TabIndex = 60;
+            this.returnedLoanMLegendLBL.Text = "*returned loan";
+            // 
+            // activeLoanMLegendLBL
+            // 
+            this.activeLoanMLegendLBL.AutoSize = true;
+            this.activeLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeLoanMLegendLBL.Location = new System.Drawing.Point(521, 337);
+            this.activeLoanMLegendLBL.Name = "activeLoanMLegendLBL";
+            this.activeLoanMLegendLBL.Size = new System.Drawing.Size(77, 15);
+            this.activeLoanMLegendLBL.TabIndex = 59;
+            this.activeLoanMLegendLBL.Text = "*active loan";
             // 
             // showPreviousLoans
             // 
@@ -1228,55 +1297,75 @@
             // 
             // closeBTN
             // 
-            this.closeBTN.BackColor = System.Drawing.Color.Red;
-            this.closeBTN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeBTN.Location = new System.Drawing.Point(970, 1);
+            this.closeBTN.BackColor = System.Drawing.Color.White;
+            this.closeBTN.ForeColor = System.Drawing.Color.Black;
+            this.closeBTN.Location = new System.Drawing.Point(971, 10);
             this.closeBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.closeBTN.Name = "closeBTN";
-            this.closeBTN.Size = new System.Drawing.Size(33, 26);
+            this.closeBTN.Size = new System.Drawing.Size(30, 25);
             this.closeBTN.TabIndex = 3;
             this.closeBTN.Text = "X";
             this.closeBTN.UseVisualStyleBackColor = false;
             this.closeBTN.Click += new System.EventHandler(this.closeBTN_Click);
             // 
-            // overdueLoanMLegendLBL
+            // label16
             // 
-            this.overdueLoanMLegendLBL.AutoSize = true;
-            this.overdueLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overdueLoanMLegendLBL.Location = new System.Drawing.Point(521, 367);
-            this.overdueLoanMLegendLBL.Name = "overdueLoanMLegendLBL";
-            this.overdueLoanMLegendLBL.Size = new System.Drawing.Size(88, 15);
-            this.overdueLoanMLegendLBL.TabIndex = 61;
-            this.overdueLoanMLegendLBL.Text = "*overdue loan";
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.Control;
+            this.label16.Location = new System.Drawing.Point(3, -3);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 36);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "Yala";
             // 
-            // returnedLoanMLegendLBL
+            // label24
             // 
-            this.returnedLoanMLegendLBL.AutoSize = true;
-            this.returnedLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnedLoanMLegendLBL.Location = new System.Drawing.Point(521, 352);
-            this.returnedLoanMLegendLBL.Name = "returnedLoanMLegendLBL";
-            this.returnedLoanMLegendLBL.Size = new System.Drawing.Size(93, 15);
-            this.returnedLoanMLegendLBL.TabIndex = 60;
-            this.returnedLoanMLegendLBL.Text = "*returned loan";
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.SystemColors.Control;
+            this.label24.Location = new System.Drawing.Point(75, 10);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(189, 19);
+            this.label24.TabIndex = 5;
+            this.label24.Text = "(Yet Another Library Archive)";
             // 
-            // activeLoanMLegendLBL
+            // TopDragPanel
             // 
-            this.activeLoanMLegendLBL.AutoSize = true;
-            this.activeLoanMLegendLBL.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activeLoanMLegendLBL.Location = new System.Drawing.Point(521, 337);
-            this.activeLoanMLegendLBL.Name = "activeLoanMLegendLBL";
-            this.activeLoanMLegendLBL.Size = new System.Drawing.Size(77, 15);
-            this.activeLoanMLegendLBL.TabIndex = 59;
-            this.activeLoanMLegendLBL.Text = "*active loan";
+            this.TopDragPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(58)))), ((int)(((byte)(55)))));
+            this.TopDragPanel.Controls.Add(this.minimizeBTN);
+            this.TopDragPanel.Controls.Add(this.label16);
+            this.TopDragPanel.Controls.Add(this.closeBTN);
+            this.TopDragPanel.Controls.Add(this.label24);
+            this.TopDragPanel.Location = new System.Drawing.Point(0, 0);
+            this.TopDragPanel.Name = "TopDragPanel";
+            this.TopDragPanel.Size = new System.Drawing.Size(1003, 35);
+            this.TopDragPanel.TabIndex = 6;
+            this.TopDragPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopDragPanel_MouseDown);
+            this.TopDragPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopDragPanel_MouseMove);
+            this.TopDragPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopDragPanel_MouseUp);
+            // 
+            // minimizeBTN
+            // 
+            this.minimizeBTN.BackColor = System.Drawing.Color.White;
+            this.minimizeBTN.Location = new System.Drawing.Point(940, 10);
+            this.minimizeBTN.Name = "minimizeBTN";
+            this.minimizeBTN.Size = new System.Drawing.Size(30, 25);
+            this.minimizeBTN.TabIndex = 6;
+            this.minimizeBTN.Text = "_";
+            this.minimizeBTN.UseVisualStyleBackColor = false;
+            this.minimizeBTN.Click += new System.EventHandler(this.minimizeBTN_Click);
             // 
             // LibraryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(50)))), ((int)(((byte)(47)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1003, 633);
-            this.Controls.Add(this.closeBTN);
+            this.Controls.Add(this.TopDragPanel);
             this.Controls.Add(this.tabControl1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1285,9 +1374,13 @@
             this.Text = "Library";
             this.tabControl1.ResumeLayout(false);
             this.booksTab.ResumeLayout(false);
-            this.booksTab.PerformLayout();
+            this.bookCopiesBGPanel.ResumeLayout(false);
+            this.bookCopiesBGPanel.PerformLayout();
+            this.bookInfoBGPanel.ResumeLayout(false);
             this.BookInfoFLP.ResumeLayout(false);
             this.BookInfoFLP.PerformLayout();
+            this.booksSearchBGPanel.ResumeLayout(false);
+            this.booksSearchBGPanel.PerformLayout();
             this.membersTab.ResumeLayout(false);
             this.membersTab.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1296,6 +1389,8 @@
             this.loansTab.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.TopDragPanel.ResumeLayout(false);
+            this.TopDragPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1401,6 +1496,13 @@
         private System.Windows.Forms.Label overdueLoanMLegendLBL;
         private System.Windows.Forms.Label returnedLoanMLegendLBL;
         private System.Windows.Forms.Label activeLoanMLegendLBL;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Panel TopDragPanel;
+        private System.Windows.Forms.Button minimizeBTN;
+        private System.Windows.Forms.Panel booksSearchBGPanel;
+        private System.Windows.Forms.Panel bookInfoBGPanel;
+        private System.Windows.Forms.Panel bookCopiesBGPanel;
     }
 }
 
