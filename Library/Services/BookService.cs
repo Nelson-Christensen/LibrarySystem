@@ -72,6 +72,12 @@ namespace Library.Services
             return bookList;
         }
 
+
+        /// <summary>
+        /// Retrieves all books from the database that has an ISBN which contains the input string
+        /// </summary>
+        /// <param name="input">String to search for ISBN by</param>
+        /// <returns>Returns Collection of books that contain the input ISBN</returns>
         public IEnumerable<Book> GetAllThatContainsISBN(string input)
         {
             return from b in bookRepository.All()
@@ -83,8 +89,8 @@ namespace Library.Services
         /// <summary>
         /// Combines the result of two collections and returns a collection of all objects that exist in both. Used to combine filters.
         /// </summary>
-        /// <param name="list1"></param>
-        /// <param name="list2"></param>
+        /// <param name="list1">First List to combine</param>
+        /// <param name="list2">Second List to combine</param>
         /// <returns>Returns a collection of objects that exist in both lists</returns>
         public IEnumerable<Book> CombineFilteredLists(IEnumerable<Book> list1, IEnumerable<Book> list2)
         {
@@ -106,7 +112,7 @@ namespace Library.Services
         /// <summary>
         /// The Edit method makes sure that the given Book object is saved to the database and raises the Updated() event.
         /// </summary>
-        /// <param name="b"></param>
+        /// <param name="b">The book that needs to be saved to the database</param>
         public void Edit(Book b)
         {
             bookRepository.Edit(b);
@@ -114,6 +120,10 @@ namespace Library.Services
             OnUpdated(e);
         }
 
+        /// <summary>
+        /// Adds the book to the database and notifies the subscribers of the Update.
+        /// </summary>
+        /// <param name="b">The book to be added to the database</param>
         public void Add(Book b)
         {
             bookRepository.Add(b);
@@ -152,6 +162,10 @@ namespace Library.Services
             OnUpdated(e);
         }
 
+        /// <summary>
+        /// Notifies all subscribers that a book has been added/removed/edited.
+        /// </summary>
+        /// <param name="e"></param>
         protected virtual void OnUpdated(EventArgs e)
         {
             // Checks to see if there are any subscribers to Updated, if so, it invokes the event.

@@ -32,6 +32,48 @@ namespace Library
             findMemberSearchBox.ResetText();
         }
 
+        private void SetActiveMemberPanel(int panelNr)
+        {
+            switch (panelNr)
+            {
+                case 0:
+                    memberSearchBGPanel.BackColor = activePanelColor;
+                    memberInfoBGPanel.BackColor = inactivePanelColor;
+                    memberLoanBGPanel.BackColor = inactivePanelColor;
+                    break;
+                case 1:
+                    memberSearchBGPanel.BackColor = inactivePanelColor;
+                    memberInfoBGPanel.BackColor = activePanelColor;
+                    memberLoanBGPanel.BackColor = inactivePanelColor;
+                    break;
+                case 2:
+                    memberSearchBGPanel.BackColor = inactivePanelColor;
+                    memberInfoBGPanel.BackColor = inactivePanelColor;
+                    memberLoanBGPanel.BackColor = activePanelColor;
+                    break;
+                default:
+                    memberSearchBGPanel.BackColor = inactivePanelColor;
+                    memberInfoBGPanel.BackColor = inactivePanelColor;
+                    memberLoanBGPanel.BackColor = inactivePanelColor;
+                    break;
+            }
+        }
+
+        private void memberSearchBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveMemberPanel(0);
+        }
+
+        private void memberInfoBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveMemberPanel(1);
+        }
+
+        private void memberLoanBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveMemberPanel(2);
+        }
+
         private void UpdateMemberListEvent(object sender, EventArgs e)
         {
             UpdateMemberList(memberService.All().ToList());
@@ -49,7 +91,6 @@ namespace Library
             {
                 lbMemberResults.Items.Add(member);
             }
-
             ClearMemberResultsPanel();
 
         }
@@ -58,7 +99,6 @@ namespace Library
         /// </summary>
         public void ClearMemberResultsPanel()
         {
-
             memberNameBox.ResetText();
             memberPersonnummerBox.ResetText();
         }
@@ -72,8 +112,6 @@ namespace Library
             timeOfReturnTB.ResetText();
             dueDateTB.ResetText();
             feesDueTB.ResetText();
-
-
         }
 
 

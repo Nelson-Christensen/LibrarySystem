@@ -40,9 +40,9 @@ namespace Library.Services
         }
 
         /// <summary>
-        /// Removes the input book from the database and notifies subscribers of the update.
+        /// Removes the Author from the database and notifies subscribers of the update.
         /// </summary>
-        /// <param name="bc">BookCopy reference to be removed from the DB</param>
+        /// <param name="a">Author reference to be removed from the DB</param>
         public void Remove(Author a)
         {
             authorRepository.Remove(a);
@@ -53,8 +53,8 @@ namespace Library.Services
         /// <summary>
         /// Searches all authors to find if any author has the input name, if so, it returns that author
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
+        /// <param name="input">The string to search for authors by</param>
+        /// <returns>Returns the first author in the database with a name that matches input string.</returns>
         public Author GetAuthorByName(string input)
         {
             return (from a in authorRepository.All()
@@ -62,10 +62,20 @@ namespace Library.Services
                    select a).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Retrieves all authors from the database and returns their names in a collection.
+        /// </summary>
+        /// <returns>Returns a collection of strings of all author names</returns>
         public IEnumerable<string> GetAllAuthorNames()
         {
             return authorRepository.All().Select(a => a.Name).ToList();
         }
+
+        /// <summary>
+        /// Checks if an author with a specific name exists in the Database
+        /// </summary>
+        /// <param name="input">The string to search for authors by</param>
+        /// <returns>Returns true if an author with the input name exists in the database, otherwise returns false</returns>
         public bool AuthorExist(string input)
         {
             if (GetAuthorByName(input) == null)
@@ -74,13 +84,8 @@ namespace Library.Services
                 return true;
         }
 
-        public void ClearDuplicateAuthors()
-        {
-
-        }
-
         /// <summary>
-        /// Notifies subscribers that bookCopyRepository has been updated.
+        /// Notifies subscribers that authorRepository has been updated.
         /// </summary>
         /// <param name="e">EventArgs to send to event subscribers</param>
         protected virtual void OnUpdated(EventArgs e)

@@ -22,7 +22,232 @@ namespace Library
     {
         int authorFields = 1;
         int maxAuthors = 4;
-        TextBox filterByField;
+        TextBox bookFilterByField;
+
+        // Non eventbound methods ---------------------------------------------------------
+
+        /// <summary>
+        /// Sets the current active backgroundPanel by changing panel colors
+        /// </summary>
+        /// <param name="panelNr">The panelNr that is to be selected. Starts from 0, based on the displayOrder from left to right.</param>
+        private void SetActiveBookPanel(int panelNr)
+        {
+            switch (panelNr)
+            {
+                case 0:
+                    booksSearchBGPanel.BackColor = activePanelColor;
+                    bookInfoBGPanel.BackColor = inactivePanelColor;
+                    bookCopiesBGPanel.BackColor = inactivePanelColor;
+                    break;
+                case 1:
+                    booksSearchBGPanel.BackColor = inactivePanelColor;
+                    bookInfoBGPanel.BackColor = activePanelColor;
+                    bookCopiesBGPanel.BackColor = inactivePanelColor;
+                    break;
+                case 2:
+                    booksSearchBGPanel.BackColor = inactivePanelColor;
+                    bookInfoBGPanel.BackColor = inactivePanelColor;
+                    bookCopiesBGPanel.BackColor = activePanelColor;
+                    break;
+                default:
+                    booksSearchBGPanel.BackColor = inactivePanelColor;
+                    bookInfoBGPanel.BackColor = inactivePanelColor;
+                    bookCopiesBGPanel.BackColor = inactivePanelColor;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Updates the ListBox that displays Books. Also clears the BookInfoPanel, since no book is selected. Also Clears BookCopyList.
+        /// </summary>
+        /// <param name="bookList">The BookList that will be displayed in the ListBox</param>
+        private void UpdateBookList(List<Book> bookList)
+        {
+            currentBookDisplay = bookList;
+            lbBooks.Items.Clear();
+            foreach (Book book in bookList)
+            {
+                lbBooks.Items.Add(book);
+            }
+
+            ClearBookInfoPanel();
+
+            // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
+            UpdateBookCopyList(new List<BookCopy>());
+        }
+
+        /// <summary>
+        /// Updates the bookCopyList to display the input bookCopyList.
+        /// </summary>
+        /// <param name="bookCopyList">The BookCopyList to be displayed in the listbox</param>
+        private void UpdateBookCopyList(List<BookCopy> bookCopyList)
+        {
+            currentBookCopyDisplay = bookCopyList;
+            lbCopies.Items.Clear();
+            for (int i = 0; i < bookCopyList.Count; i++)
+            {
+                lbCopies.Items.Add(bookCopyList[i]);
+            }
+        }
+
+        /// <summary>
+        /// Runs through checks to see if any of the bookinfo textboxes contains invalid input, if so it returns false. If all checks are passed, returns true.
+        /// </summary>
+        /// <returns>Returns true if all bookinfo textboxes contains valid input, otherwise returns false.</returns>
+        private bool ValidBookInfo()
+        {
+            if (editTitleTB.Text.Trim().Length == 0)
+                return false;
+            if (editAuthorTB.Text.Trim().Length <= 2)
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Clears all BookInfo and removes all excessive authorFields. Also clears the bookCopy list.
+        /// </summary>
+        public void ClearBookInfoPanel()
+        {
+            editISBNTB.ResetText();
+            editTitleTB.ResetText();
+            editAuthorTB.ResetText();
+            editDescriptionTB.ResetText();
+            RemoveAuthorFields();
+
+            // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
+            UpdateBookCopyList(new List<BookCopy>());
+        }
+
+        /// <summary>
+        /// Creates a new input field for author, this will automatically be placed beneath the former authorField.
+        /// </summary>
+        /// <param name="text">The text that the authorField should contain</param>
+        private void CreateAuthorField(string text)
+        {
+            TextBox newAuthorField = new System.Windows.Forms.TextBox();
+            int authorTBIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB);
+            newAuthorField.BackColor = System.Drawing.SystemColors.Info;
+            newAuthorField.Location = new System.Drawing.Point(47, 152);
+            newAuthorField.Margin = new System.Windows.Forms.Padding(2);
+            newAuthorField.Size = new System.Drawing.Size(226, 28);
+            newAuthorField.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
+            newAuthorField.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            newAuthorField.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            newAuthorField.Text = text;
+
+            BookInfoFLP.Controls.Add(newAuthorField);
+            BookInfoFLP.Controls.SetChildIndex(newAuthorField, authorTBIndex + authorFields);
+
+            authorFields++;
+        }
+
+        /// <summary>
+        /// Creates a new empty input field for another author.
+        /// </summary>
+        private void CreateAuthorField()
+        {
+            CreateAuthorField("");
+        }
+
+        /// <summary>
+        /// Updates the bookInfo Panel to reflect the information from the input book.
+        /// </summary>
+        /// <param name="selectedBook">The book that is to be displayed in bookInfoPanel</param>
+        public void UpdateBookInfoPanel(Book selectedBook)
+        {
+            editTitleTB.Text = selectedBook.Title;
+            editISBNTB.Text = selectedBook.ISBN;
+            if (selectedBook.Authors.Count > 0) //Can only display author if the book has a author registered
+                editAuthorTB.Text = selectedBook.Authors[0].ToString();
+            editDescriptionTB.Text = selectedBook.Description;
+
+            for (int i = 1; i < selectedBook.Authors.Count; i++) // Populate additional author fields if multiple authors are registered.
+            {
+                string authorName = selectedBook.Authors[i].ToString();
+                if (i < authorFields)
+                {
+                    int currentFieldIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB) + i;
+                    BookInfoFLP.Controls[currentFieldIndex].Text = authorName;
+                }
+                else
+                {
+                    CreateAuthorField(authorName);
+                }
+            }
+            int deleteAuthorFieldCount = authorFields - selectedBook.Authors.Count;
+            if (deleteAuthorFieldCount > 0 && authorFields > 1)
+                RemoveAuthorFields(authorFields - selectedBook.Authors.Count); // Remove Leftover Fields.
+
+            // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
+            UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
+        }
+
+        /// <summary>
+        /// Removes a specific amount of authorFields from BookInfoPanel.
+        /// </summary>
+        /// <param name="count">The amount of authorFields that is to be removed</param>
+        private void RemoveAuthorFields(int count)
+        {
+            // Removes additional author textboxes.
+            int authorTBIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB);
+            for (int i = authorTBIndex + authorFields; i > authorTBIndex + authorFields - count; i--)
+            {
+                BookInfoFLP.Controls.RemoveAt(i - 1);
+            }
+            authorFields -= count;
+        }
+
+        /// <summary>
+        /// Removes all authorFields except for one. 
+        /// </summary>
+        private void RemoveAuthorFields()
+        {
+            if (authorFields > 1)
+                RemoveAuthorFields(authorFields - 1);
+        }
+
+        /// <summary>
+        /// Reads the current textboxFilter and checks if the onlyAvailable checkbox is ticket, and combines the results of the filters and returns the result as a book Collection.
+        /// </summary>
+        /// <returns>Returns a collection of Books that fit the active search criteria.</returns>
+        private IEnumerable<Book> SearchResult()
+        {
+            IEnumerable<Book> activeFilter;
+            if (bookFilterByField != null)
+            {
+                switch (bookFilterByField.Name)
+                {
+                    case "findAuthorTB":
+                        activeFilter = bookService.GetAllThatContainsAuthor(findAuthorTB.Text);
+                        break;
+
+                    case "findTitleTB":
+                        activeFilter = bookService.GetAllThatContainsInTitle(findTitleTB.Text);
+                        break;
+
+                    case "findISBNTB":
+                        activeFilter = bookService.GetAllThatContainsISBN(findISBNTB.Text);
+                        break;
+
+                    default:
+                        activeFilter = bookService.All();
+                        break;
+                }
+            }
+            else
+                activeFilter = bookService.All();
+            if (AvailableCHK.Checked)
+            {
+                IEnumerable<Book> availableFiltered = bookService.GetAllAvailableBooks().ToList();
+                activeFilter = bookService.CombineFilteredLists(activeFilter, availableFiltered);
+            }
+            return activeFilter;
+        }
+
+
+
+        // Eventbound methods ---------------------------------------------------------
 
         /// <summary>
         /// Resets the tab to empty search parameters and lists all books.
@@ -36,11 +261,52 @@ namespace Library
             findAuthorTB.ResetText();
             findISBNTB.ResetText();
         }
+
+        /// <summary>
+        /// When a control inside the panel gets focus it sets this panel as the focused panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void booksSearchBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveBookPanel(0);
+        }
+
+        /// <summary>
+        /// When a control inside the panel gets focus it sets this panel as the focused panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bookInfoBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveBookPanel(1);
+        }
+
+        /// <summary>
+        /// When a control inside the panel gets focus it sets this panel as the focused panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bookCopiesBGPanel_Enter(object sender, EventArgs e)
+        {
+            SetActiveBookPanel(2);
+        }
+
+        /// <summary>
+        /// Updates the BookList whenever a book is Added/Removed/Changed in the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateBookListEvent(object sender, EventArgs e)
         {
             UpdateBookList(bookService.All().ToList());
         }
 
+        /// <summary>
+        /// Updates the bookCopyList based on selected book whenever a BookCopy is Added/Removed/Changed in the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateBookCopyListEvent(object sender, EventArgs e)
         {
             Book selectedBook = currentBookDisplay[lbBooks.SelectedIndex];
@@ -49,6 +315,11 @@ namespace Library
             UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
         }
 
+        /// <summary>
+        /// Clears the BookInfoPanel to allow for new input and moves the focus to the editTitle textbox to allow the user to instantly start entering the new bookinformation.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addBookBTN_Click(object sender, EventArgs e)
         {
             ClearBookInfoPanel();
@@ -56,6 +327,11 @@ namespace Library
             editTitleTB.Select();
         }
 
+        /// <summary>
+        /// If a book is selected, it removes the book from the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void removeBookBTN_Click(object sender, EventArgs e)
         {
             // Can only remove book if a book is selected.
@@ -73,17 +349,13 @@ namespace Library
                 }
             }
         }
-        
-        private void closeBTN_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
-        private void booksNewLoanBTN_Click(object sender, EventArgs e)
-        {
 
-        }
-
+        /// <summary>
+        /// If a book has been selected, it adds a new copy of that book to the database, and makes the new bookcopy the selected bookCopy in the bookCopyListBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addCopyBTN_Click(object sender, EventArgs e)
         {
             // Can only add new copy if a book has been selected
@@ -110,6 +382,11 @@ namespace Library
                 InfoPopup("You need to select a book to add a copy of.", "Can't create book Copy");
         }
 
+        /// <summary>
+        /// If a bookCopy has been selected, it removes the bookCopy from the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void removeCopyBTN_Click(object sender, EventArgs e)
         {
             if (lbCopies.SelectedItem != null)
@@ -126,38 +403,44 @@ namespace Library
                 InfoPopup("You need to select a book copy to remove.", "Can't remove book Copy");
         }
 
+        /// <summary>
+        /// Whenever the text in the BookTitle searchbox is modified a new search is made based on the updated input. Also sets the active searchfilter field to this textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void findTitleTB_TextChanged(object sender, EventArgs e)
         {
-            filterByField = findTitleTB;
+            bookFilterByField = findTitleTB;
             UpdateBookList(SearchResult().ToList());
         }
 
-        private void UpdateBookList(List<Book> bookList)
+        /// <summary>
+        /// Whenever the text in the AuthorName searchbox is modified a new search is made based on the updated input. Also sets the active searchfilter field to this textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void findAuthorTB_TextChanged(object sender, EventArgs e)
         {
-            currentBookDisplay = bookList;
-            lbBooks.Items.Clear();
-            foreach (Book book in bookList)
-            {
-                lbBooks.Items.Add(book);
-            }
-
-            ClearBookInfoPanel();
-
-            // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
-            UpdateBookCopyList(new List<BookCopy>());
+            bookFilterByField = findAuthorTB;
+            UpdateBookList(SearchResult().ToList());
         }
 
-
-        private void UpdateBookCopyList(List<BookCopy> bookCopyList)
+        /// <summary>
+        /// Whenever the text in the ISBN searchbox is modified a new search is made based on the updated input. Also sets the active searchfilter field to this textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void findISBNTB_TextChanged(object sender, EventArgs e)
         {
-            currentBookCopyDisplay = bookCopyList;
-            lbCopies.Items.Clear();
-            for (int i = 0; i < bookCopyList.Count; i++)
-            {
-                lbCopies.Items.Add(bookCopyList[i]);
-            }
+            bookFilterByField = findISBNTB;
+            UpdateBookList(SearchResult().ToList());
         }
 
+        /// <summary>
+        /// Validates the input fields and then if a book has been selected it Saves the changes made to that book, otherwise it creates a new Book.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveChangesBTN_Click(object sender, EventArgs e)
         {
             if (ValidBookInfo()) // Confirms that all input fields are valid before continuing.
@@ -237,31 +520,10 @@ namespace Library
         }
 
         /// <summary>
-        /// Runs through checks to see if any of the bookinfo textboxes contains invalid input, if so it returns false. If all checks are passed, returns true.
+        /// Clears bookInfoPanel if no item was selected, otherwise updates BookInfoPanel to reflect the selected book.
         /// </summary>
-        /// <returns>Returns true if all bookinfo textboxes contains valid input, otherwise returns false.</returns>
-        private bool ValidBookInfo()
-        {
-            if (editTitleTB.Text.Trim().Length == 0)
-                return false;
-            if (editAuthorTB.Text.Trim().Length <= 2)
-                return false;
-
-            return true;
-        }
-
-        private void findAuthorTB_TextChanged(object sender, EventArgs e)
-        {
-            filterByField = findAuthorTB;
-            UpdateBookList(SearchResult().ToList());
-        }
-
-        private void findISBNTB_TextChanged(object sender, EventArgs e)
-        {
-            filterByField = findISBNTB;
-            UpdateBookList(SearchResult().ToList());
-        }
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbBooks_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Cleared selection
@@ -276,60 +538,35 @@ namespace Library
             }
         }
 
-        private void lbCopies_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
-            createNewLoan = true;
-
-        }
-
-        public void UpdateBookInfoPanel(Book selectedBook)
-        {
-            editTitleTB.Text = selectedBook.Title;
-            editISBNTB.Text = selectedBook.ISBN;
-            if (selectedBook.Authors.Count > 0) //Can only display author if the book has a author registered
-                editAuthorTB.Text = selectedBook.Authors[0].ToString();
-            editDescriptionTB.Text = selectedBook.Description;
-
-            for (int i = 1; i < selectedBook.Authors.Count; i++) // Populate additional author fields if multiple authors are registered.
-            {
-                string authorName = selectedBook.Authors[i].ToString();
-                if (i < authorFields)
-                {
-                    int currentFieldIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB) + i;
-                    BookInfoFLP.Controls[currentFieldIndex].Text = authorName;
-                }
-                else
-                {
-                    CreateAuthorField(authorName);
-                }
-            }
-            int deleteAuthorFieldCount = authorFields - selectedBook.Authors.Count;
-            if (deleteAuthorFieldCount > 0 && authorFields > 1)
-                RemoveAuthorFields(authorFields - selectedBook.Authors.Count); // Remove Leftover Fields.
-
-            // Updates the bookCopy listbox to reflect the changes by displaying all(including the new) book copies of the aforementioned book
-            UpdateBookCopyList(bookCopyService.GetAllCopiesByBook(selectedBook).ToList());
-        }
-
-        public void ClearBookInfoPanel()
-        {
-            editISBNTB.ResetText();
-            editTitleTB.ResetText();
-            editAuthorTB.ResetText();
-            editDescriptionTB.ResetText();
-
-            RemoveAuthorFields();
-
-            // Updates the bookCopy listbox to an empty listBox because we dont want to display any copies when no book is selected
-            UpdateBookCopyList(new List<BookCopy>());
-        }
-
+        /// <summary>
+        /// Updates the BookList based on a new SearchResult(which reads the AvailableCHK and filters based on the CheckStatus)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AvailableCHK_CheckedChanged(object sender, EventArgs e)
         {
             UpdateBookList(SearchResult().ToList());
         }
 
+        /// <summary>
+        /// If an item is selected it puts the value into the bookCopyLoan textbox on the loans tab. So that the user doesnt manually have to enter the bookCopy when creating a new loan.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lbCopies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbCopies.SelectedItem != null)
+            {
+                bookCopyLoanTB.Text = lbCopies.SelectedItem.ToString();
+                createNewLoan = true;
+            }
+        }
+
+        /// <summary>
+        /// Moves the user to the Loans tab and fills in bookCopy for the new Loan.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbCopies_DoubleClick(object sender, EventArgs e)
         {
             if (lbCopies.SelectedItem != null) //If you double clicked on a item
@@ -340,7 +577,12 @@ namespace Library
             }
         }
 
-        private void AddAuthor1BTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        /// <summary>
+        /// Creates a new AuthorField if the current authorFieldCount is less than maxAuthors.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddAuthorBTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (authorFields < maxAuthors)
             {
@@ -348,47 +590,11 @@ namespace Library
             }
         }
 
-        private void CreateAuthorField(string text)
-        {
-            TextBox newAuthorField = new System.Windows.Forms.TextBox();
-            int authorTBIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB);
-            newAuthorField.BackColor = System.Drawing.SystemColors.Info;
-            newAuthorField.Location = new System.Drawing.Point(47, 152);
-            newAuthorField.Margin = new System.Windows.Forms.Padding(2);
-            newAuthorField.Size = new System.Drawing.Size(226, 28);
-            newAuthorField.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
-            newAuthorField.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            newAuthorField.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            newAuthorField.Text = text;
-
-            BookInfoFLP.Controls.Add(newAuthorField);
-            BookInfoFLP.Controls.SetChildIndex(newAuthorField, authorTBIndex + authorFields);
-
-            authorFields++;
-        }
-
-        private void CreateAuthorField()
-        {
-            CreateAuthorField("");
-        }
-
-        private void RemoveAuthorFields(int count)
-        {
-            // Removes additional author textboxes.
-            int authorTBIndex = BookInfoFLP.Controls.IndexOf(editAuthorTB);
-            for (int i = authorTBIndex + authorFields; i > authorTBIndex + authorFields - count; i--)
-            {
-                BookInfoFLP.Controls.RemoveAt(i - 1);
-            }
-            authorFields -= count;
-        }
-
-        private void RemoveAuthorFields()
-        {
-            if (authorFields - 1 > 0)
-                RemoveAuthorFields(authorFields - 1);
-        }
-
+        /// <summary>
+        /// Removes the last authorField if there are more than one existing authorFields.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemoveAuthorBTN_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (authorFields > 1) // Checks to make sure you dont delete last authorField
@@ -399,6 +605,13 @@ namespace Library
                 authorFields--;
             }
         }
+
+        /// <summary>
+        /// If a bookCopy is selected, it fills in the bookCopy for the new loan and moves user to the Member Panel if no member has been selected for the loan,
+        /// otherwise it moves the user to the loan tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NewLoanBooksBTN_Click(object sender, EventArgs e)
         {
             if (lbCopies.SelectedItem != null) //If you have selected a bookCopy, otherwise it cant create a new loan
@@ -425,6 +638,11 @@ namespace Library
             }
         }
 
+        /// <summary>
+        /// Updates the autoComplete options for all authorFields so that they include all authors in the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdatedAuthorEvent(object sender, EventArgs e)
         {
             foreach (TextBox authorField in BookInfoFLP.Controls) // Checks for all author textboxes in BookInfo panel.
@@ -434,40 +652,6 @@ namespace Library
                     authorField.AutoCompleteCustomSource.AddRange(authorService.GetAllAuthorNames().ToArray()); //Adds all the current authors to autocomplete list.
                 }
             }
-        }
-
-        private IEnumerable<Book> SearchResult()
-        {
-            IEnumerable<Book> activeFilter;
-            if (filterByField != null)
-            {
-                switch (filterByField.Name)
-                {
-                    case "findAuthorTB":
-                        activeFilter = bookService.GetAllThatContainsAuthor(findAuthorTB.Text);
-                        break;
-
-                    case "findTitleTB":
-                        activeFilter = bookService.GetAllThatContainsInTitle(findTitleTB.Text);
-                        break;
-
-                    case "findISBNTB":
-                        activeFilter = bookService.GetAllThatContainsISBN(findISBNTB.Text);
-                        break;
-
-                    default:
-                        activeFilter = bookService.All();
-                        break;
-                }
-            }
-            else
-                activeFilter = bookService.All();
-            if (AvailableCHK.Checked)
-            {
-                IEnumerable<Book> availableFiltered = bookService.GetAllAvailableBooks().ToList();
-                activeFilter = bookService.CombineFilteredLists(activeFilter, availableFiltered);
-            }
-            return activeFilter;
         }
 
         /// <summary>
