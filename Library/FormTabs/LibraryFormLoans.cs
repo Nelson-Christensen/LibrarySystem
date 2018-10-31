@@ -62,7 +62,7 @@ namespace Library
                 ListViewItem item = LoansLV.SelectedItems[0];
                 int loanID = Int32.Parse(item.SubItems[0].Text);
                 Loan loan = loanService.Find(loanID);
-                loanService.ReturnLoan(loan);
+                loanService.ReturnLoan(loan, timeOfReturnDTP.Value);
                 DateTime returnDate = (DateTime)loan.ReturnDate; // Has to cast it to DateTime to allow operations and comparisons
                 if (returnDate.Date > loan.DueDate.Date)
                 {
@@ -202,8 +202,8 @@ namespace Library
 
             bookCopyLoanTB.ResetText();
             memberLoanTB.ResetText();
-            timeOfLoanDTP.Value = DateTime.Now;
-            dueDateDTP.Value = DateTime.Now;
+            timeOfLoanDTP.Value = DateTime.Now; //Default timeOfLoan is today
+            dueDateDTP.Value = DateTime.Now.AddDays(15); //Default dueDate is in 15days
             timeOfReturnDTP.Value = DateTime.Now;
             bookCopyLoanTB.Enabled = true;
             memberLoanTB.Enabled = true;
