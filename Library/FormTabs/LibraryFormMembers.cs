@@ -265,6 +265,7 @@ namespace Library
                 Member selectedMember = currentMemberDisplay[lbMemberResults.SelectedIndex];
 
                 UpdateMemberInfoPanel(selectedMember);
+                currentLoanDisplay = selectedMember.Loans;
                 memberLoanTB.Text = selectedMember.ToString();
                 createNewLoan = true;
                 lbMemberLoans.Items.Clear();
@@ -316,11 +317,13 @@ namespace Library
         /// <param name="selectedLoan"></param>
         public void UpdateMemberLoanPanel(Loan selectedLoan)
         {
-            
             loanIdTB.Text = selectedLoan.Id.ToString();
-            timeOfLoanTB.Text = selectedLoan.StartDate.ToString(CultureInfo.InvariantCulture);
-            timeOfReturnTB.Text = selectedLoan.ReturnDate.ToString();
-            dueDateTB.Text = selectedLoan.DueDate.ToString(CultureInfo.InvariantCulture);
+            timeOfLoanTB.Text = selectedLoan.StartDate.Date.ToShortDateString();
+            string returnDate = "";
+            if (selectedLoan.ReturnDate != null)
+                returnDate = ((DateTime)selectedLoan.ReturnDate).Date.ToShortDateString();
+            timeOfReturnTB.Text = returnDate;
+            dueDateTB.Text = selectedLoan.DueDate.Date.ToShortDateString();
             feesDueTB.Text = CalculateLoanFine(selectedLoan).ToString();
         }
 

@@ -793,12 +793,13 @@
             // showActiveLoansCB
             // 
             this.showActiveLoansCB.AutoSize = true;
-            this.showActiveLoansCB.Location = new System.Drawing.Point(47, 381);
+            this.showActiveLoansCB.Font = new System.Drawing.Font("Georgia", 12F);
+            this.showActiveLoansCB.Location = new System.Drawing.Point(47, 373);
             this.showActiveLoansCB.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.showActiveLoansCB.Name = "showActiveLoansCB";
-            this.showActiveLoansCB.Size = new System.Drawing.Size(201, 27);
+            this.showActiveLoansCB.Size = new System.Drawing.Size(156, 22);
             this.showActiveLoansCB.TabIndex = 46;
-            this.showActiveLoansCB.Text = "Show previous loans";
+            this.showActiveLoansCB.Text = "Only Active Loans";
             this.showActiveLoansCB.UseVisualStyleBackColor = true;
             this.showActiveLoansCB.CheckedChanged += new System.EventHandler(this.showActiveLoansCB_CheckedChanged);
             // 
