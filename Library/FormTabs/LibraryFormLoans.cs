@@ -277,6 +277,14 @@ namespace Library
                     {
                         Loan newLoan = new Loan(loanInputBookCopy, loanInputMember, timeOfLoanDTP.Value, dueDateDTP.Value);
                         loanService.Add(newLoan);
+
+                        UpdateLoanInfoPanel(newLoan); // Update info panel to reflect the loan return.
+                        UpdateLoansList(currentLoanDisplay);
+
+                        int loanIndex = currentLoanDisplay.FindIndex(a => a == newLoan);
+                        LoansLV.Items[loanIndex].Selected = true;// Reselects the loan from the LoansListView
+
+                        UpdateAvailableBookCopiesAutoComplete();
                     }
                 }
                 else
@@ -306,7 +314,17 @@ namespace Library
                 }
 
                 UpdateLoanInfoPanel(loan); // Update info panel to reflect the loan return.
+                UpdateLoansList(currentLoanDisplay);
+
+                int loanIndex = currentLoanDisplay.FindIndex(a => a == loan);
+                LoansLV.Items[loanIndex].Selected = true;// Reselects the loan from the LoansListView
             }
+            UpdateAvailableBookCopiesAutoComplete();
+        }
+
+        private void UpdateAvailableBookCopiesAutoComplete()
+        {
+            bookCopyLoanTB.AutoCompleteCustomSource.AddRange(bookCopyService.GetAllAvailableBookCopyNames().ToArray()); //Adds all the current bookCopies to autocomplete list.
         }
 
         /// <summary>

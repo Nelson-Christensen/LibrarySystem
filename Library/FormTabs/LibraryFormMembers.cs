@@ -334,23 +334,27 @@ namespace Library
         /// <param name="e"></param>
         private void showActiveLoansCB_CheckedChanged(object sender, EventArgs e)
         {
-            Member selectedMember = currentMemberDisplay[lbMemberResults.SelectedIndex];
             lbMemberLoans.Items.Clear();
-            if (showActiveLoansCB.Checked)
-            {   //only displays loans with no returndates = active loans
-                for (var i = 0; i < selectedMember.Loans.Count && selectedMember.Loans[i].ReturnDate == null; i++)
-                {
-                    Loan lc = selectedMember.Loans[i];
-                    lbMemberLoans.Items.Add(lc.BookCopy.Book.Title);
-                }
-            }
-            else
+            if (lbMemberResults.SelectedItem != null) // If a has been selected
             {
-                foreach (Loan l in selectedMember.Loans)
+                Member selectedMember = currentMemberDisplay[lbMemberResults.SelectedIndex];
+                if (showActiveLoansCB.Checked)
+                {   //only displays loans with no returndates = active loans
+                    for (var i = 0; i < selectedMember.Loans.Count && selectedMember.Loans[i].ReturnDate == null; i++)
+                    {
+                        Loan lc = selectedMember.Loans[i];
+                        lbMemberLoans.Items.Add(lc.BookCopy.Book.Title);
+                    }
+                }
+                else
                 {
-                    lbMemberLoans.Items.Add(l.BookCopy.Book.Title);
+                    foreach (Loan l in selectedMember.Loans)
+                    {
+                        lbMemberLoans.Items.Add(l.BookCopy.Book.Title);
+                    }
                 }
             }
+
         }
     }
 }

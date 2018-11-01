@@ -268,7 +268,7 @@
             // NewLoanBooksBTN
             // 
             this.NewLoanBooksBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.NewLoanBooksBTN.Location = new System.Drawing.Point(139, 15);
+            this.NewLoanBooksBTN.Location = new System.Drawing.Point(135, 23);
             this.NewLoanBooksBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.NewLoanBooksBTN.Name = "NewLoanBooksBTN";
             this.NewLoanBooksBTN.Size = new System.Drawing.Size(96, 38);
@@ -607,7 +607,7 @@
             // 
             this.memberLoanBTN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.memberLoanBTN.Font = new System.Drawing.Font("Georgia", 12F);
-            this.memberLoanBTN.Location = new System.Drawing.Point(337, 12);
+            this.memberLoanBTN.Location = new System.Drawing.Point(346, 23);
             this.memberLoanBTN.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.memberLoanBTN.Name = "memberLoanBTN";
             this.memberLoanBTN.Size = new System.Drawing.Size(96, 38);
