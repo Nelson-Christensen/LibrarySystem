@@ -32,8 +32,11 @@ namespace Library
         public Color unavailableColor = Color.Red;
         public Color inactiveColor = Color.DimGray;
         public Color availableColor = Color.Black;
-        public Color activePanelColor = Color.FromArgb(240, 240, 240);
-        public Color inactivePanelColor = Color.FromArgb(230, 230, 230);
+        //public Color activePanelColor = Color.FromArgb(240, 240, 240);
+        //public Color inactivePanelColor = Color.FromArgb(230, 230, 230);
+        public Color activePanelColor = Color.FromArgb(249, 244, 244);
+        public Color inactivePanelColor = Color.FromArgb(242, 235, 232);
+
 
         public Color windowColor; //Will be set when the program is run and taken from current forms bg color.
         public Color secondaryColor;

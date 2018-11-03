@@ -181,6 +181,7 @@
             // 
             // bookCopiesBGPanel
             // 
+            this.bookCopiesBGPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(215)))), ((int)(((byte)(203)))));
             this.bookCopiesBGPanel.Controls.Add(this.label15);
             this.bookCopiesBGPanel.Controls.Add(this.addCopyBTN);
             this.bookCopiesBGPanel.Controls.Add(this.unavailableCopyLegendLBL);
@@ -423,7 +424,7 @@
             // 
             // booksSearchBGPanel
             // 
-            this.booksSearchBGPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.booksSearchBGPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(177)))), ((int)(((byte)(166)))));
             this.booksSearchBGPanel.Controls.Add(this.addBookBTN);
             this.booksSearchBGPanel.Controls.Add(this.lbBooks);
             this.booksSearchBGPanel.Controls.Add(this.findBooksLabel);
