@@ -635,9 +635,9 @@
             this.label18.Location = new System.Drawing.Point(43, 67);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(148, 18);
+            this.label18.Size = new System.Drawing.Size(151, 18);
             this.label18.TabIndex = 43;
-            this.label18.Text = "Current loans (title)";
+            this.label18.Text = "Loans (by Booktitle)";
             // 
             // overdueLoanMLegendLBL
             // 
